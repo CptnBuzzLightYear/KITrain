@@ -1,0 +1,22 @@
+{
+    "python.autoComplete.extraPaths": [
+        "/home/steffens/ro2_ws/build/my_robot_controller",
+        "/home/steffens/ro2_ws/install/my_robot_controller/lib/python3.10/site-packages",
+        "/opt/ros/humble/lib/python3.10/site-packages",
+        "/opt/ros/humble/local/lib/python3.10/dist-packages"
+    ],
+    "python.analysis.extraPaths": [
+        "/home/steffens/ro2_ws/build/my_robot_controller",
+        "/home/steffens/ro2_ws/install/my_robot_controller/lib/python3.10/site-packages",
+        "/opt/ros/humble/lib/python3.10/site-packages",
+        "/opt/ros/humble/local/lib/python3.10/dist-packages"
+    ],
+    "C_Cpp.default.includePath": [
+        "/opt/ros/foxy/include",
+        "${KITrain}/iclude"
+    ],
+    "C_Cpp.defaut.complilerPath": "/usr/bin/g++",
+    "C_Cpp.default.cppStandard": "c++17",
+    "C_Cpp.default.configurationProvider": "ms-vscode.cpptools",
+    "editor.formatOnSave": true,
+}
