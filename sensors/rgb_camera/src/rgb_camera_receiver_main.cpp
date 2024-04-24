@@ -9,7 +9,7 @@
 #include <cv_bridge/cv_bridge.h>
 //#include <rgb_camera_receiver.hpp>
 
-
+//hallo :) 
 using namespace std::chrono_literals;
 
 class RgbCameraReceiver : public rclcpp::Node
