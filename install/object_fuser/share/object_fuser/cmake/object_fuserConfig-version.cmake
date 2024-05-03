@@ -1,0 +1,1 @@
+/home/steffens/KITrain/build/object_fuser/ament_cmake_core/object_fuserConfig-version.cmake

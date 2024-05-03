@@ -1,0 +1,1 @@
+/home/steffens/KITrain/build/lidar_detector/ament_cmake_environment_hooks/local_setup.bash

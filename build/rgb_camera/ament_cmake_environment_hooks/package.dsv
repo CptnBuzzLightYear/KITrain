@@ -1,0 +1,4 @@
+source;share/rgb_camera/local_setup.bash
+source;share/rgb_camera/local_setup.dsv
+source;share/rgb_camera/local_setup.sh
+source;share/rgb_camera/local_setup.zsh

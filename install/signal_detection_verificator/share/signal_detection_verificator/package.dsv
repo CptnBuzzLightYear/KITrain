@@ -1,0 +1,8 @@
+source;share/signal_detection_verificator/hook/cmake_prefix_path.ps1
+source;share/signal_detection_verificator/hook/cmake_prefix_path.dsv
+source;share/signal_detection_verificator/hook/cmake_prefix_path.sh
+source;share/signal_detection_verificator/local_setup.bash
+source;share/signal_detection_verificator/local_setup.dsv
+source;share/signal_detection_verificator/local_setup.ps1
+source;share/signal_detection_verificator/local_setup.sh
+source;share/signal_detection_verificator/local_setup.zsh

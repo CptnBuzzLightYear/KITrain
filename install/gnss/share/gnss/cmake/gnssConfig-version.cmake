@@ -1,0 +1,1 @@
+/home/steffens/KITrain/build/gnss/ament_cmake_core/gnssConfig-version.cmake

@@ -1,0 +1,4 @@
+source;share/clearance_profile_observer/local_setup.bash
+source;share/clearance_profile_observer/local_setup.dsv
+source;share/clearance_profile_observer/local_setup.sh
+source;share/clearance_profile_observer/local_setup.zsh

@@ -1,0 +1,1 @@
+/home/steffens/KITrain/build/rgb_camera/ament_cmake_core/rgb_cameraConfig-version.cmake

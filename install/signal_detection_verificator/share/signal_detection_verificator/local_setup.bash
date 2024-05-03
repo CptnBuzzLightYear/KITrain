@@ -1,0 +1,1 @@
+/home/steffens/KITrain/build/signal_detection_verificator/ament_cmake_environment_hooks/local_setup.bash

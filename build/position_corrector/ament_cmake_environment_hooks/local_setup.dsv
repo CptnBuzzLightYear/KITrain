@@ -1,0 +1,2 @@
+source;share/position_corrector/environment/ament_prefix_path.sh
+source;share/position_corrector/environment/path.sh

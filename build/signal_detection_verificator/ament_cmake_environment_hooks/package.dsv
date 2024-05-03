@@ -1,0 +1,4 @@
+source;share/signal_detection_verificator/local_setup.bash
+source;share/signal_detection_verificator/local_setup.dsv
+source;share/signal_detection_verificator/local_setup.sh
+source;share/signal_detection_verificator/local_setup.zsh

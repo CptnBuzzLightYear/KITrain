@@ -1,0 +1,10 @@
+/home/steffens/KITrain/build/rgb_camera/CMakeFiles/uninstall.dir
+/home/steffens/KITrain/build/rgb_camera/CMakeFiles/rgb_camera_uninstall.dir
+/home/steffens/KITrain/build/rgb_camera/CMakeFiles/rgb_camera_receiver_main.dir
+/home/steffens/KITrain/build/rgb_camera/CMakeFiles/test.dir
+/home/steffens/KITrain/build/rgb_camera/CMakeFiles/edit_cache.dir
+/home/steffens/KITrain/build/rgb_camera/CMakeFiles/rebuild_cache.dir
+/home/steffens/KITrain/build/rgb_camera/CMakeFiles/list_install_components.dir
+/home/steffens/KITrain/build/rgb_camera/CMakeFiles/install.dir
+/home/steffens/KITrain/build/rgb_camera/CMakeFiles/install/local.dir
+/home/steffens/KITrain/build/rgb_camera/CMakeFiles/install/strip.dir

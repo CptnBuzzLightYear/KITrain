@@ -1,0 +1,15 @@
+{
+    "python.autoComplete.extraPaths": [
+        "/home/steffens/KITrain/build/my_robot_controller",
+        "/home/steffens/KITrain/install/my_robot_controller/lib/python3.10/site-packages",
+        "/opt/ros/humble/lib/python3.10/site-packages",
+        "/opt/ros/humble/local/lib/python3.10/dist-packages"
+    ],
+    "python.analysis.extraPaths": [
+        "/home/steffens/KITrain/build/my_robot_controller",
+        "/home/steffens/KITrain/install/my_robot_controller/lib/python3.10/site-packages",
+        "/opt/ros/humble/lib/python3.10/site-packages",
+        "/opt/ros/humble/local/lib/python3.10/dist-packages"
+    ],
+    "C_Cpp.errorSquiggles": "disabled"
+}

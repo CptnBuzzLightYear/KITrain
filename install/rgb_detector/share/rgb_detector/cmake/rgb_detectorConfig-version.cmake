@@ -1,0 +1,1 @@
+/home/steffens/KITrain/build/rgb_detector/ament_cmake_core/rgb_detectorConfig-version.cmake

@@ -1,0 +1,8 @@
+source;share/clearance_profile_setter/hook/cmake_prefix_path.ps1
+source;share/clearance_profile_setter/hook/cmake_prefix_path.dsv
+source;share/clearance_profile_setter/hook/cmake_prefix_path.sh
+source;share/clearance_profile_setter/local_setup.bash
+source;share/clearance_profile_setter/local_setup.dsv
+source;share/clearance_profile_setter/local_setup.ps1
+source;share/clearance_profile_setter/local_setup.sh
+source;share/clearance_profile_setter/local_setup.zsh
