@@ -1,0 +1,1 @@
+/home/steffens/KITrain/install/rgb_camera/share/rgb_camera/package.dsv

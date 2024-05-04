@@ -1,0 +1,1 @@
+/home/steffens/KITrain/install/lidar_detector/share/lidar_detector/package.dsv

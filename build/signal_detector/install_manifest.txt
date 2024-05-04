@@ -1,0 +1,1 @@
+/home/steffens/KITrain/install/signal_detector/share/signal_detector/package.dsv

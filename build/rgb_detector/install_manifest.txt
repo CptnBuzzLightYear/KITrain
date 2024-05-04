@@ -1,0 +1,1 @@
+/home/steffens/KITrain/install/rgb_detector/share/rgb_detector/package.dsv
