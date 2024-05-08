@@ -11,12 +11,12 @@ ROIFilter::ROIFilter() : rclcpp::Node("roi_filter"), _tfBuffer{this->get_clock()
     _pointCloudPub = this->create_publisher<sensor_msgs::msg::PointCloud2>(_pointCloudFilteredTopic, 10);
 }
 
-void ROIFilter::_rcvTraintrackCallback(nav_msgs::msg::Path::SharedPtr const& traintrackMsg) //Warum hier Wechsel von ConstPtr zu SharedPtr?
+void ROIFilter::_rcvTraintrackCallback(nav_msgs::msg::Path::SharedPtr const& traintrackMsg) //hier Wechsel von ConstPtr zu SharedPtr wg ROS2
 {
     _traintrack = *traintrackMsg;
 }
 
-void ROIFilter::_rcvPointCloudCallback(sensor_msgs::msg::PointCloud2::SharedPtr const& pointCloudMsg) //Warum hier Wechsel von ConstPtr zu SharedPtr?
+void ROIFilter::_rcvPointCloudCallback(sensor_msgs::msg::PointCloud2::SharedPtr const& pointCloudMsg) //hier Wechsel von ConstPtr zu SharedPtr wg ROS2
 {
     _traintrackFrame = _traintrack.header.frame_id;
     _sensorFrame = pointCloudMsg->header.frame_id;
