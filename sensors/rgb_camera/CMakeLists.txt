@@ -19,10 +19,26 @@ find_package(image_transport REQUIRED)
 
 include_directories(include ${OpenCV_INCLUDE_DIRS})
 
-add_executable(rgb_camera src/rgb_camera_receiver_main.cpp)
+add_executable(rgb_camera_receiver_main src/rgb_camera_receiver_main.cpp)
 
 
-ament_target_dependencies(rgb_camera rclcpp sensor_msgs std_msgs OpenCV image_transport cv_bridge)
+ament_target_dependencies(rgb_camera_receiver_main 
+rclcpp 
+sensor_msgs 
+std_msgs 
+OpenCV 
+image_transport 
+cv_bridge
+)
 
+install(TARGETS 
+rgb_camera_receiver_main
+DESTINATION lib/$(PROJECT_NAME) #rgb_camera
+)
+
+install(DIRECTORY 
+launch
+DESTINATION share/rgb_camera
+)
 
 ament_package()

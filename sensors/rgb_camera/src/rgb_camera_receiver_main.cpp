@@ -18,7 +18,7 @@ class RgbCameraReceiver : public rclcpp::Node
         static constexpr int UDP_PORT = 12345;
         static constexpr int MAX_BUFFER_SIZE = 65536;
 
-        RgbCameraReceiver() : Node("rgb_camera_receiver")
+        RgbCameraReceiver() : Node("rgb_camera_receiver_main")
         {
             //Init UDP receive socket
             //Create Socket
@@ -59,7 +59,7 @@ class RgbCameraReceiver : public rclcpp::Node
                 ssize_t bytes_received = recvfrom(sockfd_, buffer, MAX_BUFFER_SIZE, 0, (struct sockaddr*)&clientaddr, &len);
                 if (bytes_received < 0)
                 {
-                    std::cerr <<"Error: Failed to receive data" << std::endl;
+                   // std::cerr <<"Error: Failed to receive data" << std::endl;
                     continue;
                 }
 
