@@ -1,0 +1,251 @@
+[0.090s] Invoking command in '/home/steffens/KITrain/build/lidar_msgs': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/steffens/KITrain/install/camera_simulator:/opt/ros/humble /usr/bin/cmake --build /home/steffens/KITrain/build/lidar_msgs -- -j16 -l16
+[0.371s] -- Found ament_cmake: 1.3.9 (/opt/ros/humble/share/ament_cmake/cmake)
+[0.371s] -- Found rclcpp: 16.0.9 (/opt/ros/humble/share/rclcpp/cmake)
+[0.372s] -- Found rosidl_generator_c: 3.1.5 (/opt/ros/humble/share/rosidl_generator_c/cmake)
+[0.372s] -- Found rosidl_adapter: 3.1.5 (/opt/ros/humble/share/rosidl_adapter/cmake)
+[0.373s] -- Found rosidl_generator_cpp: 3.1.5 (/opt/ros/humble/share/rosidl_generator_cpp/cmake)
+[0.373s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[0.373s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[0.373s] -- Found rmw_implementation_cmake: 6.1.2 (/opt/ros/humble/share/rmw_implementation_cmake/cmake)
+[0.373s] -- Found rmw_fastrtps_cpp: 6.2.6 (/opt/ros/humble/share/rmw_fastrtps_cpp/cmake)
+[0.482s] -- Using RMW implementation 'rmw_fastrtps_cpp' as default
+[0.619s] -- Found rosidl_default_generators: 1.2.0 (/opt/ros/humble/share/rosidl_default_generators/cmake)
+[0.872s] -- Found ament_cmake_ros: 0.10.0 (/opt/ros/humble/share/ament_cmake_ros/cmake)
+[1.198s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[1.325s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[1.346s] -- Found python_cmake_module: 0.10.0 (/opt/ros/humble/share/python_cmake_module/cmake)
+[1.366s] -- Using PYTHON_EXECUTABLE: /usr/bin/python3
+[1.366s] -- Using PYTHON_INCLUDE_DIRS: /usr/include/python3.10
+[1.366s] -- Using PYTHON_LIBRARIES: /usr/lib/x86_64-linux-gnu/libpython3.10.so
+[1.395s] -- Found ament_lint_auto: 0.12.11 (/opt/ros/humble/share/ament_lint_auto/cmake)
+[1.404s] -- Added test 'copyright' to check source files copyright and LICENSE
+[1.406s] -- Added test 'lint_cmake' to check CMake code style
+[1.407s] -- Added test 'xmllint' to check XML markup files
+[1.409s] -- Configuring done
+[1.444s] -- Generating done
+[1.449s] -- Build files have been written to: /home/steffens/KITrain/build/lidar_msgs
+[1.478s] [  2%] [34m[1mGenerating C code for ROS interfaces[0m
+[1.491s] [  5%] [34m[1mGenerating C++ code for ROS interfaces[0m
+[1.501s] [  5%] Built target ament_cmake_python_copy_lidar_msgs
+[1.720s] running egg_info
+[1.720s] writing lidar_msgs.egg-info/PKG-INFO
+[1.721s] writing dependency_links to lidar_msgs.egg-info/dependency_links.txt
+[1.721s] writing top-level names to lidar_msgs.egg-info/top_level.txt
+[1.722s] reading manifest file 'lidar_msgs.egg-info/SOURCES.txt'
+[1.723s] writing manifest file 'lidar_msgs.egg-info/SOURCES.txt'
+[1.732s] [35m[1mConsolidate compiler generated dependencies of target lidar_msgs__rosidl_generator_c[0m
+[1.742s] [  5%] Built target lidar_msgs__cpp
+[1.746s] [  7%] [32mBuilding C object CMakeFiles/lidar_msgs__rosidl_generator_c.dir/rosidl_generator_c/lidar_msgs/msg/detail/ground_truth__functions.c.o[0m
+[1.746s] [  7%] Built target ament_cmake_python_build_lidar_msgs_egg
+[1.746s] [ 10%] [32mBuilding C object CMakeFiles/lidar_msgs__rosidl_generator_c.dir/rosidl_generator_c/lidar_msgs/msg/detail/ground_truth_array__functions.c.o[0m
+[1.753s] [ 12%] [34m[1mGenerating C++ type support dispatch for ROS interfaces[0m
+[1.753s] [ 15%] [34m[1mGenerating C++ type support for eProsima Fast-RTPS[0m
+[1.754s] [ 17%] [34m[1mGenerating C++ introspection for ROS interfaces[0m
+[1.793s] [ 20%] [32m[1mLinking C shared library liblidar_msgs__rosidl_generator_c.so[0m
+[1.831s] [ 20%] Built target lidar_msgs__rosidl_generator_c
+[1.843s] [ 25%] [34m[1mGenerating C type support for eProsima Fast-RTPS[0m
+[1.844s] [ 25%] [34m[1mGenerating C introspection for ROS interfaces[0m
+[1.844s] [ 28%] [34m[1mGenerating C type support dispatch for ROS interfaces[0m
+[1.962s] [35m[1mConsolidate compiler generated dependencies of target lidar_msgs__rosidl_typesupport_cpp[0m
+[1.975s] [35m[1mConsolidate compiler generated dependencies of target lidar_msgs__rosidl_typesupport_introspection_cpp[0m
+[1.978s] [ 33%] [32mBuilding CXX object CMakeFiles/lidar_msgs__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/lidar_msgs/msg/ground_truth_array__type_support.cpp.o[0m
+[1.978s] [ 33%] [32mBuilding CXX object CMakeFiles/lidar_msgs__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/lidar_msgs/msg/ground_truth__type_support.cpp.o[0m
+[1.991s] [ 35%] [32mBuilding CXX object CMakeFiles/lidar_msgs__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/lidar_msgs/msg/detail/ground_truth__type_support.cpp.o[0m
+[1.992s] [ 38%] [32mBuilding CXX object CMakeFiles/lidar_msgs__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/lidar_msgs/msg/detail/ground_truth_array__type_support.cpp.o[0m
+[1.992s] [35m[1mConsolidate compiler generated dependencies of target lidar_msgs__rosidl_typesupport_fastrtps_cpp[0m
+[2.009s] [ 41%] [32mBuilding CXX object CMakeFiles/lidar_msgs__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/lidar_msgs/msg/detail/dds_fastrtps/ground_truth__type_support.cpp.o[0m
+[2.010s] [ 43%] [32mBuilding CXX object CMakeFiles/lidar_msgs__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/lidar_msgs/msg/detail/dds_fastrtps/ground_truth_array__type_support.cpp.o[0m
+[2.048s] [35m[1mConsolidate compiler generated dependencies of target lidar_msgs__rosidl_typesupport_c[0m
+[2.061s] [ 46%] [32mBuilding CXX object CMakeFiles/lidar_msgs__rosidl_typesupport_c.dir/rosidl_typesupport_c/lidar_msgs/msg/ground_truth__type_support.cpp.o[0m
+[2.062s] [ 48%] [32mBuilding CXX object CMakeFiles/lidar_msgs__rosidl_typesupport_c.dir/rosidl_typesupport_c/lidar_msgs/msg/ground_truth_array__type_support.cpp.o[0m
+[2.069s] [35m[1mConsolidate compiler generated dependencies of target lidar_msgs__rosidl_typesupport_introspection_c[0m
+[2.076s] [35m[1mConsolidate compiler generated dependencies of target lidar_msgs__rosidl_typesupport_fastrtps_c[0m
+[2.083s] [ 53%] [32mBuilding C object CMakeFiles/lidar_msgs__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/lidar_msgs/msg/detail/ground_truth_array__type_support.c.o[0m
+[2.083s] [ 53%] [32mBuilding C object CMakeFiles/lidar_msgs__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/lidar_msgs/msg/detail/ground_truth__type_support.c.o[0m
+[2.094s] [ 56%] [32mBuilding CXX object CMakeFiles/lidar_msgs__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/lidar_msgs/msg/detail/ground_truth_array__type_support_c.cpp.o[0m
+[2.094s] [ 58%] [32mBuilding CXX object CMakeFiles/lidar_msgs__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/lidar_msgs/msg/detail/ground_truth__type_support_c.cpp.o[0m
+[2.096s] [ 61%] [32m[1mLinking CXX shared library liblidar_msgs__rosidl_typesupport_c.so[0m
+[2.120s] [ 64%] [32m[1mLinking C shared library liblidar_msgs__rosidl_typesupport_introspection_c.so[0m
+[2.142s] [ 64%] Built target lidar_msgs__rosidl_typesupport_c
+[2.154s] [ 64%] Built target lidar_msgs__rosidl_typesupport_introspection_c
+[2.208s] [ 66%] [32m[1mLinking CXX shared library liblidar_msgs__rosidl_typesupport_cpp.so[0m
+[2.251s] [ 66%] Built target lidar_msgs__rosidl_typesupport_cpp
+[2.342s] [ 69%] [32m[1mLinking CXX shared library liblidar_msgs__rosidl_typesupport_introspection_cpp.so[0m
+[2.372s] [ 71%] [32m[1mLinking CXX shared library liblidar_msgs__rosidl_typesupport_fastrtps_cpp.so[0m
+[2.383s] [ 74%] [32m[1mLinking CXX shared library liblidar_msgs__rosidl_typesupport_fastrtps_c.so[0m
+[2.412s] [ 74%] Built target lidar_msgs__rosidl_typesupport_introspection_cpp
+[2.443s] [ 74%] Built target lidar_msgs__rosidl_typesupport_fastrtps_cpp
+[2.455s] [ 74%] Built target lidar_msgs__rosidl_typesupport_fastrtps_c
+[2.477s] [ 74%] Built target lidar_msgs
+[2.499s] [ 76%] [34m[1mGenerating Python code for ROS interfaces[0m
+[2.828s] [ 76%] Built target lidar_msgs__py
+[2.839s] [35m[1mConsolidate compiler generated dependencies of target lidar_msgs__rosidl_generator_py[0m
+[2.855s] [ 79%] [32mBuilding C object CMakeFiles/lidar_msgs__rosidl_generator_py.dir/rosidl_generator_py/lidar_msgs/msg/_ground_truth_s.c.o[0m
+[2.855s] [ 82%] [32mBuilding C object CMakeFiles/lidar_msgs__rosidl_generator_py.dir/rosidl_generator_py/lidar_msgs/msg/_ground_truth_array_s.c.o[0m
+[2.950s] [ 84%] [32m[1mLinking C shared library rosidl_generator_py/lidar_msgs/liblidar_msgs__rosidl_generator_py.so[0m
+[2.992s] [ 84%] Built target lidar_msgs__rosidl_generator_py
+[3.004s] [35m[1mConsolidate compiler generated dependencies of target lidar_msgs__rosidl_typesupport_c__pyext[0m
+[3.004s] [35m[1mConsolidate compiler generated dependencies of target lidar_msgs__rosidl_typesupport_introspection_c__pyext[0m
+[3.004s] [35m[1mConsolidate compiler generated dependencies of target lidar_msgs__rosidl_typesupport_fastrtps_c__pyext[0m
+[3.020s] [ 89%] [32mBuilding C object CMakeFiles/lidar_msgs__rosidl_typesupport_introspection_c__pyext.dir/rosidl_generator_py/lidar_msgs/_lidar_msgs_s.ep.rosidl_typesupport_introspection_c.c.o[0m
+[3.020s] [ 89%] [32mBuilding C object CMakeFiles/lidar_msgs__rosidl_typesupport_c__pyext.dir/rosidl_generator_py/lidar_msgs/_lidar_msgs_s.ep.rosidl_typesupport_c.c.o[0m
+[3.021s] [ 92%] [32mBuilding C object CMakeFiles/lidar_msgs__rosidl_typesupport_fastrtps_c__pyext.dir/rosidl_generator_py/lidar_msgs/_lidar_msgs_s.ep.rosidl_typesupport_fastrtps_c.c.o[0m
+[3.119s] [100%] [32m[1mLinking C shared library rosidl_generator_py/lidar_msgs/lidar_msgs_s__rosidl_typesupport_fastrtps_c.cpython-310-x86_64-linux-gnu.so[0m
+[3.119s] [100%] [32m[1mLinking C shared library rosidl_generator_py/lidar_msgs/lidar_msgs_s__rosidl_typesupport_introspection_c.cpython-310-x86_64-linux-gnu.so[0m
+[3.119s] [100%] [32m[1mLinking C shared library rosidl_generator_py/lidar_msgs/lidar_msgs_s__rosidl_typesupport_c.cpython-310-x86_64-linux-gnu.so[0m
+[3.160s] [100%] Built target lidar_msgs__rosidl_typesupport_c__pyext
+[3.160s] [100%] Built target lidar_msgs__rosidl_typesupport_fastrtps_c__pyext
+[3.161s] [100%] Built target lidar_msgs__rosidl_typesupport_introspection_c__pyext
+[3.174s] Invoked command in '/home/steffens/KITrain/build/lidar_msgs' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/steffens/KITrain/install/camera_simulator:/opt/ros/humble /usr/bin/cmake --build /home/steffens/KITrain/build/lidar_msgs -- -j16 -l16
+[3.261s] Invoking command in '/home/steffens/KITrain/build/lidar_msgs': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/steffens/KITrain/install/camera_simulator:/opt/ros/humble /usr/bin/cmake --install /home/steffens/KITrain/build/lidar_msgs
+[3.269s] -- Install configuration: ""
+[3.269s] -- Up-to-date: /home/steffens/KITrain/install/lidar_msgs/share/ament_index/resource_index/rosidl_interfaces/lidar_msgs
+[3.269s] -- Up-to-date: /home/steffens/KITrain/install/lidar_msgs/include/lidar_msgs/lidar_msgs
+[3.269s] -- Up-to-date: /home/steffens/KITrain/install/lidar_msgs/include/lidar_msgs/lidar_msgs/msg
+[3.269s] -- Up-to-date: /home/steffens/KITrain/install/lidar_msgs/include/lidar_msgs/lidar_msgs/msg/detail
+[3.269s] -- Installing: /home/steffens/KITrain/install/lidar_msgs/include/lidar_msgs/lidar_msgs/msg/detail/ground_truth__type_support.h
+[3.270s] -- Installing: /home/steffens/KITrain/install/lidar_msgs/include/lidar_msgs/lidar_msgs/msg/detail/ground_truth_array__functions.h
+[3.270s] -- Installing: /home/steffens/KITrain/install/lidar_msgs/include/lidar_msgs/lidar_msgs/msg/detail/ground_truth__struct.h
+[3.270s] -- Installing: /home/steffens/KITrain/install/lidar_msgs/include/lidar_msgs/lidar_msgs/msg/detail/ground_truth_array__functions.c
+[3.270s] -- Installing: /home/steffens/KITrain/install/lidar_msgs/include/lidar_msgs/lidar_msgs/msg/detail/ground_truth__functions.c
+[3.270s] -- Installing: /home/steffens/KITrain/install/lidar_msgs/include/lidar_msgs/lidar_msgs/msg/detail/ground_truth_array__type_support.h
+[3.270s] -- Installing: /home/steffens/KITrain/install/lidar_msgs/include/lidar_msgs/lidar_msgs/msg/detail/ground_truth__functions.h
+[3.271s] -- Installing: /home/steffens/KITrain/install/lidar_msgs/include/lidar_msgs/lidar_msgs/msg/detail/ground_truth_array__struct.h
+[3.271s] -- Installing: /home/steffens/KITrain/install/lidar_msgs/include/lidar_msgs/lidar_msgs/msg/ground_truth_array.h
+[3.271s] -- Up-to-date: /home/steffens/KITrain/install/lidar_msgs/include/lidar_msgs/lidar_msgs/msg/rosidl_generator_c__visibility_control.h
+[3.271s] -- Installing: /home/steffens/KITrain/install/lidar_msgs/include/lidar_msgs/lidar_msgs/msg/ground_truth.h
+[3.271s] -- Up-to-date: /home/steffens/KITrain/install/lidar_msgs/share/lidar_msgs/environment/library_path.sh
+[3.272s] -- Installing: /home/steffens/KITrain/install/lidar_msgs/share/lidar_msgs/environment/library_path.dsv
+[3.272s] -- Installing: /home/steffens/KITrain/install/lidar_msgs/lib/liblidar_msgs__rosidl_generator_c.so
+[3.272s] -- Set runtime path of "/home/steffens/KITrain/install/lidar_msgs/lib/liblidar_msgs__rosidl_generator_c.so" to ""
+[3.273s] -- Up-to-date: /home/steffens/KITrain/install/lidar_msgs/include/lidar_msgs/lidar_msgs
+[3.273s] -- Up-to-date: /home/steffens/KITrain/install/lidar_msgs/include/lidar_msgs/lidar_msgs/msg
+[3.273s] -- Up-to-date: /home/steffens/KITrain/install/lidar_msgs/include/lidar_msgs/lidar_msgs/msg/detail
+[3.273s] -- Installing: /home/steffens/KITrain/install/lidar_msgs/include/lidar_msgs/lidar_msgs/msg/detail/ground_truth__rosidl_typesupport_fastrtps_c.h
+[3.273s] -- Installing: /home/steffens/KITrain/install/lidar_msgs/include/lidar_msgs/lidar_msgs/msg/detail/ground_truth_array__rosidl_typesupport_fastrtps_c.h
+[3.273s] -- Up-to-date: /home/steffens/KITrain/install/lidar_msgs/include/lidar_msgs/lidar_msgs/msg/rosidl_typesupport_fastrtps_c__visibility_control.h
+[3.273s] -- Installing: /home/steffens/KITrain/install/lidar_msgs/lib/liblidar_msgs__rosidl_typesupport_fastrtps_c.so
+[3.274s] -- Set runtime path of "/home/steffens/KITrain/install/lidar_msgs/lib/liblidar_msgs__rosidl_typesupport_fastrtps_c.so" to ""
+[3.274s] -- Up-to-date: /home/steffens/KITrain/install/lidar_msgs/include/lidar_msgs/lidar_msgs
+[3.274s] -- Up-to-date: /home/steffens/KITrain/install/lidar_msgs/include/lidar_msgs/lidar_msgs/msg
+[3.274s] -- Installing: /home/steffens/KITrain/install/lidar_msgs/include/lidar_msgs/lidar_msgs/msg/ground_truth_array.hpp
+[3.274s] -- Up-to-date: /home/steffens/KITrain/install/lidar_msgs/include/lidar_msgs/lidar_msgs/msg/detail
+[3.274s] -- Installing: /home/steffens/KITrain/install/lidar_msgs/include/lidar_msgs/lidar_msgs/msg/detail/ground_truth_array__struct.hpp
+[3.275s] -- Installing: /home/steffens/KITrain/install/lidar_msgs/include/lidar_msgs/lidar_msgs/msg/detail/ground_truth__builder.hpp
+[3.275s] -- Installing: /home/steffens/KITrain/install/lidar_msgs/include/lidar_msgs/lidar_msgs/msg/detail/ground_truth__traits.hpp
+[3.275s] -- Installing: /home/steffens/KITrain/install/lidar_msgs/include/lidar_msgs/lidar_msgs/msg/detail/ground_truth_array__builder.hpp
+[3.275s] -- Installing: /home/steffens/KITrain/install/lidar_msgs/include/lidar_msgs/lidar_msgs/msg/detail/ground_truth__struct.hpp
+[3.275s] -- Installing: /home/steffens/KITrain/install/lidar_msgs/include/lidar_msgs/lidar_msgs/msg/detail/ground_truth_array__traits.hpp
+[3.276s] -- Installing: /home/steffens/KITrain/install/lidar_msgs/include/lidar_msgs/lidar_msgs/msg/ground_truth.hpp
+[3.276s] -- Up-to-date: /home/steffens/KITrain/install/lidar_msgs/include/lidar_msgs/lidar_msgs
+[3.276s] -- Up-to-date: /home/steffens/KITrain/install/lidar_msgs/include/lidar_msgs/lidar_msgs/msg
+[3.276s] -- Up-to-date: /home/steffens/KITrain/install/lidar_msgs/include/lidar_msgs/lidar_msgs/msg/rosidl_typesupport_fastrtps_cpp__visibility_control.h
+[3.276s] -- Up-to-date: /home/steffens/KITrain/install/lidar_msgs/include/lidar_msgs/lidar_msgs/msg/detail
+[3.276s] -- Installing: /home/steffens/KITrain/install/lidar_msgs/include/lidar_msgs/lidar_msgs/msg/detail/ground_truth_array__rosidl_typesupport_fastrtps_cpp.hpp
+[3.276s] -- Up-to-date: /home/steffens/KITrain/install/lidar_msgs/include/lidar_msgs/lidar_msgs/msg/detail/dds_fastrtps
+[3.276s] -- Installing: /home/steffens/KITrain/install/lidar_msgs/include/lidar_msgs/lidar_msgs/msg/detail/ground_truth__rosidl_typesupport_fastrtps_cpp.hpp
+[3.277s] -- Installing: /home/steffens/KITrain/install/lidar_msgs/lib/liblidar_msgs__rosidl_typesupport_fastrtps_cpp.so
+[3.277s] -- Set runtime path of "/home/steffens/KITrain/install/lidar_msgs/lib/liblidar_msgs__rosidl_typesupport_fastrtps_cpp.so" to ""
+[3.277s] -- Up-to-date: /home/steffens/KITrain/install/lidar_msgs/include/lidar_msgs/lidar_msgs
+[3.278s] -- Up-to-date: /home/steffens/KITrain/install/lidar_msgs/include/lidar_msgs/lidar_msgs/msg
+[3.278s] -- Up-to-date: /home/steffens/KITrain/install/lidar_msgs/include/lidar_msgs/lidar_msgs/msg/rosidl_typesupport_introspection_c__visibility_control.h
+[3.278s] -- Up-to-date: /home/steffens/KITrain/install/lidar_msgs/include/lidar_msgs/lidar_msgs/msg/detail
+[3.278s] -- Installing: /home/steffens/KITrain/install/lidar_msgs/include/lidar_msgs/lidar_msgs/msg/detail/ground_truth_array__rosidl_typesupport_introspection_c.h
+[3.278s] -- Installing: /home/steffens/KITrain/install/lidar_msgs/include/lidar_msgs/lidar_msgs/msg/detail/ground_truth_array__type_support.c
+[3.278s] -- Installing: /home/steffens/KITrain/install/lidar_msgs/include/lidar_msgs/lidar_msgs/msg/detail/ground_truth__type_support.c
+[3.278s] -- Installing: /home/steffens/KITrain/install/lidar_msgs/include/lidar_msgs/lidar_msgs/msg/detail/ground_truth__rosidl_typesupport_introspection_c.h
+[3.279s] -- Installing: /home/steffens/KITrain/install/lidar_msgs/lib/liblidar_msgs__rosidl_typesupport_introspection_c.so
+[3.279s] -- Set runtime path of "/home/steffens/KITrain/install/lidar_msgs/lib/liblidar_msgs__rosidl_typesupport_introspection_c.so" to ""
+[3.279s] -- Installing: /home/steffens/KITrain/install/lidar_msgs/lib/liblidar_msgs__rosidl_typesupport_c.so
+[3.280s] -- Set runtime path of "/home/steffens/KITrain/install/lidar_msgs/lib/liblidar_msgs__rosidl_typesupport_c.so" to ""
+[3.280s] -- Up-to-date: /home/steffens/KITrain/install/lidar_msgs/include/lidar_msgs/lidar_msgs
+[3.280s] -- Up-to-date: /home/steffens/KITrain/install/lidar_msgs/include/lidar_msgs/lidar_msgs/msg
+[3.280s] -- Up-to-date: /home/steffens/KITrain/install/lidar_msgs/include/lidar_msgs/lidar_msgs/msg/detail
+[3.280s] -- Installing: /home/steffens/KITrain/install/lidar_msgs/include/lidar_msgs/lidar_msgs/msg/detail/ground_truth_array__type_support.cpp
+[3.280s] -- Installing: /home/steffens/KITrain/install/lidar_msgs/include/lidar_msgs/lidar_msgs/msg/detail/ground_truth__type_support.cpp
+[3.280s] -- Installing: /home/steffens/KITrain/install/lidar_msgs/include/lidar_msgs/lidar_msgs/msg/detail/ground_truth__rosidl_typesupport_introspection_cpp.hpp
+[3.281s] -- Installing: /home/steffens/KITrain/install/lidar_msgs/include/lidar_msgs/lidar_msgs/msg/detail/ground_truth_array__rosidl_typesupport_introspection_cpp.hpp
+[3.281s] -- Installing: /home/steffens/KITrain/install/lidar_msgs/lib/liblidar_msgs__rosidl_typesupport_introspection_cpp.so
+[3.281s] -- Set runtime path of "/home/steffens/KITrain/install/lidar_msgs/lib/liblidar_msgs__rosidl_typesupport_introspection_cpp.so" to ""
+[3.282s] -- Installing: /home/steffens/KITrain/install/lidar_msgs/lib/liblidar_msgs__rosidl_typesupport_cpp.so
+[3.282s] -- Set runtime path of "/home/steffens/KITrain/install/lidar_msgs/lib/liblidar_msgs__rosidl_typesupport_cpp.so" to ""
+[3.282s] -- Up-to-date: /home/steffens/KITrain/install/lidar_msgs/share/lidar_msgs/environment/pythonpath.sh
+[3.282s] -- Installing: /home/steffens/KITrain/install/lidar_msgs/share/lidar_msgs/environment/pythonpath.dsv
+[3.282s] -- Up-to-date: /home/steffens/KITrain/install/lidar_msgs/local/lib/python3.10/dist-packages/lidar_msgs-0.0.0-py3.10.egg-info
+[3.283s] -- Installing: /home/steffens/KITrain/install/lidar_msgs/local/lib/python3.10/dist-packages/lidar_msgs-0.0.0-py3.10.egg-info/SOURCES.txt
+[3.283s] -- Installing: /home/steffens/KITrain/install/lidar_msgs/local/lib/python3.10/dist-packages/lidar_msgs-0.0.0-py3.10.egg-info/dependency_links.txt
+[3.283s] -- Installing: /home/steffens/KITrain/install/lidar_msgs/local/lib/python3.10/dist-packages/lidar_msgs-0.0.0-py3.10.egg-info/PKG-INFO
+[3.283s] -- Installing: /home/steffens/KITrain/install/lidar_msgs/local/lib/python3.10/dist-packages/lidar_msgs-0.0.0-py3.10.egg-info/top_level.txt
+[3.283s] -- Up-to-date: /home/steffens/KITrain/install/lidar_msgs/local/lib/python3.10/dist-packages/lidar_msgs
+[3.284s] -- Installing: /home/steffens/KITrain/install/lidar_msgs/local/lib/python3.10/dist-packages/lidar_msgs/__init__.py
+[3.284s] -- Installing: /home/steffens/KITrain/install/lidar_msgs/local/lib/python3.10/dist-packages/lidar_msgs/lidar_msgs_s__rosidl_typesupport_fastrtps_c.cpython-310-x86_64-linux-gnu.so
+[3.284s] -- Installing: /home/steffens/KITrain/install/lidar_msgs/local/lib/python3.10/dist-packages/lidar_msgs/_lidar_msgs_s.ep.rosidl_typesupport_c.c
+[3.284s] -- Installing: /home/steffens/KITrain/install/lidar_msgs/local/lib/python3.10/dist-packages/lidar_msgs/_lidar_msgs_s.ep.rosidl_typesupport_introspection_c.c
+[3.284s] -- Installing: /home/steffens/KITrain/install/lidar_msgs/local/lib/python3.10/dist-packages/lidar_msgs/lidar_msgs_s__rosidl_typesupport_introspection_c.cpython-310-x86_64-linux-gnu.so
+[3.285s] -- Installing: /home/steffens/KITrain/install/lidar_msgs/local/lib/python3.10/dist-packages/lidar_msgs/_lidar_msgs_s.ep.rosidl_typesupport_fastrtps_c.c
+[3.285s] -- Installing: /home/steffens/KITrain/install/lidar_msgs/local/lib/python3.10/dist-packages/lidar_msgs/lidar_msgs_s__rosidl_typesupport_c.cpython-310-x86_64-linux-gnu.so
+[3.285s] -- Installing: /home/steffens/KITrain/install/lidar_msgs/local/lib/python3.10/dist-packages/lidar_msgs/liblidar_msgs__rosidl_generator_py.so
+[3.285s] -- Up-to-date: /home/steffens/KITrain/install/lidar_msgs/local/lib/python3.10/dist-packages/lidar_msgs/msg
+[3.285s] -- Installing: /home/steffens/KITrain/install/lidar_msgs/local/lib/python3.10/dist-packages/lidar_msgs/msg/__init__.py
+[3.286s] -- Installing: /home/steffens/KITrain/install/lidar_msgs/local/lib/python3.10/dist-packages/lidar_msgs/msg/_ground_truth_array_s.c
+[3.286s] -- Installing: /home/steffens/KITrain/install/lidar_msgs/local/lib/python3.10/dist-packages/lidar_msgs/msg/_ground_truth_array.py
+[3.286s] -- Installing: /home/steffens/KITrain/install/lidar_msgs/local/lib/python3.10/dist-packages/lidar_msgs/msg/_ground_truth.py
+[3.286s] -- Installing: /home/steffens/KITrain/install/lidar_msgs/local/lib/python3.10/dist-packages/lidar_msgs/msg/_ground_truth_s.c
+[3.319s] Listing '/home/steffens/KITrain/install/lidar_msgs/local/lib/python3.10/dist-packages/lidar_msgs'...
+[3.319s] Compiling '/home/steffens/KITrain/install/lidar_msgs/local/lib/python3.10/dist-packages/lidar_msgs/__init__.py'...
+[3.319s] Listing '/home/steffens/KITrain/install/lidar_msgs/local/lib/python3.10/dist-packages/lidar_msgs/msg'...
+[3.319s] Compiling '/home/steffens/KITrain/install/lidar_msgs/local/lib/python3.10/dist-packages/lidar_msgs/msg/__init__.py'...
+[3.319s] Compiling '/home/steffens/KITrain/install/lidar_msgs/local/lib/python3.10/dist-packages/lidar_msgs/msg/_ground_truth.py'...
+[3.319s] Compiling '/home/steffens/KITrain/install/lidar_msgs/local/lib/python3.10/dist-packages/lidar_msgs/msg/_ground_truth_array.py'...
+[3.322s] -- Installing: /home/steffens/KITrain/install/lidar_msgs/local/lib/python3.10/dist-packages/lidar_msgs/lidar_msgs_s__rosidl_typesupport_fastrtps_c.cpython-310-x86_64-linux-gnu.so
+[3.323s] -- Set runtime path of "/home/steffens/KITrain/install/lidar_msgs/local/lib/python3.10/dist-packages/lidar_msgs/lidar_msgs_s__rosidl_typesupport_fastrtps_c.cpython-310-x86_64-linux-gnu.so" to ""
+[3.323s] -- Installing: /home/steffens/KITrain/install/lidar_msgs/local/lib/python3.10/dist-packages/lidar_msgs/lidar_msgs_s__rosidl_typesupport_introspection_c.cpython-310-x86_64-linux-gnu.so
+[3.324s] -- Set runtime path of "/home/steffens/KITrain/install/lidar_msgs/local/lib/python3.10/dist-packages/lidar_msgs/lidar_msgs_s__rosidl_typesupport_introspection_c.cpython-310-x86_64-linux-gnu.so" to ""
+[3.324s] -- Installing: /home/steffens/KITrain/install/lidar_msgs/local/lib/python3.10/dist-packages/lidar_msgs/lidar_msgs_s__rosidl_typesupport_c.cpython-310-x86_64-linux-gnu.so
+[3.324s] -- Set runtime path of "/home/steffens/KITrain/install/lidar_msgs/local/lib/python3.10/dist-packages/lidar_msgs/lidar_msgs_s__rosidl_typesupport_c.cpython-310-x86_64-linux-gnu.so" to ""
+[3.324s] -- Installing: /home/steffens/KITrain/install/lidar_msgs/lib/liblidar_msgs__rosidl_generator_py.so
+[3.325s] -- Set runtime path of "/home/steffens/KITrain/install/lidar_msgs/lib/liblidar_msgs__rosidl_generator_py.so" to ""
+[3.325s] -- Installing: /home/steffens/KITrain/install/lidar_msgs/share/lidar_msgs/msg/GroundTruth.idl
+[3.325s] -- Up-to-date: /home/steffens/KITrain/install/lidar_msgs/share/lidar_msgs/msg/GroundTruthArray.idl
+[3.325s] -- Installing: /home/steffens/KITrain/install/lidar_msgs/share/lidar_msgs/msg/GroundTruth.msg
+[3.326s] -- Up-to-date: /home/steffens/KITrain/install/lidar_msgs/share/lidar_msgs/msg/GroundTruthArray.msg
+[3.326s] -- Up-to-date: /home/steffens/KITrain/install/lidar_msgs/share/ament_index/resource_index/package_run_dependencies/lidar_msgs
+[3.326s] -- Up-to-date: /home/steffens/KITrain/install/lidar_msgs/share/ament_index/resource_index/parent_prefix_path/lidar_msgs
+[3.326s] -- Up-to-date: /home/steffens/KITrain/install/lidar_msgs/share/lidar_msgs/environment/ament_prefix_path.sh
+[3.326s] -- Installing: /home/steffens/KITrain/install/lidar_msgs/share/lidar_msgs/environment/ament_prefix_path.dsv
+[3.326s] -- Up-to-date: /home/steffens/KITrain/install/lidar_msgs/share/lidar_msgs/environment/path.sh
+[3.326s] -- Installing: /home/steffens/KITrain/install/lidar_msgs/share/lidar_msgs/environment/path.dsv
+[3.326s] -- Up-to-date: /home/steffens/KITrain/install/lidar_msgs/share/lidar_msgs/local_setup.bash
+[3.326s] -- Up-to-date: /home/steffens/KITrain/install/lidar_msgs/share/lidar_msgs/local_setup.sh
+[3.327s] -- Up-to-date: /home/steffens/KITrain/install/lidar_msgs/share/lidar_msgs/local_setup.zsh
+[3.327s] -- Installing: /home/steffens/KITrain/install/lidar_msgs/share/lidar_msgs/local_setup.dsv
+[3.327s] -- Installing: /home/steffens/KITrain/install/lidar_msgs/share/lidar_msgs/package.dsv
+[3.327s] -- Up-to-date: /home/steffens/KITrain/install/lidar_msgs/share/ament_index/resource_index/packages/lidar_msgs
+[3.327s] -- Up-to-date: /home/steffens/KITrain/install/lidar_msgs/share/lidar_msgs/cmake/export_lidar_msgs__rosidl_generator_cExport.cmake
+[3.327s] -- Up-to-date: /home/steffens/KITrain/install/lidar_msgs/share/lidar_msgs/cmake/export_lidar_msgs__rosidl_generator_cExport-noconfig.cmake
+[3.327s] -- Up-to-date: /home/steffens/KITrain/install/lidar_msgs/share/lidar_msgs/cmake/export_lidar_msgs__rosidl_typesupport_fastrtps_cExport.cmake
+[3.327s] -- Up-to-date: /home/steffens/KITrain/install/lidar_msgs/share/lidar_msgs/cmake/export_lidar_msgs__rosidl_typesupport_fastrtps_cExport-noconfig.cmake
+[3.328s] -- Up-to-date: /home/steffens/KITrain/install/lidar_msgs/share/lidar_msgs/cmake/export_lidar_msgs__rosidl_generator_cppExport.cmake
+[3.328s] -- Up-to-date: /home/steffens/KITrain/install/lidar_msgs/share/lidar_msgs/cmake/export_lidar_msgs__rosidl_typesupport_fastrtps_cppExport.cmake
+[3.328s] -- Up-to-date: /home/steffens/KITrain/install/lidar_msgs/share/lidar_msgs/cmake/export_lidar_msgs__rosidl_typesupport_fastrtps_cppExport-noconfig.cmake
+[3.328s] -- Up-to-date: /home/steffens/KITrain/install/lidar_msgs/share/lidar_msgs/cmake/lidar_msgs__rosidl_typesupport_introspection_cExport.cmake
+[3.328s] -- Up-to-date: /home/steffens/KITrain/install/lidar_msgs/share/lidar_msgs/cmake/lidar_msgs__rosidl_typesupport_introspection_cExport-noconfig.cmake
+[3.328s] -- Up-to-date: /home/steffens/KITrain/install/lidar_msgs/share/lidar_msgs/cmake/lidar_msgs__rosidl_typesupport_cExport.cmake
+[3.328s] -- Up-to-date: /home/steffens/KITrain/install/lidar_msgs/share/lidar_msgs/cmake/lidar_msgs__rosidl_typesupport_cExport-noconfig.cmake
+[3.328s] -- Up-to-date: /home/steffens/KITrain/install/lidar_msgs/share/lidar_msgs/cmake/lidar_msgs__rosidl_typesupport_introspection_cppExport.cmake
+[3.329s] -- Up-to-date: /home/steffens/KITrain/install/lidar_msgs/share/lidar_msgs/cmake/lidar_msgs__rosidl_typesupport_introspection_cppExport-noconfig.cmake
+[3.329s] -- Up-to-date: /home/steffens/KITrain/install/lidar_msgs/share/lidar_msgs/cmake/lidar_msgs__rosidl_typesupport_cppExport.cmake
+[3.329s] -- Up-to-date: /home/steffens/KITrain/install/lidar_msgs/share/lidar_msgs/cmake/lidar_msgs__rosidl_typesupport_cppExport-noconfig.cmake
+[3.329s] -- Up-to-date: /home/steffens/KITrain/install/lidar_msgs/share/lidar_msgs/cmake/export_lidar_msgs__rosidl_generator_pyExport.cmake
+[3.329s] -- Up-to-date: /home/steffens/KITrain/install/lidar_msgs/share/lidar_msgs/cmake/export_lidar_msgs__rosidl_generator_pyExport-noconfig.cmake
+[3.329s] -- Up-to-date: /home/steffens/KITrain/install/lidar_msgs/share/lidar_msgs/cmake/rosidl_cmake-extras.cmake
+[3.329s] -- Up-to-date: /home/steffens/KITrain/install/lidar_msgs/share/lidar_msgs/cmake/ament_cmake_export_dependencies-extras.cmake
+[3.329s] -- Up-to-date: /home/steffens/KITrain/install/lidar_msgs/share/lidar_msgs/cmake/ament_cmake_export_include_directories-extras.cmake
+[3.329s] -- Up-to-date: /home/steffens/KITrain/install/lidar_msgs/share/lidar_msgs/cmake/ament_cmake_export_libraries-extras.cmake
+[3.329s] -- Up-to-date: /home/steffens/KITrain/install/lidar_msgs/share/lidar_msgs/cmake/ament_cmake_export_targets-extras.cmake
+[3.329s] -- Up-to-date: /home/steffens/KITrain/install/lidar_msgs/share/lidar_msgs/cmake/rosidl_cmake_export_typesupport_targets-extras.cmake
+[3.329s] -- Up-to-date: /home/steffens/KITrain/install/lidar_msgs/share/lidar_msgs/cmake/rosidl_cmake_export_typesupport_libraries-extras.cmake
+[3.329s] -- Up-to-date: /home/steffens/KITrain/install/lidar_msgs/share/lidar_msgs/cmake/lidar_msgsConfig.cmake
+[3.330s] -- Up-to-date: /home/steffens/KITrain/install/lidar_msgs/share/lidar_msgs/cmake/lidar_msgsConfig-version.cmake
+[3.330s] -- Up-to-date: /home/steffens/KITrain/install/lidar_msgs/share/lidar_msgs/package.xml
+[3.332s] Invoked command in '/home/steffens/KITrain/build/lidar_msgs' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/steffens/KITrain/install/camera_simulator:/opt/ros/humble /usr/bin/cmake --install /home/steffens/KITrain/build/lidar_msgs

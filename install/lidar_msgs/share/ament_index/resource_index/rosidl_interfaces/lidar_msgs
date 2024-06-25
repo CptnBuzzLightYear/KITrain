@@ -1,0 +1,4 @@
+msg/GroundTruth.idl
+msg/GroundTruth.msg
+msg/GroundTruthArray.idl
+msg/GroundTruthArray.msg

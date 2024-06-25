@@ -197,6 +197,43 @@ lidar_uninstall/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/lidar_uninstall.dir/build.make CMakeFiles/lidar_uninstall.dir/build
 .PHONY : lidar_uninstall/fast
 
+#=============================================================================
+# Target rules for targets named lidar_udp_publisher
+
+# Build rule for target.
+lidar_udp_publisher: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 lidar_udp_publisher
+.PHONY : lidar_udp_publisher
+
+# fast build rule for target.
+lidar_udp_publisher/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/lidar_udp_publisher.dir/build.make CMakeFiles/lidar_udp_publisher.dir/build
+.PHONY : lidar_udp_publisher/fast
+
+src/lidar_udp_to_topic.o: src/lidar_udp_to_topic.cpp.o
+.PHONY : src/lidar_udp_to_topic.o
+
+# target to build an object file
+src/lidar_udp_to_topic.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/lidar_udp_publisher.dir/build.make CMakeFiles/lidar_udp_publisher.dir/src/lidar_udp_to_topic.cpp.o
+.PHONY : src/lidar_udp_to_topic.cpp.o
+
+src/lidar_udp_to_topic.i: src/lidar_udp_to_topic.cpp.i
+.PHONY : src/lidar_udp_to_topic.i
+
+# target to preprocess a source file
+src/lidar_udp_to_topic.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/lidar_udp_publisher.dir/build.make CMakeFiles/lidar_udp_publisher.dir/src/lidar_udp_to_topic.cpp.i
+.PHONY : src/lidar_udp_to_topic.cpp.i
+
+src/lidar_udp_to_topic.s: src/lidar_udp_to_topic.cpp.s
+.PHONY : src/lidar_udp_to_topic.s
+
+# target to generate assembly for a file
+src/lidar_udp_to_topic.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/lidar_udp_publisher.dir/build.make CMakeFiles/lidar_udp_publisher.dir/src/lidar_udp_to_topic.cpp.s
+.PHONY : src/lidar_udp_to_topic.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -212,6 +249,10 @@ help:
 	@echo "... test"
 	@echo "... lidar_uninstall"
 	@echo "... uninstall"
+	@echo "... lidar_udp_publisher"
+	@echo "... src/lidar_udp_to_topic.o"
+	@echo "... src/lidar_udp_to_topic.i"
+	@echo "... src/lidar_udp_to_topic.s"
 .PHONY : help
 
 

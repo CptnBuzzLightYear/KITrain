@@ -1,6 +1,6 @@
 # generated from ament_cmake_export_dependencies/cmake/ament_cmake_export_dependencies-extras.cmake.in
 
-set(_exported_dependencies "rclcpp;sensor_msgs;cv_bridge")
+set(_exported_dependencies "rclcpp;std_msgs;sensor_msgs;cv_bridge;OpenCV")
 
 find_package(ament_cmake_libraries QUIET REQUIRED)
 

@@ -1,0 +1,7 @@
+[01m[K/home/steffens/KITrain/src/ki_train/sensors/lidar/src/lidar_udp_to_topic.cpp:[m[K In member function ‘[01m[Kbool LidarUDPPublisher::convertToPointCloud(const char*, size_t)[m[K’:
+[01m[K/home/steffens/KITrain/src/ki_train/sensors/lidar/src/lidar_udp_to_topic.cpp:138:39:[m[K [01;31m[Kerror: [m[K‘[01m[Kusing MarkerArray = struct visualization_msgs::msg::MarkerArray_<std::allocator<void> >[m[K’ {aka ‘[01m[Kstruct visualization_msgs::msg::MarkerArray_<std::allocator<void> >[m[K’} has no member named ‘[01m[Kclear[m[K’
+  138 |                     boundingbox_array.[01;31m[Kclear[m[K();
+      |                                       [01;31m[K^~~~~[m[K
+gmake[2]: *** [CMakeFiles/lidar_udp_publisher.dir/build.make:76: CMakeFiles/lidar_udp_publisher.dir/src/lidar_udp_to_topic.cpp.o] Error 1
+gmake[1]: *** [CMakeFiles/Makefile2:137: CMakeFiles/lidar_udp_publisher.dir/all] Error 2
+gmake: *** [Makefile:146: all] Error 2

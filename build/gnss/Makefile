@@ -197,6 +197,43 @@ gnss_uninstall/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/gnss_uninstall.dir/build.make CMakeFiles/gnss_uninstall.dir/build
 .PHONY : gnss_uninstall/fast
 
+#=============================================================================
+# Target rules for targets named gnss_udp_publisher
+
+# Build rule for target.
+gnss_udp_publisher: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 gnss_udp_publisher
+.PHONY : gnss_udp_publisher
+
+# fast build rule for target.
+gnss_udp_publisher/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/gnss_udp_publisher.dir/build.make CMakeFiles/gnss_udp_publisher.dir/build
+.PHONY : gnss_udp_publisher/fast
+
+src/gnss_udp_to_topic.o: src/gnss_udp_to_topic.cpp.o
+.PHONY : src/gnss_udp_to_topic.o
+
+# target to build an object file
+src/gnss_udp_to_topic.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/gnss_udp_publisher.dir/build.make CMakeFiles/gnss_udp_publisher.dir/src/gnss_udp_to_topic.cpp.o
+.PHONY : src/gnss_udp_to_topic.cpp.o
+
+src/gnss_udp_to_topic.i: src/gnss_udp_to_topic.cpp.i
+.PHONY : src/gnss_udp_to_topic.i
+
+# target to preprocess a source file
+src/gnss_udp_to_topic.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/gnss_udp_publisher.dir/build.make CMakeFiles/gnss_udp_publisher.dir/src/gnss_udp_to_topic.cpp.i
+.PHONY : src/gnss_udp_to_topic.cpp.i
+
+src/gnss_udp_to_topic.s: src/gnss_udp_to_topic.cpp.s
+.PHONY : src/gnss_udp_to_topic.s
+
+# target to generate assembly for a file
+src/gnss_udp_to_topic.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/gnss_udp_publisher.dir/build.make CMakeFiles/gnss_udp_publisher.dir/src/gnss_udp_to_topic.cpp.s
+.PHONY : src/gnss_udp_to_topic.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -212,6 +249,10 @@ help:
 	@echo "... test"
 	@echo "... gnss_uninstall"
 	@echo "... uninstall"
+	@echo "... gnss_udp_publisher"
+	@echo "... src/gnss_udp_to_topic.o"
+	@echo "... src/gnss_udp_to_topic.i"
+	@echo "... src/gnss_udp_to_topic.s"
 .PHONY : help
 
 

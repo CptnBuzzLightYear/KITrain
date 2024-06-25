@@ -1,0 +1,20 @@
+[35m[1mConsolidate compiler generated dependencies of target track_detect_main[0m
+[100%] Built target track_detect_main
+-- Install configuration: ""
+-- Up-to-date: /home/steffens/KITrain/install/track_detector/lib/track_detector/track_detect_main
+-- Up-to-date: /home/steffens/KITrain/install/track_detector/share/ament_index/resource_index/package_run_dependencies/track_detector
+-- Up-to-date: /home/steffens/KITrain/install/track_detector/share/ament_index/resource_index/parent_prefix_path/track_detector
+-- Up-to-date: /home/steffens/KITrain/install/track_detector/share/track_detector/environment/ament_prefix_path.sh
+-- Up-to-date: /home/steffens/KITrain/install/track_detector/share/track_detector/environment/ament_prefix_path.dsv
+-- Up-to-date: /home/steffens/KITrain/install/track_detector/share/track_detector/environment/path.sh
+-- Up-to-date: /home/steffens/KITrain/install/track_detector/share/track_detector/environment/path.dsv
+-- Up-to-date: /home/steffens/KITrain/install/track_detector/share/track_detector/local_setup.bash
+-- Up-to-date: /home/steffens/KITrain/install/track_detector/share/track_detector/local_setup.sh
+-- Up-to-date: /home/steffens/KITrain/install/track_detector/share/track_detector/local_setup.zsh
+-- Up-to-date: /home/steffens/KITrain/install/track_detector/share/track_detector/local_setup.dsv
+-- Installing: /home/steffens/KITrain/install/track_detector/share/track_detector/package.dsv
+-- Up-to-date: /home/steffens/KITrain/install/track_detector/share/ament_index/resource_index/packages/track_detector
+-- Up-to-date: /home/steffens/KITrain/install/track_detector/share/track_detector/cmake/ament_cmake_export_dependencies-extras.cmake
+-- Up-to-date: /home/steffens/KITrain/install/track_detector/share/track_detector/cmake/track_detectorConfig.cmake
+-- Up-to-date: /home/steffens/KITrain/install/track_detector/share/track_detector/cmake/track_detectorConfig-version.cmake
+-- Up-to-date: /home/steffens/KITrain/install/track_detector/share/track_detector/package.xml

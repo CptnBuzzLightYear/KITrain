@@ -1,0 +1,20 @@
+[0.295s] Invoking command in '/home/steffens/KITrain/build/signal_detector': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/steffens/KITrain/install/camera_simulator:/opt/ros/humble /usr/bin/cmake --build /home/steffens/KITrain/build/signal_detector -- -j16 -l16
+[0.357s] Invoked command in '/home/steffens/KITrain/build/signal_detector' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/steffens/KITrain/install/camera_simulator:/opt/ros/humble /usr/bin/cmake --build /home/steffens/KITrain/build/signal_detector -- -j16 -l16
+[0.433s] Invoking command in '/home/steffens/KITrain/build/signal_detector': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/steffens/KITrain/install/camera_simulator:/opt/ros/humble /usr/bin/cmake --install /home/steffens/KITrain/build/signal_detector
+[0.456s] -- Install configuration: ""
+[0.456s] -- Up-to-date: /home/steffens/KITrain/install/signal_detector/share/ament_index/resource_index/package_run_dependencies/signal_detector
+[0.456s] -- Up-to-date: /home/steffens/KITrain/install/signal_detector/share/ament_index/resource_index/parent_prefix_path/signal_detector
+[0.456s] -- Up-to-date: /home/steffens/KITrain/install/signal_detector/share/signal_detector/environment/ament_prefix_path.sh
+[0.456s] -- Up-to-date: /home/steffens/KITrain/install/signal_detector/share/signal_detector/environment/ament_prefix_path.dsv
+[0.456s] -- Up-to-date: /home/steffens/KITrain/install/signal_detector/share/signal_detector/environment/path.sh
+[0.457s] -- Up-to-date: /home/steffens/KITrain/install/signal_detector/share/signal_detector/environment/path.dsv
+[0.457s] -- Up-to-date: /home/steffens/KITrain/install/signal_detector/share/signal_detector/local_setup.bash
+[0.457s] -- Up-to-date: /home/steffens/KITrain/install/signal_detector/share/signal_detector/local_setup.sh
+[0.457s] -- Up-to-date: /home/steffens/KITrain/install/signal_detector/share/signal_detector/local_setup.zsh
+[0.457s] -- Up-to-date: /home/steffens/KITrain/install/signal_detector/share/signal_detector/local_setup.dsv
+[0.457s] -- Installing: /home/steffens/KITrain/install/signal_detector/share/signal_detector/package.dsv
+[0.457s] -- Up-to-date: /home/steffens/KITrain/install/signal_detector/share/ament_index/resource_index/packages/signal_detector
+[0.457s] -- Up-to-date: /home/steffens/KITrain/install/signal_detector/share/signal_detector/cmake/signal_detectorConfig.cmake
+[0.457s] -- Up-to-date: /home/steffens/KITrain/install/signal_detector/share/signal_detector/cmake/signal_detectorConfig-version.cmake
+[0.457s] -- Up-to-date: /home/steffens/KITrain/install/signal_detector/share/signal_detector/package.xml
+[0.511s] Invoked command in '/home/steffens/KITrain/build/signal_detector' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/steffens/KITrain/install/camera_simulator:/opt/ros/humble /usr/bin/cmake --install /home/steffens/KITrain/build/signal_detector

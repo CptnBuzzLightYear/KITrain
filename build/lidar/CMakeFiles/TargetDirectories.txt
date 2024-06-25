@@ -1,5 +1,6 @@
 /home/steffens/KITrain/build/lidar/CMakeFiles/uninstall.dir
 /home/steffens/KITrain/build/lidar/CMakeFiles/lidar_uninstall.dir
+/home/steffens/KITrain/build/lidar/CMakeFiles/lidar_udp_publisher.dir
 /home/steffens/KITrain/build/lidar/CMakeFiles/test.dir
 /home/steffens/KITrain/build/lidar/CMakeFiles/edit_cache.dir
 /home/steffens/KITrain/build/lidar/CMakeFiles/rebuild_cache.dir

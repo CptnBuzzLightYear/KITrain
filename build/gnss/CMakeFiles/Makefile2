@@ -63,7 +63,7 @@ CMAKE_BINARY_DIR = /home/steffens/KITrain/build/gnss
 # Directory level rules for the build root directory
 
 # The main recursive "all" target.
-all:
+all: CMakeFiles/gnss_udp_publisher.dir/all
 .PHONY : all
 
 # The main recursive "preinstall" target.
@@ -73,6 +73,7 @@ preinstall:
 # The main recursive "clean" target.
 clean: CMakeFiles/uninstall.dir/clean
 clean: CMakeFiles/gnss_uninstall.dir/clean
+clean: CMakeFiles/gnss_udp_publisher.dir/clean
 .PHONY : clean
 
 #=============================================================================
@@ -126,6 +127,32 @@ gnss_uninstall: CMakeFiles/gnss_uninstall.dir/rule
 CMakeFiles/gnss_uninstall.dir/clean:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/gnss_uninstall.dir/build.make CMakeFiles/gnss_uninstall.dir/clean
 .PHONY : CMakeFiles/gnss_uninstall.dir/clean
+
+#=============================================================================
+# Target rules for target CMakeFiles/gnss_udp_publisher.dir
+
+# All Build rule for target.
+CMakeFiles/gnss_udp_publisher.dir/all:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/gnss_udp_publisher.dir/build.make CMakeFiles/gnss_udp_publisher.dir/depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/gnss_udp_publisher.dir/build.make CMakeFiles/gnss_udp_publisher.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/steffens/KITrain/build/gnss/CMakeFiles --progress-num=1,2 "Built target gnss_udp_publisher"
+.PHONY : CMakeFiles/gnss_udp_publisher.dir/all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/gnss_udp_publisher.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/steffens/KITrain/build/gnss/CMakeFiles 2
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/gnss_udp_publisher.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/steffens/KITrain/build/gnss/CMakeFiles 0
+.PHONY : CMakeFiles/gnss_udp_publisher.dir/rule
+
+# Convenience name for target.
+gnss_udp_publisher: CMakeFiles/gnss_udp_publisher.dir/rule
+.PHONY : gnss_udp_publisher
+
+# clean rule for target.
+CMakeFiles/gnss_udp_publisher.dir/clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/gnss_udp_publisher.dir/build.make CMakeFiles/gnss_udp_publisher.dir/clean
+.PHONY : CMakeFiles/gnss_udp_publisher.dir/clean
 
 #=============================================================================
 # Special targets to cleanup operation of make.

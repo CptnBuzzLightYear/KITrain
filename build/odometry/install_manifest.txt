@@ -1,1 +1,15 @@
+/home/steffens/KITrain/install/odometry/share/ament_index/resource_index/package_run_dependencies/odometry
+/home/steffens/KITrain/install/odometry/share/ament_index/resource_index/parent_prefix_path/odometry
+/home/steffens/KITrain/install/odometry/share/odometry/environment/ament_prefix_path.sh
+/home/steffens/KITrain/install/odometry/share/odometry/environment/ament_prefix_path.dsv
+/home/steffens/KITrain/install/odometry/share/odometry/environment/path.sh
+/home/steffens/KITrain/install/odometry/share/odometry/environment/path.dsv
+/home/steffens/KITrain/install/odometry/share/odometry/local_setup.bash
+/home/steffens/KITrain/install/odometry/share/odometry/local_setup.sh
+/home/steffens/KITrain/install/odometry/share/odometry/local_setup.zsh
+/home/steffens/KITrain/install/odometry/share/odometry/local_setup.dsv
 /home/steffens/KITrain/install/odometry/share/odometry/package.dsv
+/home/steffens/KITrain/install/odometry/share/ament_index/resource_index/packages/odometry
+/home/steffens/KITrain/install/odometry/share/odometry/cmake/odometryConfig.cmake
+/home/steffens/KITrain/install/odometry/share/odometry/cmake/odometryConfig-version.cmake
+/home/steffens/KITrain/install/odometry/share/odometry/package.xml

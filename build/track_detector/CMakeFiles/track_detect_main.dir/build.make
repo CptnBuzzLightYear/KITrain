@@ -188,12 +188,12 @@ track_detect_main: /opt/ros/humble/lib/libsensor_msgs__rosidl_generator_py.so
 track_detect_main: /opt/ros/humble/lib/libsensor_msgs__rosidl_typesupport_c.so
 track_detect_main: /opt/ros/humble/lib/libsensor_msgs__rosidl_generator_c.so
 track_detect_main: /opt/ros/humble/lib/libgeometry_msgs__rosidl_generator_py.so
-track_detect_main: /opt/ros/humble/lib/libgeometry_msgs__rosidl_typesupport_c.so
-track_detect_main: /opt/ros/humble/lib/libgeometry_msgs__rosidl_generator_c.so
 track_detect_main: /opt/ros/humble/lib/libstd_msgs__rosidl_generator_py.so
 track_detect_main: /opt/ros/humble/lib/libbuiltin_interfaces__rosidl_generator_py.so
+track_detect_main: /opt/ros/humble/lib/libgeometry_msgs__rosidl_typesupport_c.so
 track_detect_main: /opt/ros/humble/lib/libstd_msgs__rosidl_typesupport_c.so
 track_detect_main: /opt/ros/humble/lib/libbuiltin_interfaces__rosidl_typesupport_c.so
+track_detect_main: /opt/ros/humble/lib/libgeometry_msgs__rosidl_generator_c.so
 track_detect_main: /opt/ros/humble/lib/libstd_msgs__rosidl_generator_c.so
 track_detect_main: /opt/ros/humble/lib/libbuiltin_interfaces__rosidl_generator_c.so
 track_detect_main: /usr/lib/x86_64-linux-gnu/libpython3.10.so

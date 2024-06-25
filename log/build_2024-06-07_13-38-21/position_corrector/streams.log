@@ -1,0 +1,20 @@
+[0.320s] Invoking command in '/home/steffens/KITrain/build/position_corrector': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/steffens/KITrain/install/camera_simulator:/opt/ros/humble /usr/bin/cmake --build /home/steffens/KITrain/build/position_corrector -- -j16 -l16
+[0.378s] Invoked command in '/home/steffens/KITrain/build/position_corrector' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/steffens/KITrain/install/camera_simulator:/opt/ros/humble /usr/bin/cmake --build /home/steffens/KITrain/build/position_corrector -- -j16 -l16
+[0.445s] Invoking command in '/home/steffens/KITrain/build/position_corrector': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/steffens/KITrain/install/camera_simulator:/opt/ros/humble /usr/bin/cmake --install /home/steffens/KITrain/build/position_corrector
+[0.453s] -- Install configuration: ""
+[0.453s] -- Up-to-date: /home/steffens/KITrain/install/position_corrector/share/ament_index/resource_index/package_run_dependencies/position_corrector
+[0.453s] -- Up-to-date: /home/steffens/KITrain/install/position_corrector/share/ament_index/resource_index/parent_prefix_path/position_corrector
+[0.453s] -- Up-to-date: /home/steffens/KITrain/install/position_corrector/share/position_corrector/environment/ament_prefix_path.sh
+[0.453s] -- Up-to-date: /home/steffens/KITrain/install/position_corrector/share/position_corrector/environment/ament_prefix_path.dsv
+[0.454s] -- Up-to-date: /home/steffens/KITrain/install/position_corrector/share/position_corrector/environment/path.sh
+[0.454s] -- Up-to-date: /home/steffens/KITrain/install/position_corrector/share/position_corrector/environment/path.dsv
+[0.454s] -- Up-to-date: /home/steffens/KITrain/install/position_corrector/share/position_corrector/local_setup.bash
+[0.454s] -- Up-to-date: /home/steffens/KITrain/install/position_corrector/share/position_corrector/local_setup.sh
+[0.454s] -- Up-to-date: /home/steffens/KITrain/install/position_corrector/share/position_corrector/local_setup.zsh
+[0.454s] -- Up-to-date: /home/steffens/KITrain/install/position_corrector/share/position_corrector/local_setup.dsv
+[0.454s] -- Installing: /home/steffens/KITrain/install/position_corrector/share/position_corrector/package.dsv
+[0.454s] -- Up-to-date: /home/steffens/KITrain/install/position_corrector/share/ament_index/resource_index/packages/position_corrector
+[0.454s] -- Up-to-date: /home/steffens/KITrain/install/position_corrector/share/position_corrector/cmake/position_correctorConfig.cmake
+[0.454s] -- Up-to-date: /home/steffens/KITrain/install/position_corrector/share/position_corrector/cmake/position_correctorConfig-version.cmake
+[0.455s] -- Up-to-date: /home/steffens/KITrain/install/position_corrector/share/position_corrector/package.xml
+[0.522s] Invoked command in '/home/steffens/KITrain/build/position_corrector' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/steffens/KITrain/install/camera_simulator:/opt/ros/humble /usr/bin/cmake --install /home/steffens/KITrain/build/position_corrector

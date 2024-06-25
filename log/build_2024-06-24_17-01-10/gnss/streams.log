@@ -1,0 +1,45 @@
+[0.326s] Invoking command in '/home/steffens/KITrain/build/gnss': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/steffens/KITrain/install/camera_simulator:/opt/ros/humble /usr/bin/cmake --build /home/steffens/KITrain/build/gnss -- -j16 -l16
+[0.373s] [35m[1mConsolidate compiler generated dependencies of target gnss_udp_publisher[0m
+[0.405s] [ 50%] [32mBuilding CXX object CMakeFiles/gnss_udp_publisher.dir/src/gnss_udp_to_topic.cpp.o[0m
+[2.376s] [01m[K/home/steffens/KITrain/src/ki_train/sensors/gnss/src/gnss_udp_to_topic.cpp:110:3:[m[K [01;31m[Kerror: [m[Kexpected ‘[01m[K}[m[K’ at end of input
+[2.376s]   110 | };
+[2.376s]       |   [01;31m[K^[m[K
+[2.376s] [01m[K/home/steffens/KITrain/src/ki_train/sensors/gnss/src/gnss_udp_to_topic.cpp:10:1:[m[K [01;36m[Knote: [m[Kto match this ‘[01m[K{[m[K’
+[2.377s]    10 | [01;36m[K{[m[K
+[2.377s]       | [01;36m[K^[m[K
+[2.383s] [01m[K/home/steffens/KITrain/src/ki_train/sensors/gnss/src/gnss_udp_to_topic.cpp:[m[K In constructor ‘[01m[KGNSSUDPPublisher::GNSSUDPPublisher()[m[K’:
+[2.383s] [01m[K/home/steffens/KITrain/src/ki_train/sensors/gnss/src/gnss_udp_to_topic.cpp:14:9:[m[K [01;31m[Kerror: [m[K‘[01m[KgnssPublisher_[m[K’ was not declared in this scope
+[2.383s]    14 |         [01;31m[KgnssPublisher_[m[K = this ->create_publisher<sensor_msgs::msg::NavSatFix>("gnss", 10);
+[2.383s]       |         [01;31m[K^~~~~~~~~~~~~~[m[K
+[2.391s] [01m[K/home/steffens/KITrain/src/ki_train/sensors/gnss/src/gnss_udp_to_topic.cpp:17:9:[m[K [01;31m[Kerror: [m[K‘[01m[Ksockfd2_[m[K’ was not declared in this scope
+[2.391s]    17 |         [01;31m[Ksockfd2_[m[K = socket(AF_INET, SOCK_DGRAM, 0);
+[2.391s]       |         [01;31m[K^~~~~~~~[m[K
+[2.399s] [01m[K/home/steffens/KITrain/src/ki_train/sensors/gnss/src/gnss_udp_to_topic.cpp:33:13:[m[K [01;31m[Kerror: [m[K‘[01m[Kreceive_gnss_thread_[m[K’ was not declared in this scope
+[2.399s]    33 |             [01;31m[Kreceive_gnss_thread_[m[K = std::thread(&GNSSUDPPublisher::receiveLoop, this);
+[2.399s]       |             [01;31m[K^~~~~~~~~~~~~~~~~~~~[m[K
+[2.403s] [01m[K/home/steffens/KITrain/src/ki_train/sensors/gnss/src/gnss_udp_to_topic.cpp:[m[K In destructor ‘[01m[Kvirtual GNSSUDPPublisher::~GNSSUDPPublisher()[m[K’:
+[2.403s] [01m[K/home/steffens/KITrain/src/ki_train/sensors/gnss/src/gnss_udp_to_topic.cpp:37:15:[m[K [01;31m[Kerror: [m[K‘[01m[Ksockfd2_[m[K’ was not declared in this scope
+[2.404s]    37 |         close([01;31m[Ksockfd2_[m[K);
+[2.404s]       |               [01;31m[K^~~~~~~~[m[K
+[2.411s] [01m[K/home/steffens/KITrain/src/ki_train/sensors/gnss/src/gnss_udp_to_topic.cpp:38:13:[m[K [01;31m[Kerror: [m[K‘[01m[Kreceive_gnss_thread_[m[K’ was not declared in this scope
+[2.411s]    38 |         if ([01;31m[Kreceive_gnss_thread_[m[K.joinable())
+[2.411s]       |             [01;31m[K^~~~~~~~~~~~~~~~~~~~[m[K
+[2.416s] [01m[K/home/steffens/KITrain/src/ki_train/sensors/gnss/src/gnss_udp_to_topic.cpp:[m[K In member function ‘[01m[Kvoid GNSSUDPPublisher::receiveLoop()[m[K’:
+[2.416s] [01m[K/home/steffens/KITrain/src/ki_train/sensors/gnss/src/gnss_udp_to_topic.cpp:54:46:[m[K [01;31m[Kerror: [m[K‘[01m[Ksockfd2_[m[K’ was not declared in this scope
+[2.416s]    54 |             size_t bytes_received = recvfrom([01;31m[Ksockfd2_[m[K, buffer, MAX_UDP_PACKET_SIZE,0 , (struct sockaddr *)&client_addr, &addr_len);
+[2.416s]       |                                              [01;31m[K^~~~~~~~[m[K
+[2.423s] [01m[K/home/steffens/KITrain/src/ki_train/sensors/gnss/src/gnss_udp_to_topic.cpp:[m[K In member function ‘[01m[Kbool GNSSUDPPublisher::convertToNavSatFix(const char*, size_t)[m[K’:
+[2.423s] [01m[K/home/steffens/KITrain/src/ki_train/sensors/gnss/src/gnss_udp_to_topic.cpp:102:9:[m[K [01;31m[Kerror: [m[K‘[01m[KgnssPublisher_[m[K’ was not declared in this scope
+[2.423s]   102 |         [01;31m[KgnssPublisher_[m[K->publish(msg);
+[2.423s]       |         [01;31m[K^~~~~~~~~~~~~~[m[K
+[2.424s] [01m[K/home/steffens/KITrain/src/ki_train/sensors/gnss/src/gnss_udp_to_topic.cpp:108:9:[m[K [01;35m[Kwarning: [m[Kunused variable ‘[01m[Ksockfd2_[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-variable-Wunused-variable]8;;[m[K]
+[2.424s]   108 |     int [01;35m[Ksockfd2_[m[K;
+[2.424s]       |         [01;35m[K^~~~~~~~[m[K
+[2.424s] [01m[K/home/steffens/KITrain/src/ki_train/sensors/gnss/src/gnss_udp_to_topic.cpp:[m[K At global scope:
+[2.425s] [01m[K/home/steffens/KITrain/src/ki_train/sensors/gnss/src/gnss_udp_to_topic.cpp:110:3:[m[K [01;31m[Kerror: [m[Kexpected unqualified-id at end of input
+[2.425s]   110 | };
+[2.425s]       |   [01;31m[K^[m[K
+[2.961s] gmake[2]: *** [CMakeFiles/gnss_udp_publisher.dir/build.make:76: CMakeFiles/gnss_udp_publisher.dir/src/gnss_udp_to_topic.cpp.o] Error 1
+[2.961s] gmake[1]: *** [CMakeFiles/Makefile2:137: CMakeFiles/gnss_udp_publisher.dir/all] Error 2
+[2.962s] gmake: *** [Makefile:146: all] Error 2
+[2.965s] Invoked command in '/home/steffens/KITrain/build/gnss' returned '2': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/steffens/KITrain/install/camera_simulator:/opt/ros/humble /usr/bin/cmake --build /home/steffens/KITrain/build/gnss -- -j16 -l16

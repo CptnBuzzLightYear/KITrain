@@ -1,0 +1,20 @@
+[0.286s] Invoking command in '/home/steffens/KITrain/build/target_velocity_estimator': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/steffens/KITrain/install/camera_simulator:/opt/ros/humble /usr/bin/cmake --build /home/steffens/KITrain/build/target_velocity_estimator -- -j16 -l16
+[0.348s] Invoked command in '/home/steffens/KITrain/build/target_velocity_estimator' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/steffens/KITrain/install/camera_simulator:/opt/ros/humble /usr/bin/cmake --build /home/steffens/KITrain/build/target_velocity_estimator -- -j16 -l16
+[0.430s] Invoking command in '/home/steffens/KITrain/build/target_velocity_estimator': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/steffens/KITrain/install/camera_simulator:/opt/ros/humble /usr/bin/cmake --install /home/steffens/KITrain/build/target_velocity_estimator
+[0.456s] -- Install configuration: ""
+[0.456s] -- Up-to-date: /home/steffens/KITrain/install/target_velocity_estimator/share/ament_index/resource_index/package_run_dependencies/target_velocity_estimator
+[0.456s] -- Up-to-date: /home/steffens/KITrain/install/target_velocity_estimator/share/ament_index/resource_index/parent_prefix_path/target_velocity_estimator
+[0.457s] -- Up-to-date: /home/steffens/KITrain/install/target_velocity_estimator/share/target_velocity_estimator/environment/ament_prefix_path.sh
+[0.457s] -- Up-to-date: /home/steffens/KITrain/install/target_velocity_estimator/share/target_velocity_estimator/environment/ament_prefix_path.dsv
+[0.457s] -- Up-to-date: /home/steffens/KITrain/install/target_velocity_estimator/share/target_velocity_estimator/environment/path.sh
+[0.457s] -- Up-to-date: /home/steffens/KITrain/install/target_velocity_estimator/share/target_velocity_estimator/environment/path.dsv
+[0.457s] -- Up-to-date: /home/steffens/KITrain/install/target_velocity_estimator/share/target_velocity_estimator/local_setup.bash
+[0.457s] -- Up-to-date: /home/steffens/KITrain/install/target_velocity_estimator/share/target_velocity_estimator/local_setup.sh
+[0.457s] -- Up-to-date: /home/steffens/KITrain/install/target_velocity_estimator/share/target_velocity_estimator/local_setup.zsh
+[0.457s] -- Up-to-date: /home/steffens/KITrain/install/target_velocity_estimator/share/target_velocity_estimator/local_setup.dsv
+[0.457s] -- Installing: /home/steffens/KITrain/install/target_velocity_estimator/share/target_velocity_estimator/package.dsv
+[0.457s] -- Up-to-date: /home/steffens/KITrain/install/target_velocity_estimator/share/ament_index/resource_index/packages/target_velocity_estimator
+[0.457s] -- Up-to-date: /home/steffens/KITrain/install/target_velocity_estimator/share/target_velocity_estimator/cmake/target_velocity_estimatorConfig.cmake
+[0.458s] -- Up-to-date: /home/steffens/KITrain/install/target_velocity_estimator/share/target_velocity_estimator/cmake/target_velocity_estimatorConfig-version.cmake
+[0.458s] -- Up-to-date: /home/steffens/KITrain/install/target_velocity_estimator/share/target_velocity_estimator/package.xml
+[0.497s] Invoked command in '/home/steffens/KITrain/build/target_velocity_estimator' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/steffens/KITrain/install/camera_simulator:/opt/ros/humble /usr/bin/cmake --install /home/steffens/KITrain/build/target_velocity_estimator

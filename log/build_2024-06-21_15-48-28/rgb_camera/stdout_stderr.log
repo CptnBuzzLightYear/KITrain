@@ -1,0 +1,20 @@
+[100%] Built target rgb_camera_receiver_main
+-- Install configuration: ""
+-- Up-to-date: /home/steffens/KITrain/install/rgb_camera/lib/rgb_camera/rgb_camera_receiver_main
+-- Up-to-date: /home/steffens/KITrain/install/rgb_camera/share/rgb_camera/launch
+-- Installing: /home/steffens/KITrain/install/rgb_camera/share/rgb_camera/launch/execute.launch.py
+-- Up-to-date: /home/steffens/KITrain/install/rgb_camera/share/ament_index/resource_index/package_run_dependencies/rgb_camera
+-- Up-to-date: /home/steffens/KITrain/install/rgb_camera/share/ament_index/resource_index/parent_prefix_path/rgb_camera
+-- Up-to-date: /home/steffens/KITrain/install/rgb_camera/share/rgb_camera/environment/ament_prefix_path.sh
+-- Up-to-date: /home/steffens/KITrain/install/rgb_camera/share/rgb_camera/environment/ament_prefix_path.dsv
+-- Up-to-date: /home/steffens/KITrain/install/rgb_camera/share/rgb_camera/environment/path.sh
+-- Up-to-date: /home/steffens/KITrain/install/rgb_camera/share/rgb_camera/environment/path.dsv
+-- Up-to-date: /home/steffens/KITrain/install/rgb_camera/share/rgb_camera/local_setup.bash
+-- Up-to-date: /home/steffens/KITrain/install/rgb_camera/share/rgb_camera/local_setup.sh
+-- Up-to-date: /home/steffens/KITrain/install/rgb_camera/share/rgb_camera/local_setup.zsh
+-- Up-to-date: /home/steffens/KITrain/install/rgb_camera/share/rgb_camera/local_setup.dsv
+-- Installing: /home/steffens/KITrain/install/rgb_camera/share/rgb_camera/package.dsv
+-- Up-to-date: /home/steffens/KITrain/install/rgb_camera/share/ament_index/resource_index/packages/rgb_camera
+-- Up-to-date: /home/steffens/KITrain/install/rgb_camera/share/rgb_camera/cmake/rgb_cameraConfig.cmake
+-- Up-to-date: /home/steffens/KITrain/install/rgb_camera/share/rgb_camera/cmake/rgb_cameraConfig-version.cmake
+-- Up-to-date: /home/steffens/KITrain/install/rgb_camera/share/rgb_camera/package.xml

@@ -1,0 +1,20 @@
+[0.371s] Invoking command in '/home/steffens/KITrain/build/clearance_profile_observer': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/steffens/KITrain/install/camera_simulator:/opt/ros/humble /usr/bin/cmake --build /home/steffens/KITrain/build/clearance_profile_observer -- -j16 -l16
+[0.458s] Invoked command in '/home/steffens/KITrain/build/clearance_profile_observer' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/steffens/KITrain/install/camera_simulator:/opt/ros/humble /usr/bin/cmake --build /home/steffens/KITrain/build/clearance_profile_observer -- -j16 -l16
+[0.515s] Invoking command in '/home/steffens/KITrain/build/clearance_profile_observer': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/steffens/KITrain/install/camera_simulator:/opt/ros/humble /usr/bin/cmake --install /home/steffens/KITrain/build/clearance_profile_observer
+[0.528s] -- Install configuration: ""
+[0.528s] -- Up-to-date: /home/steffens/KITrain/install/clearance_profile_observer/share/ament_index/resource_index/package_run_dependencies/clearance_profile_observer
+[0.530s] -- Up-to-date: /home/steffens/KITrain/install/clearance_profile_observer/share/ament_index/resource_index/parent_prefix_path/clearance_profile_observer
+[0.530s] -- Up-to-date: /home/steffens/KITrain/install/clearance_profile_observer/share/clearance_profile_observer/environment/ament_prefix_path.sh
+[0.530s] -- Up-to-date: /home/steffens/KITrain/install/clearance_profile_observer/share/clearance_profile_observer/environment/ament_prefix_path.dsv
+[0.530s] -- Up-to-date: /home/steffens/KITrain/install/clearance_profile_observer/share/clearance_profile_observer/environment/path.sh
+[0.530s] -- Up-to-date: /home/steffens/KITrain/install/clearance_profile_observer/share/clearance_profile_observer/environment/path.dsv
+[0.530s] -- Up-to-date: /home/steffens/KITrain/install/clearance_profile_observer/share/clearance_profile_observer/local_setup.bash
+[0.531s] -- Up-to-date: /home/steffens/KITrain/install/clearance_profile_observer/share/clearance_profile_observer/local_setup.sh
+[0.531s] -- Up-to-date: /home/steffens/KITrain/install/clearance_profile_observer/share/clearance_profile_observer/local_setup.zsh
+[0.531s] -- Up-to-date: /home/steffens/KITrain/install/clearance_profile_observer/share/clearance_profile_observer/local_setup.dsv
+[0.532s] -- Installing: /home/steffens/KITrain/install/clearance_profile_observer/share/clearance_profile_observer/package.dsv
+[0.532s] -- Up-to-date: /home/steffens/KITrain/install/clearance_profile_observer/share/ament_index/resource_index/packages/clearance_profile_observer
+[0.532s] -- Up-to-date: /home/steffens/KITrain/install/clearance_profile_observer/share/clearance_profile_observer/cmake/clearance_profile_observerConfig.cmake
+[0.532s] -- Up-to-date: /home/steffens/KITrain/install/clearance_profile_observer/share/clearance_profile_observer/cmake/clearance_profile_observerConfig-version.cmake
+[0.532s] -- Up-to-date: /home/steffens/KITrain/install/clearance_profile_observer/share/clearance_profile_observer/package.xml
+[0.592s] Invoked command in '/home/steffens/KITrain/build/clearance_profile_observer' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/steffens/KITrain/install/camera_simulator:/opt/ros/humble /usr/bin/cmake --install /home/steffens/KITrain/build/clearance_profile_observer

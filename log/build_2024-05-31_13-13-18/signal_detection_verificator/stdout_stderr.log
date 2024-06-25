@@ -1,0 +1,36 @@
+-- The C compiler identification is GNU 11.4.0
+-- The CXX compiler identification is GNU 11.4.0
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Check for working C compiler: /usr/bin/cc - skipped
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: /usr/bin/c++ - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Found ament_cmake: 1.3.9 (/opt/ros/humble/share/ament_cmake/cmake)
+-- Found Python3: /usr/bin/python3 (found version "3.10.12") found components: Interpreter 
+-- Found ament_lint_auto: 0.12.11 (/opt/ros/humble/share/ament_lint_auto/cmake)
+-- Added test 'lint_cmake' to check CMake code style
+-- Added test 'xmllint' to check XML markup files
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /home/steffens/KITrain/build/signal_detection_verificator
+-- Install configuration: ""
+-- Installing: /home/steffens/KITrain/install/signal_detection_verificator/share/ament_index/resource_index/package_run_dependencies/signal_detection_verificator
+-- Installing: /home/steffens/KITrain/install/signal_detection_verificator/share/ament_index/resource_index/parent_prefix_path/signal_detection_verificator
+-- Installing: /home/steffens/KITrain/install/signal_detection_verificator/share/signal_detection_verificator/environment/ament_prefix_path.sh
+-- Installing: /home/steffens/KITrain/install/signal_detection_verificator/share/signal_detection_verificator/environment/ament_prefix_path.dsv
+-- Installing: /home/steffens/KITrain/install/signal_detection_verificator/share/signal_detection_verificator/environment/path.sh
+-- Installing: /home/steffens/KITrain/install/signal_detection_verificator/share/signal_detection_verificator/environment/path.dsv
+-- Installing: /home/steffens/KITrain/install/signal_detection_verificator/share/signal_detection_verificator/local_setup.bash
+-- Installing: /home/steffens/KITrain/install/signal_detection_verificator/share/signal_detection_verificator/local_setup.sh
+-- Installing: /home/steffens/KITrain/install/signal_detection_verificator/share/signal_detection_verificator/local_setup.zsh
+-- Installing: /home/steffens/KITrain/install/signal_detection_verificator/share/signal_detection_verificator/local_setup.dsv
+-- Installing: /home/steffens/KITrain/install/signal_detection_verificator/share/signal_detection_verificator/package.dsv
+-- Installing: /home/steffens/KITrain/install/signal_detection_verificator/share/ament_index/resource_index/packages/signal_detection_verificator
+-- Installing: /home/steffens/KITrain/install/signal_detection_verificator/share/signal_detection_verificator/cmake/signal_detection_verificatorConfig.cmake
+-- Installing: /home/steffens/KITrain/install/signal_detection_verificator/share/signal_detection_verificator/cmake/signal_detection_verificatorConfig-version.cmake
+-- Installing: /home/steffens/KITrain/install/signal_detection_verificator/share/signal_detection_verificator/package.xml

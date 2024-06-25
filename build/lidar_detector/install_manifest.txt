@@ -1,1 +1,15 @@
+/home/steffens/KITrain/install/lidar_detector/share/ament_index/resource_index/package_run_dependencies/lidar_detector
+/home/steffens/KITrain/install/lidar_detector/share/ament_index/resource_index/parent_prefix_path/lidar_detector
+/home/steffens/KITrain/install/lidar_detector/share/lidar_detector/environment/ament_prefix_path.sh
+/home/steffens/KITrain/install/lidar_detector/share/lidar_detector/environment/ament_prefix_path.dsv
+/home/steffens/KITrain/install/lidar_detector/share/lidar_detector/environment/path.sh
+/home/steffens/KITrain/install/lidar_detector/share/lidar_detector/environment/path.dsv
+/home/steffens/KITrain/install/lidar_detector/share/lidar_detector/local_setup.bash
+/home/steffens/KITrain/install/lidar_detector/share/lidar_detector/local_setup.sh
+/home/steffens/KITrain/install/lidar_detector/share/lidar_detector/local_setup.zsh
+/home/steffens/KITrain/install/lidar_detector/share/lidar_detector/local_setup.dsv
 /home/steffens/KITrain/install/lidar_detector/share/lidar_detector/package.dsv
+/home/steffens/KITrain/install/lidar_detector/share/ament_index/resource_index/packages/lidar_detector
+/home/steffens/KITrain/install/lidar_detector/share/lidar_detector/cmake/lidar_detectorConfig.cmake
+/home/steffens/KITrain/install/lidar_detector/share/lidar_detector/cmake/lidar_detectorConfig-version.cmake
+/home/steffens/KITrain/install/lidar_detector/share/lidar_detector/package.xml

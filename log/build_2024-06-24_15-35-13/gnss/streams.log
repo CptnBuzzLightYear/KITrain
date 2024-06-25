@@ -1,0 +1,27 @@
+[0.314s] Invoking command in '/home/steffens/KITrain/build/gnss': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/steffens/KITrain/install/camera_simulator:/opt/ros/humble /usr/bin/cmake --build /home/steffens/KITrain/build/gnss -- -j16 -l16
+[0.373s] [35m[1mConsolidate compiler generated dependencies of target gnss_udp_publisher[0m
+[0.398s] [ 50%] [32mBuilding CXX object CMakeFiles/gnss_udp_publisher.dir/src/gnss_udp_to_topic.cpp.o[0m
+[2.320s] [01m[K/home/steffens/KITrain/src/ki_train/sensors/gnss/src/gnss_udp_to_topic.cpp:[m[K In member function ‘[01m[Kbool GNSSUDPPublisher::convertToNavSatFix(const char*, size_t)[m[K’:
+[2.320s] [01m[K/home/steffens/KITrain/src/ki_train/sensors/gnss/src/gnss_udp_to_topic.cpp:78:1:[m[K [01;35m[Kwarning: [m[Kno return statement in function returning non-void [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wreturn-type-Wreturn-type]8;;[m[K]
+[2.320s]    78 | [01;35m[K}[m[K
+[2.321s]       | [01;35m[K^[m[K
+[2.327s] [01m[K/home/steffens/KITrain/src/ki_train/sensors/gnss/src/gnss_udp_to_topic.cpp:[m[K In member function ‘[01m[Kvoid GNSSUDPPublisher::log_buffer_hex(const char*, size_t)[m[K’:
+[2.327s] [01m[K/home/steffens/KITrain/src/ki_train/sensors/gnss/src/gnss_udp_to_topic.cpp:87:11:[m[K [01;31m[Kerror: [m[K‘[01m[Kbytes_received[m[K’ was not declared in this scope
+[2.328s]    87 |       if ([01;31m[Kbytes_received[m[K >= 12) { // At least 3 floats (12 bytes)
+[2.328s]       |           [01;31m[K^~~~~~~~~~~~~~[m[K
+[2.328s] [01m[K/home/steffens/KITrain/src/ki_train/sensors/gnss/src/gnss_udp_to_topic.cpp:88:27:[m[K [01;31m[Kerror: [m[K‘[01m[Kreinterpret_cast[m[K’ from type ‘[01m[Kconst char*[m[K’ to type ‘[01m[Kfloat*[m[K’ casts away qualifiers
+[2.328s]    88 |         float latitude = *[01;31m[Kreinterpret_cast<float*>(&buffer[0])[m[K;
+[2.328s]       |                           [01;31m[K^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+[2.328s] [01m[K/home/steffens/KITrain/src/ki_train/sensors/gnss/src/gnss_udp_to_topic.cpp:89:28:[m[K [01;31m[Kerror: [m[K‘[01m[Kreinterpret_cast[m[K’ from type ‘[01m[Kconst char*[m[K’ to type ‘[01m[Kfloat*[m[K’ casts away qualifiers
+[2.328s]    89 |         float longitude = *[01;31m[Kreinterpret_cast<float*>(&buffer[4])[m[K;
+[2.328s]       |                            [01;31m[K^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+[2.328s] [01m[K/home/steffens/KITrain/src/ki_train/sensors/gnss/src/gnss_udp_to_topic.cpp:90:27:[m[K [01;31m[Kerror: [m[K‘[01m[Kreinterpret_cast[m[K’ from type ‘[01m[Kconst char*[m[K’ to type ‘[01m[Kfloat*[m[K’ casts away qualifiers
+[2.328s]    90 |         float altitude = *[01;31m[Kreinterpret_cast<float*>(&buffer[8])[m[K;
+[2.328s]       |                           [01;31m[K^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+[2.328s] [01m[K/home/steffens/KITrain/src/ki_train/sensors/gnss/src/gnss_udp_to_topic.cpp:79:48:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Klength[m[K’ [[01;35m[K]8;;https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wunused-parameter-Wunused-parameter]8;;[m[K]
+[2.328s]    79 | void log_buffer_hex(const char* buffer, [01;35m[Ksize_t length[m[K)  {
+[2.329s]       |                                         [01;35m[K~~~~~~~^~~~~~[m[K
+[2.916s] gmake[2]: *** [CMakeFiles/gnss_udp_publisher.dir/build.make:76: CMakeFiles/gnss_udp_publisher.dir/src/gnss_udp_to_topic.cpp.o] Error 1
+[2.916s] gmake[1]: *** [CMakeFiles/Makefile2:137: CMakeFiles/gnss_udp_publisher.dir/all] Error 2
+[2.916s] gmake: *** [Makefile:146: all] Error 2
+[2.919s] Invoked command in '/home/steffens/KITrain/build/gnss' returned '2': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/steffens/KITrain/install/camera_simulator:/opt/ros/humble /usr/bin/cmake --build /home/steffens/KITrain/build/gnss -- -j16 -l16

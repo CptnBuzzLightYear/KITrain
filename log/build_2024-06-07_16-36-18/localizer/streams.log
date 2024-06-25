@@ -1,0 +1,20 @@
+[0.326s] Invoking command in '/home/steffens/KITrain/build/localizer': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/steffens/KITrain/install/camera_simulator:/opt/ros/humble /usr/bin/cmake --build /home/steffens/KITrain/build/localizer -- -j16 -l16
+[0.396s] Invoked command in '/home/steffens/KITrain/build/localizer' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/steffens/KITrain/install/camera_simulator:/opt/ros/humble /usr/bin/cmake --build /home/steffens/KITrain/build/localizer -- -j16 -l16
+[0.461s] Invoking command in '/home/steffens/KITrain/build/localizer': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/steffens/KITrain/install/camera_simulator:/opt/ros/humble /usr/bin/cmake --install /home/steffens/KITrain/build/localizer
+[0.493s] -- Install configuration: ""
+[0.495s] -- Up-to-date: /home/steffens/KITrain/install/localizer/share/ament_index/resource_index/package_run_dependencies/localizer
+[0.495s] -- Up-to-date: /home/steffens/KITrain/install/localizer/share/ament_index/resource_index/parent_prefix_path/localizer
+[0.495s] -- Up-to-date: /home/steffens/KITrain/install/localizer/share/localizer/environment/ament_prefix_path.sh
+[0.495s] -- Up-to-date: /home/steffens/KITrain/install/localizer/share/localizer/environment/ament_prefix_path.dsv
+[0.495s] -- Up-to-date: /home/steffens/KITrain/install/localizer/share/localizer/environment/path.sh
+[0.495s] -- Up-to-date: /home/steffens/KITrain/install/localizer/share/localizer/environment/path.dsv
+[0.495s] -- Up-to-date: /home/steffens/KITrain/install/localizer/share/localizer/local_setup.bash
+[0.495s] -- Up-to-date: /home/steffens/KITrain/install/localizer/share/localizer/local_setup.sh
+[0.496s] -- Up-to-date: /home/steffens/KITrain/install/localizer/share/localizer/local_setup.zsh
+[0.496s] -- Up-to-date: /home/steffens/KITrain/install/localizer/share/localizer/local_setup.dsv
+[0.496s] -- Installing: /home/steffens/KITrain/install/localizer/share/localizer/package.dsv
+[0.496s] -- Up-to-date: /home/steffens/KITrain/install/localizer/share/ament_index/resource_index/packages/localizer
+[0.496s] -- Up-to-date: /home/steffens/KITrain/install/localizer/share/localizer/cmake/localizerConfig.cmake
+[0.496s] -- Up-to-date: /home/steffens/KITrain/install/localizer/share/localizer/cmake/localizerConfig-version.cmake
+[0.496s] -- Up-to-date: /home/steffens/KITrain/install/localizer/share/localizer/package.xml
+[0.550s] Invoked command in '/home/steffens/KITrain/build/localizer' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/steffens/KITrain/install/camera_simulator:/opt/ros/humble /usr/bin/cmake --install /home/steffens/KITrain/build/localizer

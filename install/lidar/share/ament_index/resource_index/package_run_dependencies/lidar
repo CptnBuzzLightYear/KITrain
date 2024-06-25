@@ -1,1 +1,1 @@
-/home/steffens/KITrain/build/lidar/ament_cmake_index/share/ament_index/resource_index/package_run_dependencies/lidar
+rclcpp;sensor_msgs;lidar_msgs;visualization_msgs;tf2;tf2_ros;tf2_geometry_msgs;ament_lint_auto;ament_lint_common

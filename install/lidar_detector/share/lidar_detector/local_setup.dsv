@@ -1,1 +1,2 @@
-/home/steffens/KITrain/build/lidar_detector/ament_cmake_environment_hooks/local_setup.dsv
+source;share/lidar_detector/environment/ament_prefix_path.sh
+source;share/lidar_detector/environment/path.sh

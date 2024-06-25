@@ -1,1 +1,2 @@
-/home/steffens/KITrain/build/object_fuser/ament_cmake_environment_hooks/local_setup.dsv
+source;share/object_fuser/environment/ament_prefix_path.sh
+source;share/object_fuser/environment/path.sh

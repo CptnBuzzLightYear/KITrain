@@ -1,1 +1,2 @@
-/home/steffens/KITrain/build/clearance_profile_setter/ament_cmake_environment_hooks/local_setup.dsv
+source;share/clearance_profile_setter/environment/ament_prefix_path.sh
+source;share/clearance_profile_setter/environment/path.sh
