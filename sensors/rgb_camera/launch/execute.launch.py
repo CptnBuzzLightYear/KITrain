@@ -13,6 +13,11 @@ def generate_launch_description():
             executable = 'lidar_udp_publisher', 
             name = 'screen2'), 
 
+        Node(
+            package = 'gnss', 
+            executable = 'gnss_udp_publisher', 
+            name = 'screen5'),     
+
         #Node(
          #   package = 'camera_simulator',
           #  executable = 'camera_simulator',
@@ -22,7 +27,7 @@ def generate_launch_description():
        Node(
             package = 'track_detector', 
             executable = 'track_detect_main', 
-            name = 'screen2'), 
+            name = 'screen3'), 
 
      #   Node(
        #     package = 'live_position', 

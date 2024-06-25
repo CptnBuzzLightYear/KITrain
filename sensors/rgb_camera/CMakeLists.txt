@@ -33,7 +33,7 @@ cv_bridge
 
 install(TARGETS 
 rgb_camera_receiver_main
-DESTINATION lib/$(PROJECT_NAME) #rgb_camera
+DESTINATION lib/rgb_camera #$(PROJECT_NAME) 
 )
 
 install(DIRECTORY 
