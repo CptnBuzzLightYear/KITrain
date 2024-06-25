@@ -277,6 +277,8 @@ private:
         return cloud_with_i;
     }
 
+// test command
+
     rclcpp::Subscription<sensor_msgs::msg::PointCloud2>::SharedPtr subscription_;
     rclcpp::Publisher<sensor_msgs::msg::PointCloud2>::SharedPtr publisher_;
     rclcpp::Publisher<lidar_msgs::msg::GroundTruthArray>::SharedPtr publisherbbox_;
