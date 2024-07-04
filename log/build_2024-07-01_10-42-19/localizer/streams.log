@@ -1,0 +1,56 @@
+[0.295s] Invoking command in '/home/steffens/KITrain/build/localizer': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/steffens/KITrain/install/camera_simulator:/opt/ros/humble /usr/bin/cmake /home/steffens/KITrain/src/ki_train/positioner/localizer -DCMAKE_INSTALL_PREFIX=/home/steffens/KITrain/install/localizer
+[0.358s] -- The C compiler identification is GNU 11.4.0
+[0.432s] -- The CXX compiler identification is GNU 11.4.0
+[0.442s] -- Detecting C compiler ABI info
+[0.519s] -- Detecting C compiler ABI info - done
+[0.529s] -- Check for working C compiler: /usr/bin/cc - skipped
+[0.529s] -- Detecting C compile features
+[0.529s] -- Detecting C compile features - done
+[0.532s] -- Detecting CXX compiler ABI info
+[0.646s] -- Detecting CXX compiler ABI info - done
+[0.653s] -- Check for working CXX compiler: /usr/bin/c++ - skipped
+[0.653s] -- Detecting CXX compile features
+[0.654s] -- Detecting CXX compile features - done
+[0.656s] -- Found ament_cmake: 1.3.9 (/opt/ros/humble/share/ament_cmake/cmake)
+[0.824s] -- Found Python3: /usr/bin/python3 (found version "3.10.12") found components: Interpreter 
+[0.985s] -- Found rclcpp: 16.0.9 (/opt/ros/humble/share/rclcpp/cmake)
+[1.038s] -- Found rosidl_generator_c: 3.1.5 (/opt/ros/humble/share/rosidl_generator_c/cmake)
+[1.043s] -- Found rosidl_adapter: 3.1.5 (/opt/ros/humble/share/rosidl_adapter/cmake)
+[1.057s] -- Found rosidl_generator_cpp: 3.1.5 (/opt/ros/humble/share/rosidl_generator_cpp/cmake)
+[1.069s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[1.088s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[1.152s] -- Found rmw_implementation_cmake: 6.1.2 (/opt/ros/humble/share/rmw_implementation_cmake/cmake)
+[1.156s] -- Found rmw_fastrtps_cpp: 6.2.6 (/opt/ros/humble/share/rmw_fastrtps_cpp/cmake)
+[1.285s] -- Found OpenSSL: /usr/lib/x86_64-linux-gnu/libcrypto.so (found version "3.0.2")  
+[1.315s] -- Found FastRTPS: /opt/ros/humble/include  
+[1.374s] -- Using RMW implementation 'rmw_fastrtps_cpp' as default
+[1.392s] -- Looking for pthread.h
+[1.479s] -- Looking for pthread.h - found
+[1.479s] -- Performing Test CMAKE_HAVE_LIBC_PTHREAD
+[1.562s] -- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Success
+[1.564s] -- Found Threads: TRUE  
+[1.720s] -- Found sensor_msgs: 4.2.3 (/opt/ros/humble/share/sensor_msgs/cmake)
+[1.894s] -- Configuring done
+[1.899s] -- Generating done
+[1.900s] -- Build files have been written to: /home/steffens/KITrain/build/localizer
+[1.910s] Invoked command in '/home/steffens/KITrain/build/localizer' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/steffens/KITrain/install/camera_simulator:/opt/ros/humble /usr/bin/cmake /home/steffens/KITrain/src/ki_train/positioner/localizer -DCMAKE_INSTALL_PREFIX=/home/steffens/KITrain/install/localizer
+[1.912s] Invoking command in '/home/steffens/KITrain/build/localizer': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/steffens/KITrain/install/camera_simulator:/opt/ros/humble /usr/bin/cmake --build /home/steffens/KITrain/build/localizer -- -j16 -l16
+[1.962s] Invoked command in '/home/steffens/KITrain/build/localizer' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/steffens/KITrain/install/camera_simulator:/opt/ros/humble /usr/bin/cmake --build /home/steffens/KITrain/build/localizer -- -j16 -l16
+[1.990s] Invoking command in '/home/steffens/KITrain/build/localizer': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/steffens/KITrain/install/camera_simulator:/opt/ros/humble /usr/bin/cmake --install /home/steffens/KITrain/build/localizer
+[1.999s] -- Install configuration: ""
+[1.999s] -- Installing: /home/steffens/KITrain/install/localizer/share/ament_index/resource_index/package_run_dependencies/localizer
+[1.999s] -- Installing: /home/steffens/KITrain/install/localizer/share/ament_index/resource_index/parent_prefix_path/localizer
+[1.999s] -- Installing: /home/steffens/KITrain/install/localizer/share/localizer/environment/ament_prefix_path.sh
+[2.000s] -- Installing: /home/steffens/KITrain/install/localizer/share/localizer/environment/ament_prefix_path.dsv
+[2.000s] -- Installing: /home/steffens/KITrain/install/localizer/share/localizer/environment/path.sh
+[2.000s] -- Installing: /home/steffens/KITrain/install/localizer/share/localizer/environment/path.dsv
+[2.000s] -- Installing: /home/steffens/KITrain/install/localizer/share/localizer/local_setup.bash
+[2.001s] -- Installing: /home/steffens/KITrain/install/localizer/share/localizer/local_setup.sh
+[2.001s] -- Installing: /home/steffens/KITrain/install/localizer/share/localizer/local_setup.zsh
+[2.001s] -- Installing: /home/steffens/KITrain/install/localizer/share/localizer/local_setup.dsv
+[2.001s] -- Installing: /home/steffens/KITrain/install/localizer/share/localizer/package.dsv
+[2.001s] -- Installing: /home/steffens/KITrain/install/localizer/share/ament_index/resource_index/packages/localizer
+[2.002s] -- Installing: /home/steffens/KITrain/install/localizer/share/localizer/cmake/localizerConfig.cmake
+[2.002s] -- Installing: /home/steffens/KITrain/install/localizer/share/localizer/cmake/localizerConfig-version.cmake
+[2.002s] -- Installing: /home/steffens/KITrain/install/localizer/share/localizer/package.xml
+[2.005s] Invoked command in '/home/steffens/KITrain/build/localizer' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/steffens/KITrain/install/camera_simulator:/opt/ros/humble /usr/bin/cmake --install /home/steffens/KITrain/build/localizer

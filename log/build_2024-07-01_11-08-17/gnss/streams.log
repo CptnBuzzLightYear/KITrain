@@ -1,0 +1,37 @@
+[0.333s] Invoking command in '/home/steffens/KITrain/build/gnss': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/steffens/KITrain/install/camera_simulator:/opt/ros/humble /usr/bin/cmake --build /home/steffens/KITrain/build/gnss -- -j16 -l16
+[0.389s] -- Found ament_cmake: 1.3.9 (/opt/ros/humble/share/ament_cmake/cmake)
+[0.494s] -- Found rclcpp: 16.0.9 (/opt/ros/humble/share/rclcpp/cmake)
+[0.524s] -- Found rosidl_generator_c: 3.1.5 (/opt/ros/humble/share/rosidl_generator_c/cmake)
+[0.526s] -- Found rosidl_adapter: 3.1.5 (/opt/ros/humble/share/rosidl_adapter/cmake)
+[0.532s] -- Found rosidl_generator_cpp: 3.1.5 (/opt/ros/humble/share/rosidl_generator_cpp/cmake)
+[0.543s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[0.558s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[0.613s] -- Found rmw_implementation_cmake: 6.1.2 (/opt/ros/humble/share/rmw_implementation_cmake/cmake)
+[0.616s] -- Found rmw_fastrtps_cpp: 6.2.6 (/opt/ros/humble/share/rmw_fastrtps_cpp/cmake)
+[0.753s] -- Using RMW implementation 'rmw_fastrtps_cpp' as default
+[0.896s] -- Found sensor_msgs: 4.2.3 (/opt/ros/humble/share/sensor_msgs/cmake)
+[1.090s] -- Configuring done
+[1.100s] -- Generating done
+[1.101s] -- Build files have been written to: /home/steffens/KITrain/build/gnss
+[1.131s] [35m[1mConsolidate compiler generated dependencies of target gnss_udp_publisher[0m
+[1.154s] [100%] Built target gnss_udp_publisher
+[1.167s] Invoked command in '/home/steffens/KITrain/build/gnss' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/steffens/KITrain/install/camera_simulator:/opt/ros/humble /usr/bin/cmake --build /home/steffens/KITrain/build/gnss -- -j16 -l16
+[1.200s] Invoking command in '/home/steffens/KITrain/build/gnss': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/steffens/KITrain/install/camera_simulator:/opt/ros/humble /usr/bin/cmake --install /home/steffens/KITrain/build/gnss
+[1.208s] -- Install configuration: ""
+[1.208s] -- Up-to-date: /home/steffens/KITrain/install/gnss/lib/gnss/gnss_udp_publisher
+[1.209s] -- Up-to-date: /home/steffens/KITrain/install/gnss/share/ament_index/resource_index/package_run_dependencies/gnss
+[1.209s] -- Up-to-date: /home/steffens/KITrain/install/gnss/share/ament_index/resource_index/parent_prefix_path/gnss
+[1.209s] -- Up-to-date: /home/steffens/KITrain/install/gnss/share/gnss/environment/ament_prefix_path.sh
+[1.209s] -- Installing: /home/steffens/KITrain/install/gnss/share/gnss/environment/ament_prefix_path.dsv
+[1.209s] -- Up-to-date: /home/steffens/KITrain/install/gnss/share/gnss/environment/path.sh
+[1.209s] -- Installing: /home/steffens/KITrain/install/gnss/share/gnss/environment/path.dsv
+[1.210s] -- Up-to-date: /home/steffens/KITrain/install/gnss/share/gnss/local_setup.bash
+[1.210s] -- Up-to-date: /home/steffens/KITrain/install/gnss/share/gnss/local_setup.sh
+[1.210s] -- Up-to-date: /home/steffens/KITrain/install/gnss/share/gnss/local_setup.zsh
+[1.210s] -- Installing: /home/steffens/KITrain/install/gnss/share/gnss/local_setup.dsv
+[1.210s] -- Installing: /home/steffens/KITrain/install/gnss/share/gnss/package.dsv
+[1.210s] -- Up-to-date: /home/steffens/KITrain/install/gnss/share/ament_index/resource_index/packages/gnss
+[1.211s] -- Up-to-date: /home/steffens/KITrain/install/gnss/share/gnss/cmake/gnssConfig.cmake
+[1.211s] -- Up-to-date: /home/steffens/KITrain/install/gnss/share/gnss/cmake/gnssConfig-version.cmake
+[1.211s] -- Up-to-date: /home/steffens/KITrain/install/gnss/share/gnss/package.xml
+[1.213s] Invoked command in '/home/steffens/KITrain/build/gnss' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/steffens/KITrain/install/camera_simulator:/opt/ros/humble /usr/bin/cmake --install /home/steffens/KITrain/build/gnss

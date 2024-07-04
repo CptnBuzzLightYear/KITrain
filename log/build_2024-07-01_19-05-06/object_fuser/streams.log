@@ -1,0 +1,20 @@
+[0.367s] Invoking command in '/home/steffens/KITrain/build/object_fuser': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/steffens/KITrain/install/camera_simulator:/opt/ros/humble /usr/bin/cmake --build /home/steffens/KITrain/build/object_fuser -- -j16 -l16
+[0.434s] Invoked command in '/home/steffens/KITrain/build/object_fuser' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/steffens/KITrain/install/camera_simulator:/opt/ros/humble /usr/bin/cmake --build /home/steffens/KITrain/build/object_fuser -- -j16 -l16
+[0.481s] Invoking command in '/home/steffens/KITrain/build/object_fuser': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/steffens/KITrain/install/camera_simulator:/opt/ros/humble /usr/bin/cmake --install /home/steffens/KITrain/build/object_fuser
+[0.512s] -- Install configuration: ""
+[0.512s] -- Up-to-date: /home/steffens/KITrain/install/object_fuser/share/ament_index/resource_index/package_run_dependencies/object_fuser
+[0.512s] -- Up-to-date: /home/steffens/KITrain/install/object_fuser/share/ament_index/resource_index/parent_prefix_path/object_fuser
+[0.512s] -- Up-to-date: /home/steffens/KITrain/install/object_fuser/share/object_fuser/environment/ament_prefix_path.sh
+[0.512s] -- Up-to-date: /home/steffens/KITrain/install/object_fuser/share/object_fuser/environment/ament_prefix_path.dsv
+[0.512s] -- Up-to-date: /home/steffens/KITrain/install/object_fuser/share/object_fuser/environment/path.sh
+[0.512s] -- Up-to-date: /home/steffens/KITrain/install/object_fuser/share/object_fuser/environment/path.dsv
+[0.513s] -- Up-to-date: /home/steffens/KITrain/install/object_fuser/share/object_fuser/local_setup.bash
+[0.513s] -- Up-to-date: /home/steffens/KITrain/install/object_fuser/share/object_fuser/local_setup.sh
+[0.513s] -- Up-to-date: /home/steffens/KITrain/install/object_fuser/share/object_fuser/local_setup.zsh
+[0.513s] -- Up-to-date: /home/steffens/KITrain/install/object_fuser/share/object_fuser/local_setup.dsv
+[0.513s] -- Installing: /home/steffens/KITrain/install/object_fuser/share/object_fuser/package.dsv
+[0.513s] -- Up-to-date: /home/steffens/KITrain/install/object_fuser/share/ament_index/resource_index/packages/object_fuser
+[0.513s] -- Up-to-date: /home/steffens/KITrain/install/object_fuser/share/object_fuser/cmake/object_fuserConfig.cmake
+[0.513s] -- Up-to-date: /home/steffens/KITrain/install/object_fuser/share/object_fuser/cmake/object_fuserConfig-version.cmake
+[0.513s] -- Up-to-date: /home/steffens/KITrain/install/object_fuser/share/object_fuser/package.xml
+[0.566s] Invoked command in '/home/steffens/KITrain/build/object_fuser' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/steffens/KITrain/install/camera_simulator:/opt/ros/humble /usr/bin/cmake --install /home/steffens/KITrain/build/object_fuser

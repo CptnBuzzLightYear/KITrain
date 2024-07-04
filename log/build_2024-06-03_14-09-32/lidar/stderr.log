@@ -1,7 +1,0 @@
-[01m[K/home/steffens/KITrain/src/ki_train/sensors/lidar/src/lidar_udp_to_topic.cpp:[m[K In member function ‘[01m[Kvoid LidarUDPPublisher::publishGroundTruth(const std::vector<lidar_msgs::msg::GroundTruth_<std::allocator<void> >, std::allocator<lidar_msgs::msg::GroundTruth_<std::allocator<void> > > >&)[m[K’:
-[01m[K/home/steffens/KITrain/src/ki_train/sensors/lidar/src/lidar_udp_to_topic.cpp:272:13:[m[K [01;31m[Kerror: [m[Kinvalid use of member function ‘[01m[Kvoid LidarUDPPublisher::publishGroundTruth(const std::vector<lidar_msgs::msg::GroundTruth_<std::allocator<void> >, std::allocator<lidar_msgs::msg::GroundTruth_<std::allocator<void> > > >&)[m[K’ (did you forget the ‘[01m[K()[m[K’ ?)
-  272 |             [01;31m[KpublishGroundTruth[m[K->publish(groundtruth_msg);
-      |             [01;31m[K^~~~~~~~~~~~~~~~~~[m[K
-gmake[2]: *** [CMakeFiles/lidar_udp_publisher.dir/build.make:76: CMakeFiles/lidar_udp_publisher.dir/src/lidar_udp_to_topic.cpp.o] Error 1
-gmake[1]: *** [CMakeFiles/Makefile2:137: CMakeFiles/lidar_udp_publisher.dir/all] Error 2
-gmake: *** [Makefile:146: all] Error 2

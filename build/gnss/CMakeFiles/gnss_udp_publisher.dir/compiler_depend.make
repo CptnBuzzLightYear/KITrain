@@ -691,7 +691,8 @@ CMakeFiles/gnss_udp_publisher.dir/src/gnss_udp_to_topic.cpp.o: /home/steffens/KI
   /usr/include/asm-generic/sockios.h \
   /usr/include/x86_64-linux-gnu/bits/types/struct_osockaddr.h \
   /usr/include/netinet/in.h \
-  /usr/include/x86_64-linux-gnu/bits/in.h
+  /usr/include/x86_64-linux-gnu/bits/in.h \
+  /usr/include/arpa/inet.h
 
 
 /usr/include/x86_64-linux-gnu/bits/in.h:
@@ -1167,6 +1168,8 @@ CMakeFiles/gnss_udp_publisher.dir/src/gnss_udp_to_topic.cpp.o: /home/steffens/KI
 /opt/ros/humble/include/rclcpp/rclcpp/callback_group.hpp:
 
 /usr/include/c++/11/bits/basic_string.tcc:
+
+/usr/include/arpa/inet.h:
 
 /usr/include/x86_64-linux-gnu/bits/sigaction.h:
 

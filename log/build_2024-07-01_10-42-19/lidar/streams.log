@@ -1,0 +1,70 @@
+[0.012s] Invoking command in '/home/steffens/KITrain/build/lidar': CMAKE_PREFIX_PATH=/home/steffens/KITrain/install/lidar_msgs:/home/steffens/KITrain/install/track_detector:/home/steffens/KITrain/install/target_velocity_estimator:/home/steffens/KITrain/install/target_distance_estimator:/home/steffens/KITrain/install/signal_detector:/home/steffens/KITrain/install/signal_detection_verificator:/home/steffens/KITrain/install/rgb_detector:/home/steffens/KITrain/install/rgb_camera:/home/steffens/KITrain/install/position_corrector:/home/steffens/KITrain/install/odometry:/home/steffens/KITrain/install/object_fuser:/home/steffens/KITrain/install/localizer:/home/steffens/KITrain/install/lidar:/home/steffens/KITrain/install/lidar_detector:/home/steffens/KITrain/install/gnss:/home/steffens/KITrain/install/clearance_profile_setter:/home/steffens/KITrain/install/clearance_profile_observer:/home/steffens/KITrain/install/camera_simulator:/opt/ros/humble /usr/bin/cmake /home/steffens/KITrain/src/ki_train/sensors/lidar -DCMAKE_INSTALL_PREFIX=/home/steffens/KITrain/install/lidar
+[0.073s] -- The C compiler identification is GNU 11.4.0
+[0.127s] -- The CXX compiler identification is GNU 11.4.0
+[0.135s] -- Detecting C compiler ABI info
+[0.211s] -- Detecting C compiler ABI info - done
+[0.217s] -- Check for working C compiler: /usr/bin/cc - skipped
+[0.217s] -- Detecting C compile features
+[0.218s] -- Detecting C compile features - done
+[0.221s] -- Detecting CXX compiler ABI info
+[0.308s] -- Detecting CXX compiler ABI info - done
+[0.315s] -- Check for working CXX compiler: /usr/bin/c++ - skipped
+[0.315s] -- Detecting CXX compile features
+[0.315s] -- Detecting CXX compile features - done
+[0.320s] -- Found ament_cmake: 1.3.9 (/opt/ros/humble/share/ament_cmake/cmake)
+[0.485s] -- Found Python3: /usr/bin/python3 (found version "3.10.12") found components: Interpreter 
+[0.600s] -- Found rclcpp: 16.0.9 (/opt/ros/humble/share/rclcpp/cmake)
+[0.666s] -- Found rosidl_generator_c: 3.1.5 (/opt/ros/humble/share/rosidl_generator_c/cmake)
+[0.675s] -- Found rosidl_adapter: 3.1.5 (/opt/ros/humble/share/rosidl_adapter/cmake)
+[0.687s] -- Found rosidl_generator_cpp: 3.1.5 (/opt/ros/humble/share/rosidl_generator_cpp/cmake)
+[0.703s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[0.728s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[0.822s] -- Found rmw_implementation_cmake: 6.1.2 (/opt/ros/humble/share/rmw_implementation_cmake/cmake)
+[0.827s] -- Found rmw_fastrtps_cpp: 6.2.6 (/opt/ros/humble/share/rmw_fastrtps_cpp/cmake)
+[0.960s] -- Found OpenSSL: /usr/lib/x86_64-linux-gnu/libcrypto.so (found version "3.0.2")  
+[0.994s] -- Found FastRTPS: /opt/ros/humble/include  
+[1.052s] -- Using RMW implementation 'rmw_fastrtps_cpp' as default
+[1.071s] -- Looking for pthread.h
+[1.151s] -- Looking for pthread.h - found
+[1.151s] -- Performing Test CMAKE_HAVE_LIBC_PTHREAD
+[1.236s] -- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Success
+[1.237s] -- Found Threads: TRUE  
+[1.394s] -- Found sensor_msgs: 4.2.3 (/opt/ros/humble/share/sensor_msgs/cmake)
+[1.510s] -- Found lidar_msgs: 0.0.0 (/home/steffens/KITrain/install/lidar_msgs/share/lidar_msgs/cmake)
+[1.558s] -- Found visualization_msgs: 4.2.3 (/opt/ros/humble/share/visualization_msgs/cmake)
+[1.718s] -- Found tf2: 0.25.6 (/opt/ros/humble/share/tf2/cmake)
+[1.745s] -- Found tf2_ros: 0.25.6 (/opt/ros/humble/share/tf2_ros/cmake)
+[2.188s] -- Found tf2_geometry_msgs: 0.25.6 (/opt/ros/humble/share/tf2_geometry_msgs/cmake)
+[2.250s] -- Found eigen3_cmake_module: 0.1.1 (/opt/ros/humble/share/eigen3_cmake_module/cmake)
+[2.253s] -- Found Eigen3: TRUE (found version "3.4.0") 
+[2.253s] -- Ensuring Eigen3 include directory is part of orocos-kdl CMake target
+[2.326s] -- Configuring done
+[2.339s] -- Generating done
+[2.341s] -- Build files have been written to: /home/steffens/KITrain/build/lidar
+[2.351s] Invoked command in '/home/steffens/KITrain/build/lidar' returned '0': CMAKE_PREFIX_PATH=/home/steffens/KITrain/install/lidar_msgs:/home/steffens/KITrain/install/track_detector:/home/steffens/KITrain/install/target_velocity_estimator:/home/steffens/KITrain/install/target_distance_estimator:/home/steffens/KITrain/install/signal_detector:/home/steffens/KITrain/install/signal_detection_verificator:/home/steffens/KITrain/install/rgb_detector:/home/steffens/KITrain/install/rgb_camera:/home/steffens/KITrain/install/position_corrector:/home/steffens/KITrain/install/odometry:/home/steffens/KITrain/install/object_fuser:/home/steffens/KITrain/install/localizer:/home/steffens/KITrain/install/lidar:/home/steffens/KITrain/install/lidar_detector:/home/steffens/KITrain/install/gnss:/home/steffens/KITrain/install/clearance_profile_setter:/home/steffens/KITrain/install/clearance_profile_observer:/home/steffens/KITrain/install/camera_simulator:/opt/ros/humble /usr/bin/cmake /home/steffens/KITrain/src/ki_train/sensors/lidar -DCMAKE_INSTALL_PREFIX=/home/steffens/KITrain/install/lidar
+[2.353s] Invoking command in '/home/steffens/KITrain/build/lidar': CMAKE_PREFIX_PATH=/home/steffens/KITrain/install/lidar_msgs:/home/steffens/KITrain/install/track_detector:/home/steffens/KITrain/install/target_velocity_estimator:/home/steffens/KITrain/install/target_distance_estimator:/home/steffens/KITrain/install/signal_detector:/home/steffens/KITrain/install/signal_detection_verificator:/home/steffens/KITrain/install/rgb_detector:/home/steffens/KITrain/install/rgb_camera:/home/steffens/KITrain/install/position_corrector:/home/steffens/KITrain/install/odometry:/home/steffens/KITrain/install/object_fuser:/home/steffens/KITrain/install/localizer:/home/steffens/KITrain/install/lidar:/home/steffens/KITrain/install/lidar_detector:/home/steffens/KITrain/install/gnss:/home/steffens/KITrain/install/clearance_profile_setter:/home/steffens/KITrain/install/clearance_profile_observer:/home/steffens/KITrain/install/camera_simulator:/opt/ros/humble /usr/bin/cmake --build /home/steffens/KITrain/build/lidar -- -j16 -l16
+[2.418s] [ 50%] [32mBuilding CXX object CMakeFiles/lidar_udp_publisher.dir/src/lidar_udp_to_topic.cpp.o[0m
+[7.892s] [100%] [32m[1mLinking CXX executable lidar_udp_publisher[0m
+[8.142s] [100%] Built target lidar_udp_publisher
+[8.156s] Invoked command in '/home/steffens/KITrain/build/lidar' returned '0': CMAKE_PREFIX_PATH=/home/steffens/KITrain/install/lidar_msgs:/home/steffens/KITrain/install/track_detector:/home/steffens/KITrain/install/target_velocity_estimator:/home/steffens/KITrain/install/target_distance_estimator:/home/steffens/KITrain/install/signal_detector:/home/steffens/KITrain/install/signal_detection_verificator:/home/steffens/KITrain/install/rgb_detector:/home/steffens/KITrain/install/rgb_camera:/home/steffens/KITrain/install/position_corrector:/home/steffens/KITrain/install/odometry:/home/steffens/KITrain/install/object_fuser:/home/steffens/KITrain/install/localizer:/home/steffens/KITrain/install/lidar:/home/steffens/KITrain/install/lidar_detector:/home/steffens/KITrain/install/gnss:/home/steffens/KITrain/install/clearance_profile_setter:/home/steffens/KITrain/install/clearance_profile_observer:/home/steffens/KITrain/install/camera_simulator:/opt/ros/humble /usr/bin/cmake --build /home/steffens/KITrain/build/lidar -- -j16 -l16
+[8.190s] Invoking command in '/home/steffens/KITrain/build/lidar': CMAKE_PREFIX_PATH=/home/steffens/KITrain/install/lidar_msgs:/home/steffens/KITrain/install/track_detector:/home/steffens/KITrain/install/target_velocity_estimator:/home/steffens/KITrain/install/target_distance_estimator:/home/steffens/KITrain/install/signal_detector:/home/steffens/KITrain/install/signal_detection_verificator:/home/steffens/KITrain/install/rgb_detector:/home/steffens/KITrain/install/rgb_camera:/home/steffens/KITrain/install/position_corrector:/home/steffens/KITrain/install/odometry:/home/steffens/KITrain/install/object_fuser:/home/steffens/KITrain/install/localizer:/home/steffens/KITrain/install/lidar:/home/steffens/KITrain/install/lidar_detector:/home/steffens/KITrain/install/gnss:/home/steffens/KITrain/install/clearance_profile_setter:/home/steffens/KITrain/install/clearance_profile_observer:/home/steffens/KITrain/install/camera_simulator:/opt/ros/humble /usr/bin/cmake --install /home/steffens/KITrain/build/lidar
+[8.199s] -- Install configuration: ""
+[8.199s] -- Installing: /home/steffens/KITrain/install/lidar/lib/lidar/lidar_udp_publisher
+[8.201s] -- Set runtime path of "/home/steffens/KITrain/install/lidar/lib/lidar/lidar_udp_publisher" to ""
+[8.202s] -- Installing: /home/steffens/KITrain/install/lidar/share/ament_index/resource_index/package_run_dependencies/lidar
+[8.202s] -- Installing: /home/steffens/KITrain/install/lidar/share/ament_index/resource_index/parent_prefix_path/lidar
+[8.202s] -- Installing: /home/steffens/KITrain/install/lidar/share/lidar/environment/ament_prefix_path.sh
+[8.202s] -- Installing: /home/steffens/KITrain/install/lidar/share/lidar/environment/ament_prefix_path.dsv
+[8.202s] -- Installing: /home/steffens/KITrain/install/lidar/share/lidar/environment/path.sh
+[8.203s] -- Installing: /home/steffens/KITrain/install/lidar/share/lidar/environment/path.dsv
+[8.203s] -- Installing: /home/steffens/KITrain/install/lidar/share/lidar/local_setup.bash
+[8.203s] -- Installing: /home/steffens/KITrain/install/lidar/share/lidar/local_setup.sh
+[8.203s] -- Installing: /home/steffens/KITrain/install/lidar/share/lidar/local_setup.zsh
+[8.204s] -- Installing: /home/steffens/KITrain/install/lidar/share/lidar/local_setup.dsv
+[8.204s] -- Installing: /home/steffens/KITrain/install/lidar/share/lidar/package.dsv
+[8.204s] -- Installing: /home/steffens/KITrain/install/lidar/share/ament_index/resource_index/packages/lidar
+[8.204s] -- Installing: /home/steffens/KITrain/install/lidar/share/lidar/cmake/ament_cmake_export_dependencies-extras.cmake
+[8.204s] -- Installing: /home/steffens/KITrain/install/lidar/share/lidar/cmake/lidarConfig.cmake
+[8.205s] -- Installing: /home/steffens/KITrain/install/lidar/share/lidar/cmake/lidarConfig-version.cmake
+[8.205s] -- Installing: /home/steffens/KITrain/install/lidar/share/lidar/package.xml
+[8.207s] Invoked command in '/home/steffens/KITrain/build/lidar' returned '0': CMAKE_PREFIX_PATH=/home/steffens/KITrain/install/lidar_msgs:/home/steffens/KITrain/install/track_detector:/home/steffens/KITrain/install/target_velocity_estimator:/home/steffens/KITrain/install/target_distance_estimator:/home/steffens/KITrain/install/signal_detector:/home/steffens/KITrain/install/signal_detection_verificator:/home/steffens/KITrain/install/rgb_detector:/home/steffens/KITrain/install/rgb_camera:/home/steffens/KITrain/install/position_corrector:/home/steffens/KITrain/install/odometry:/home/steffens/KITrain/install/object_fuser:/home/steffens/KITrain/install/localizer:/home/steffens/KITrain/install/lidar:/home/steffens/KITrain/install/lidar_detector:/home/steffens/KITrain/install/gnss:/home/steffens/KITrain/install/clearance_profile_setter:/home/steffens/KITrain/install/clearance_profile_observer:/home/steffens/KITrain/install/camera_simulator:/opt/ros/humble /usr/bin/cmake --install /home/steffens/KITrain/build/lidar

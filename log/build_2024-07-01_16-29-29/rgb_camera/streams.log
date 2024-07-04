@@ -1,0 +1,10 @@
+[0.307s] Invoking command in '/home/steffens/KITrain/build/rgb_camera': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/steffens/KITrain/install/camera_simulator:/opt/ros/humble /usr/bin/cmake --build /home/steffens/KITrain/build/rgb_camera -- -j16 -l16
+[0.369s] [35m[1mConsolidate compiler generated dependencies of target rgb_camera_receiver_main[0m
+[0.401s] [ 50%] [32m[1mLinking CXX executable rgb_camera_receiver_main[0m
+[0.650s] /usr/bin/ld: /usr/lib/gcc/x86_64-linux-gnu/11/../../../x86_64-linux-gnu/Scrt1.o: in function `_start':
+[0.650s] (.text+0x1b): undefined reference to `main'
+[0.654s] collect2: error: ld returned 1 exit status
+[0.657s] gmake[2]: *** [CMakeFiles/rgb_camera_receiver_main.dir/build.make:232: rgb_camera_receiver_main] Error 1
+[0.657s] gmake[1]: *** [CMakeFiles/Makefile2:137: CMakeFiles/rgb_camera_receiver_main.dir/all] Error 2
+[0.657s] gmake: *** [Makefile:146: all] Error 2
+[0.735s] Invoked command in '/home/steffens/KITrain/build/rgb_camera' returned '2': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/steffens/KITrain/install/camera_simulator:/opt/ros/humble /usr/bin/cmake --build /home/steffens/KITrain/build/rgb_camera -- -j16 -l16
