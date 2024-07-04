@@ -13,7 +13,6 @@ To Use This Template:
 #include <rclcpp/rclcpp.hpp>
 #include <sensor_msgs/msg/point_cloud2.hpp>
 #include "std_msgs/msg/string.hpp"
-//test comment
 #include <pcl/io/pcd_io.h>
 #include <pcl/point_types.h>
 #include <pcl/conversions.h>
@@ -21,6 +20,11 @@ To Use This Template:
 #include <pcl/segmentation/extract_clusters.h>
 #include <pcl/point_cloud.h>
 #include <pcl/filters/passthrough.h>
+
+#include <lidar_msgs/msg/ground_truth.hpp>
+#include "lidar_msgs/msg/ground_truth_array.hpp"
+//#include "visualization_msgs/msg/marker.hpp"
+//#include "visualization_msgs/msg/marker_array.hpp"
 
 #include <pcl_conversions/pcl_conversions.h>
 #include "fast_euclidean_clustering.h"
@@ -35,6 +39,7 @@ public:
         subscription_ = this->create_subscription<sensor_msgs::msg::PointCloud2>(
             "/VoxelFilterPub", 1, std::bind(&LidarFilter::topic_callback, this, _1));
         publisher_ = this->create_publisher<sensor_msgs::msg::PointCloud2>("LidarClusterdPub", 1);
+        publisherbbox_ = this->create_publisher<lidar_msgs::msg::GroundTruthArray>("BboxClusterPub", 10);
     }
 
 private:
@@ -65,7 +70,7 @@ private:
         pass.filter(*cloud_xyz);
 
         // Clustering Algorithm
-        cloud_filtered_xyzrgb = clustering(cloud_xyz, 1, 50, 10000, 0.5); // 1000,
+        cloud_filtered_xyzrgb = clustering(cloud_xyz, 1, 50, 100000, 0.5); // 1000,
 
         // PCL Pointcloud to PCL Pointcloud2 Conversion
         pcl::toPCLPointCloud2(*cloud_filtered_xyzrgb, *cloud_filtered);
@@ -89,6 +94,9 @@ private:
         pcl::PointCloud<pcl::PointXYZRGB>::Ptr cloud_clustered(new pcl::PointCloud<pcl::PointXYZRGB>);
         FastEuclideanClustering<pcl::PointXYZI> fast_euclidean_clustering;
         pcl::search::KdTree<pcl::PointXYZI>::Ptr tree(new pcl::search::KdTree<pcl::PointXYZI>);
+        lidar_msgs::msg::GroundTruth bbox;
+        std::vector<lidar_msgs::msg::GroundTruth> bbox_arr;
+        lidar_msgs::msg::GroundTruthArray array_msg;
         int clustersize = 0;
         std::vector<pcl::PointIndices> clusters;
 
@@ -111,9 +119,7 @@ private:
         auto label = 0;
         for (const auto &cluster : clusters)
         {
-            // Working with Color
-
-            // Generate a unique color for each label using a HSV color map
+            // Generate a unique color for each BBOX using a HSV color map
             double hue = label * 360.0 / clustersize;
             double saturation = 1.0;
             double value = 1.0;
@@ -153,24 +159,84 @@ private:
             uint8_t G = (g + m) * 255;
             uint8_t B = (b + m) * 255;
 
+            // initialize min and max values with extreme values, so they will be overwritten
+            float_t min_val[3] = {1000, 1000, 1000}, max_val[3] = {-1000, -1000, -1000};
+            //for all initilized values:[0] = x, [1] = y, [2] = z
+
+            // Assigning the color to the cluster & creating the bbox
             for (auto index : cluster.indices)
             {
                 auto &point = cloud_clustered->at(index);
                 point.r = R;
                 point.g = G;
                 point.b = B;
+
+                if (point.x < min_val[0])
+                {
+                    min_val[0] = point.x;
+                }
+                if (point.y < min_val[1])
+                {
+                    min_val[1] = point.y;
+                }
+                if (point.z < min_val[2])
+                {
+                    min_val[2] = point.z;
+                }
+                if (point.x > max_val[0])
+                {
+                    max_val[0] = point.x;
+                }
+                if (point.y > max_val[1])
+                {
+                    max_val[1] = point.y;
+                }
+                if (point.z > max_val[2])
+                {
+                    max_val[2] = point.z;
+                }
             }
             label++;
-
-            /*// working with intensity
-            for (auto index : cluster.indices)
-            {
-                auto &point = cloud_with_i->at(index);
-                point.intensity = static_cast<float>(label);
+            
+            bbox = bbox_creation (min_val, max_val, R, G, B, label);
+            bbox_arr.push_back(bbox);
+            
             }
-            label++;*/
-        }
+
+
+//  HIER ÜBERÖEGEN WIE DAS GUT GEHT MIT DEM PUBLISHEN, muss nicht hier sein, kann auch mit der pcd gepublished werden
+        array_msg.header.stamp = this->now();
+        array_msg.header.frame_id = "frameidLiDARLabel";
+        array_msg.labels = bbox_arr;  
+        bbox_arr.clear();
+        publisherbbox_->publish(array_msg);
         return cloud_clustered;
+    }
+
+    lidar_msgs::msg::GroundTruth bbox_creation (float_t min_val[3], float_t max_val[3], uint8_t R, uint8_t G, uint8_t B, int label)
+    {
+        lidar_msgs::msg::GroundTruth bbox;
+        float_t bbox_dim[3] = {0, 0, 0}, center_coord[3] = {0, 0, 0};
+
+        for (int i = 0; i < 3; i++)
+        {
+            bbox_dim[i] = max_val[i] - min_val[i];
+            center_coord[i] = min_val[i] + bbox_dim[i] / 2;
+        }
+        bbox.id = label;
+        bbox.centerx = center_coord[0];
+        bbox.centery = center_coord[1];
+        bbox.centerz = center_coord[2];
+        bbox.length_x = bbox_dim[0];
+        bbox.width_y = bbox_dim[1];
+        bbox.height_z = bbox_dim[2];
+        bbox.yaw = 0;
+        bbox.tag = "";
+        //bbox.color.a = 1;
+        //bbox.color.r = R;
+        //bbox.color.g = G;
+        //bbox.color.b = B;
+        return bbox;
     }
 
     pcl::PointCloud<pcl::PointXYZI>::Ptr clustering_ec(pcl::PointCloud<pcl::PointXYZ>::Ptr &cloud, float tolerance, int min_cluster_size, int max_cluster_size, float quality)
@@ -184,8 +250,6 @@ private:
 
         // adding Intensity to the pointcloud (aka zeros)
         pcl::copyPointCloud(*cloud, *cloud_with_i);
-
-        // kd tree!!
 
         // Clustering Parameters
         fast_euclidean_clustering.setInputCloud(cloud_with_i);
@@ -214,6 +278,7 @@ private:
 
     rclcpp::Subscription<sensor_msgs::msg::PointCloud2>::SharedPtr subscription_;
     rclcpp::Publisher<sensor_msgs::msg::PointCloud2>::SharedPtr publisher_;
+    rclcpp::Publisher<lidar_msgs::msg::GroundTruthArray>::SharedPtr publisherbbox_;
 };
 
 int main(int argc, char *argv[])
