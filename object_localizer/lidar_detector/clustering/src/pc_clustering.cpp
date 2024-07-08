@@ -210,7 +210,6 @@ private:
         array_msg.labels = bbox_arr;  
         bbox_arr.clear();
         publisherbbox_->publish(array_msg);
-        RCLCPP_INFO(this->get_logger(), "BBox published");
         return cloud_clustered;
     }
 

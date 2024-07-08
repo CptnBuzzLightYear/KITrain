@@ -22,12 +22,12 @@ include_directories(
 link_directories(${PCL_LIBRARY_DIRS})
 add_definitions(${PCL_DEFINITIONS})
 
-#add_executable(roi_filter src/roi_filter.cpp)
-#ament_target_dependencies(roi_filter rclcpp nav_msgs sensor_msgs tf2_ros tf2_geometry_msgs)
-#target_link_libraries(roi_filter ${PCL_LIBRARIES})
+add_executable(roi_filter src/roi_filter.cpp)
+ament_target_dependencies(roi_filter rclcpp nav_msgs sensor_msgs tf2_ros tf2_geometry_msgs)
+target_link_libraries(roi_filter ${PCL_LIBRARIES})
 
 install(TARGETS
-  #roi_filter
+  roi_filter
   DESTINATION lib/${PROJECT_NAME}
 )
 
