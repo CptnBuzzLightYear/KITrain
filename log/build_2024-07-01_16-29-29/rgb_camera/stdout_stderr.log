@@ -1,8 +1,0 @@
-[35m[1mConsolidate compiler generated dependencies of target rgb_camera_receiver_main[0m
-[ 50%] [32m[1mLinking CXX executable rgb_camera_receiver_main[0m
-/usr/bin/ld: /usr/lib/gcc/x86_64-linux-gnu/11/../../../x86_64-linux-gnu/Scrt1.o: in function `_start':
-(.text+0x1b): undefined reference to `main'
-collect2: error: ld returned 1 exit status
-gmake[2]: *** [CMakeFiles/rgb_camera_receiver_main.dir/build.make:232: rgb_camera_receiver_main] Error 1
-gmake[1]: *** [CMakeFiles/Makefile2:137: CMakeFiles/rgb_camera_receiver_main.dir/all] Error 2
-gmake: *** [Makefile:146: all] Error 2

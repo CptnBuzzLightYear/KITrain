@@ -1,9 +1,0 @@
-int32 id
-float32 centerx
-float32 centery
-float32 centerz
-float32 length_x
-float32 width_y
-float32 height_z
-float32 yaw
-string tag

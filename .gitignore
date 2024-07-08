@@ -398,3 +398,8 @@ FodyWeavers.xsd
 *.sln.iml
 
 ../log/**
+
+# ROS specific ignores
+log/
+build/
+install/
