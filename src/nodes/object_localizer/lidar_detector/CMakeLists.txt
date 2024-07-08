@@ -7,6 +7,20 @@ endif()
 
 # find dependencies
 find_package(ament_cmake REQUIRED)
+find_package(rclcpp REQUIRED)
+find_package(std_msgs REQUIRED)
+find_package(sensor_msgs REQUIRED)
+find_package(PCL 1.12 REQUIRED)
+find_package(pcl_conversions REQUIRED)
+
+
+add_executable(voxel_filter src/voxel_filter.cpp)
+ament_target_dependencies(voxel_filter rclcpp std_msgs sensor_msgs PCL pcl_conversions)
+
+install(TARGETS
+  voxel_filter
+  DESTINATION lib/${PROJECT_NAME}
+)
 # uncomment the following section in order to fill in
 # further dependencies manually.
 # find_package(<dependency> REQUIRED)
@@ -22,5 +36,7 @@ if(BUILD_TESTING)
   set(ament_cmake_cpplint_FOUND TRUE)
   ament_lint_auto_find_test_dependencies()
 endif()
+
+target_link_libraries(voxel_filter ${ament_LIBRARIES} ${PCL_LIBRARIES})
 
 ament_package()
