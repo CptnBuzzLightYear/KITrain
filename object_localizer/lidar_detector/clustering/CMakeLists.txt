@@ -10,12 +10,19 @@ find_package(ament_cmake REQUIRED)
 find_package(rclcpp REQUIRED)
 find_package(std_msgs REQUIRED)
 find_package(sensor_msgs REQUIRED)
-find_package(PCL REQUIRED)
+find_package(PCL 1.12 REQUIRED)
+find_package(lidar_msgs REQUIRED)
+find_package(visualization_msgs REQUIRED)
 find_package(pcl_conversions REQUIRED)
 
+include_directories(
+  include
+  ${lidar_msgs_INCLUDE_DIRS}
+  )
 
 add_executable(clustering src/pc_clustering.cpp)
-ament_target_dependencies(clustering rclcpp std_msgs sensor_msgs PCL pcl_conversions)
+ament_target_dependencies(clustering rclcpp std_msgs sensor_msgs PCL lidar_msgs visualization_msgs pcl_conversions)
+
 
 install(TARGETS
   clustering
@@ -32,5 +39,7 @@ if(BUILD_TESTING)
   set(ament_cmake_cpplint_FOUND TRUE)
   ament_lint_auto_find_test_dependencies()
 endif()
+
+target_link_libraries(clustering ${ament_LIBRARIES} ${PCL_LIBRARIES})
 
 ament_package()
