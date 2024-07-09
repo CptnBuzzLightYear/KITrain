@@ -1,7 +1,0 @@
-{
-  "package_name": "lidar_msgs",
-  "non_idl_tuples": [
-    "/home/steffens/KITrain/src/lidar_msgs:msg/GroundTruth.msg",
-    "/home/steffens/KITrain/src/lidar_msgs:msg/GroundTruthArray.msg"
-  ]
-}

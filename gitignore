@@ -395,15 +395,6 @@ FodyWeavers.xsd
 *.msp
 
 # JetBrains Rider
-
-log/
-build/
-install/
 *.sln.iml
 
 ../log/**
-
-# ROS specific ignores
-log/
-build/
-install/
