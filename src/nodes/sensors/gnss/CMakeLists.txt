@@ -9,6 +9,7 @@ endif()
 find_package(ament_cmake REQUIRED)
 find_package(rclcpp REQUIRED)
 find_package(sensor_msgs REQUIRED)
+find_package(Threads REQUIRED)
 #find_package(Boost REQUIRED COMOONENT system)
 # uncomment the following section in order to fill in
 # further dependencies manually.
@@ -20,6 +21,9 @@ add_executable(gnss_udp_publisher src/gnss_udp_to_topic.cpp)
  rclcpp 
  sensor_msgs 
  )
+
+ # Add threading library
+target_link_libraries(gnss_udp_publisher ${CMAKE_THREAD_LIBS_INIT})
 
  install(TARGETS 
  gnss_udp_publisher

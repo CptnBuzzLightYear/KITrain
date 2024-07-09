@@ -2,79 +2,86 @@
 #include "sensor_msgs/msg/nav_sat_fix.hpp"
 #include <sys/socket.h>
 #include <netinet/in.h>
-
+#include <arpa/inet.h>
+#include <cstring>
+#include <thread>
+#include <iostream>
 
 using std::placeholders::_1;
 
 class GNSSUDPPublisher : public rclcpp::Node
 {
-    public:
+public:
     GNSSUDPPublisher() : Node("gnss_udp_publisher")
     {
-        gnssPublisher_ = this ->create_publisher<sensor_msgs::msg::NavSatFix>("gnss", 10);
+        gnssPublisher_ = this->create_publisher<sensor_msgs::msg::NavSatFix>("gnss", 10);
         
         // Create UDP socket for receiving GNSS data
-        sockfd2_ = socket(AF_INET, SOCK_DGRAM, 0);
-        if (sockfd2_ <0){
-            perror("Error: creating GNSS UDP socket");
+        sockfd_ = socket(AF_INET, SOCK_DGRAM, 0);
+        if (sockfd_ < 0) {
+            RCLCPP_ERROR(this->get_logger(), "Error: creating GNSS UDP socket");
             return;
         }
-        //Bind socket to address and port
-            sockaddr_in servaddr2;
-            servaddr2.sin_family = AF_INET;
-            servaddr2.sin_addr.s_addr = htonl(INADDR_ANY); //to any available interface
-            servaddr2.sin_port = htons(25002);             //PORT for GNSS stream
-            if(bind(sockfd2_,(const sockaddr*)&servaddr2, sizeof(servaddr2)) < 0){
-                std::cerr << "Error: Failed to bind socket" << std::endl;
-                close(sockfd2_);
-                return;
-            }
-            //Start receiving UDP packets in a separate thread
-            receive_gnss_thread_ = std::thread(&GNSSUDPPublisher::receiveLoop, this);
+
+        // Bind socket to address and port
+        sockaddr_in servaddr;
+        servaddr.sin_family = AF_INET;
+        servaddr.sin_addr.s_addr = htonl(INADDR_ANY); // to any available interface
+        servaddr.sin_port = htons(25002);             // PORT for GNSS stream
+        if (bind(sockfd_, (const sockaddr*)&servaddr, sizeof(servaddr)) < 0) {
+            RCLCPP_ERROR(this->get_logger(), "Error: failed to bind socket");
+            close(sockfd_);
+            return;
+        }
+
+        // Start receiving UDP packets in a separate thread
+        receive_gnss_thread_ = std::thread(&GNSSUDPPublisher::receiveLoop, this);
     }  
+
     ~GNSSUDPPublisher()
     {
-        close(sockfd2_);
+        close(sockfd_);
         if (receive_gnss_thread_.joinable())
             receive_gnss_thread_.join();
     }
 
- private: 
-
- void receiveLoop(){      
+private: 
+    void receiveLoop() {      
         const uint16_t MAX_UDP_PACKET_SIZE = 18928;
         char buffer[MAX_UDP_PACKET_SIZE];
 
-         RCLCPP_INFO(this->get_logger(), "Receive GNSS UDP Loop started");
+        RCLCPP_INFO(this->get_logger(), "Receive GNSS UDP Loop started");
         
-        while (rclcpp::ok()){
-            //Receive UDP Data          
+        while (rclcpp::ok()) {
+            // Receive UDP Data          
             sockaddr_in client_addr;
             socklen_t addr_len = sizeof(client_addr);
-            size_t bytes_received = recvfrom(sockfd2_, buffer, MAX_UDP_PACKET_SIZE,0 , (struct sockaddr *)&client_addr, &addr_len);
+            RCLCPP_INFO(this->get_logger(), "Waiting for data...");
+            
+            ssize_t bytes_received = recvfrom(sockfd_, buffer, MAX_UDP_PACKET_SIZE, 0, (struct sockaddr *)&client_addr, &addr_len);
 
-RCLCPP_INFO(this->get_logger(), "Receive GNSS UDP WHILE Loop started");
-
-            if(bytes_received <= 0){
-                 RCLCPP_INFO(this->get_logger(), "Error receiving GNSS UDP data");
+            if (bytes_received < 0) {
+                RCLCPP_ERROR(this->get_logger(), "Error receiving GNSS UDP data: %s", strerror(errno));
                 continue;
             }
-             //RCLCPP_INFO(this->get_logger(), "Received GNSS UDP");
-             //buffer[bytes_received] = '\0';
-             //log_buffer_hex(buffer, bytes_received);
-             
-             //CLCPP_INFO(this->get_logger(), "Received Data %s", buffer);
 
-            if(!convertToNavSatFix(buffer, bytes_received)){
+            if (bytes_received == 0) {
+                RCLCPP_WARN(this->get_logger(), "No data received (connection closed)");
+                continue;
+            }
+
+            RCLCPP_INFO(this->get_logger(), "Received %zd bytes from %s:%d",
+                        bytes_received, inet_ntoa(client_addr.sin_addr), ntohs(client_addr.sin_port));
+
+            if (!convertToNavSatFix(buffer, bytes_received)) {
                 RCLCPP_ERROR(this->get_logger(), "Error converting UDP data to NavSatFix message");
                 continue;
             }
         }
     }
 
-bool convertToNavSatFix(const char *data, size_t size){       
-        if (size < 12)
-        {
+    bool convertToNavSatFix(const char *data, size_t size) {       
+        if (size < 12) {
             RCLCPP_ERROR(this->get_logger(), "Insufficient data received");
             return false;
         }
@@ -104,12 +111,11 @@ bool convertToNavSatFix(const char *data, size_t size){
     }
 
     rclcpp::Publisher<sensor_msgs::msg::NavSatFix>::SharedPtr gnssPublisher_;
-    int sockfd2_;
+    int sockfd_;
     std::thread receive_gnss_thread_;
 };
 
-
-int main(int argc, char **argv){  
+int main(int argc, char **argv) {  
     rclcpp::init(argc, argv);
     auto node = std::make_shared<GNSSUDPPublisher>();
     rclcpp::spin(node);
