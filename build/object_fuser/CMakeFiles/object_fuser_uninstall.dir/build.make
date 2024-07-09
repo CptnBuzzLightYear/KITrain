@@ -53,7 +53,7 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/steffens/KITrain/src/ki_train/object_localizer/object_fuser
+CMAKE_SOURCE_DIR = /home/steffens/KITrain/src/nodes/object_localizer/object_fuser
 
 # The top-level build directory on which CMake was run.
 CMAKE_BINARY_DIR = /home/steffens/KITrain/build/object_fuser
@@ -82,6 +82,6 @@ CMakeFiles/object_fuser_uninstall.dir/clean:
 .PHONY : CMakeFiles/object_fuser_uninstall.dir/clean
 
 CMakeFiles/object_fuser_uninstall.dir/depend:
-	cd /home/steffens/KITrain/build/object_fuser && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/steffens/KITrain/src/ki_train/object_localizer/object_fuser /home/steffens/KITrain/src/ki_train/object_localizer/object_fuser /home/steffens/KITrain/build/object_fuser /home/steffens/KITrain/build/object_fuser /home/steffens/KITrain/build/object_fuser/CMakeFiles/object_fuser_uninstall.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/steffens/KITrain/build/object_fuser && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/steffens/KITrain/src/nodes/object_localizer/object_fuser /home/steffens/KITrain/src/nodes/object_localizer/object_fuser /home/steffens/KITrain/build/object_fuser /home/steffens/KITrain/build/object_fuser /home/steffens/KITrain/build/object_fuser/CMakeFiles/object_fuser_uninstall.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/object_fuser_uninstall.dir/depend
 

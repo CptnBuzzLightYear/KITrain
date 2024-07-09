@@ -53,7 +53,7 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/steffens/KITrain/src/ki_train/positioner/track_detector
+CMAKE_SOURCE_DIR = /home/steffens/KITrain/src/nodes/positioner/track_detector
 
 # The top-level build directory on which CMake was run.
 CMAKE_BINARY_DIR = /home/steffens/KITrain/build/track_detector
@@ -70,18 +70,18 @@ include CMakeFiles/track_detect_main.dir/progress.make
 include CMakeFiles/track_detect_main.dir/flags.make
 
 CMakeFiles/track_detect_main.dir/src/track_detect.cpp.o: CMakeFiles/track_detect_main.dir/flags.make
-CMakeFiles/track_detect_main.dir/src/track_detect.cpp.o: /home/steffens/KITrain/src/ki_train/positioner/track_detector/src/track_detect.cpp
+CMakeFiles/track_detect_main.dir/src/track_detect.cpp.o: /home/steffens/KITrain/src/nodes/positioner/track_detector/src/track_detect.cpp
 CMakeFiles/track_detect_main.dir/src/track_detect.cpp.o: CMakeFiles/track_detect_main.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/steffens/KITrain/build/track_detector/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/track_detect_main.dir/src/track_detect.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/track_detect_main.dir/src/track_detect.cpp.o -MF CMakeFiles/track_detect_main.dir/src/track_detect.cpp.o.d -o CMakeFiles/track_detect_main.dir/src/track_detect.cpp.o -c /home/steffens/KITrain/src/ki_train/positioner/track_detector/src/track_detect.cpp
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/track_detect_main.dir/src/track_detect.cpp.o -MF CMakeFiles/track_detect_main.dir/src/track_detect.cpp.o.d -o CMakeFiles/track_detect_main.dir/src/track_detect.cpp.o -c /home/steffens/KITrain/src/nodes/positioner/track_detector/src/track_detect.cpp
 
 CMakeFiles/track_detect_main.dir/src/track_detect.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/track_detect_main.dir/src/track_detect.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/steffens/KITrain/src/ki_train/positioner/track_detector/src/track_detect.cpp > CMakeFiles/track_detect_main.dir/src/track_detect.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/steffens/KITrain/src/nodes/positioner/track_detector/src/track_detect.cpp > CMakeFiles/track_detect_main.dir/src/track_detect.cpp.i
 
 CMakeFiles/track_detect_main.dir/src/track_detect.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/track_detect_main.dir/src/track_detect.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/steffens/KITrain/src/ki_train/positioner/track_detector/src/track_detect.cpp -o CMakeFiles/track_detect_main.dir/src/track_detect.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/steffens/KITrain/src/nodes/positioner/track_detector/src/track_detect.cpp -o CMakeFiles/track_detect_main.dir/src/track_detect.cpp.s
 
 # Object files for target track_detect_main
 track_detect_main_OBJECTS = \
@@ -238,6 +238,6 @@ CMakeFiles/track_detect_main.dir/clean:
 .PHONY : CMakeFiles/track_detect_main.dir/clean
 
 CMakeFiles/track_detect_main.dir/depend:
-	cd /home/steffens/KITrain/build/track_detector && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/steffens/KITrain/src/ki_train/positioner/track_detector /home/steffens/KITrain/src/ki_train/positioner/track_detector /home/steffens/KITrain/build/track_detector /home/steffens/KITrain/build/track_detector /home/steffens/KITrain/build/track_detector/CMakeFiles/track_detect_main.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/steffens/KITrain/build/track_detector && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/steffens/KITrain/src/nodes/positioner/track_detector /home/steffens/KITrain/src/nodes/positioner/track_detector /home/steffens/KITrain/build/track_detector /home/steffens/KITrain/build/track_detector /home/steffens/KITrain/build/track_detector/CMakeFiles/track_detect_main.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/track_detect_main.dir/depend
 

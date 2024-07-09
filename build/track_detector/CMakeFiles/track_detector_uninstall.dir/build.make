@@ -53,7 +53,7 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/steffens/KITrain/src/ki_train/positioner/track_detector
+CMAKE_SOURCE_DIR = /home/steffens/KITrain/src/nodes/positioner/track_detector
 
 # The top-level build directory on which CMake was run.
 CMAKE_BINARY_DIR = /home/steffens/KITrain/build/track_detector
@@ -82,6 +82,6 @@ CMakeFiles/track_detector_uninstall.dir/clean:
 .PHONY : CMakeFiles/track_detector_uninstall.dir/clean
 
 CMakeFiles/track_detector_uninstall.dir/depend:
-	cd /home/steffens/KITrain/build/track_detector && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/steffens/KITrain/src/ki_train/positioner/track_detector /home/steffens/KITrain/src/ki_train/positioner/track_detector /home/steffens/KITrain/build/track_detector /home/steffens/KITrain/build/track_detector /home/steffens/KITrain/build/track_detector/CMakeFiles/track_detector_uninstall.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/steffens/KITrain/build/track_detector && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/steffens/KITrain/src/nodes/positioner/track_detector /home/steffens/KITrain/src/nodes/positioner/track_detector /home/steffens/KITrain/build/track_detector /home/steffens/KITrain/build/track_detector /home/steffens/KITrain/build/track_detector/CMakeFiles/track_detector_uninstall.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/track_detector_uninstall.dir/depend
 

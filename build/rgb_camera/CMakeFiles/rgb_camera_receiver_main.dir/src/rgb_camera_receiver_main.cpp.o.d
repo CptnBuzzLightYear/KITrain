@@ -1,5 +1,5 @@
 CMakeFiles/rgb_camera_receiver_main.dir/src/rgb_camera_receiver_main.cpp.o: \
- /home/steffens/KITrain/src/ki_train/sensors/rgb_camera/src/rgb_camera_receiver_main.cpp \
+ /home/steffens/KITrain/src/nodes/sensors/rgb_camera/src/rgb_camera_receiver_main.cpp \
  /usr/include/stdc-predef.h /usr/include/x86_64-linux-gnu/sys/socket.h \
  /usr/include/features.h /usr/include/features-time64.h \
  /usr/include/x86_64-linux-gnu/bits/wordsize.h \

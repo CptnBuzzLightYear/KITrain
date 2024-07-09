@@ -53,7 +53,7 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/steffens/KITrain/src/ki_train/sensors/rgb_camera
+CMAKE_SOURCE_DIR = /home/steffens/KITrain/src/nodes/sensors/rgb_camera
 
 # The top-level build directory on which CMake was run.
 CMAKE_BINARY_DIR = /home/steffens/KITrain/build/rgb_camera
@@ -70,18 +70,18 @@ include CMakeFiles/rgb_camera_receiver_main.dir/progress.make
 include CMakeFiles/rgb_camera_receiver_main.dir/flags.make
 
 CMakeFiles/rgb_camera_receiver_main.dir/src/rgb_camera_receiver_main.cpp.o: CMakeFiles/rgb_camera_receiver_main.dir/flags.make
-CMakeFiles/rgb_camera_receiver_main.dir/src/rgb_camera_receiver_main.cpp.o: /home/steffens/KITrain/src/ki_train/sensors/rgb_camera/src/rgb_camera_receiver_main.cpp
+CMakeFiles/rgb_camera_receiver_main.dir/src/rgb_camera_receiver_main.cpp.o: /home/steffens/KITrain/src/nodes/sensors/rgb_camera/src/rgb_camera_receiver_main.cpp
 CMakeFiles/rgb_camera_receiver_main.dir/src/rgb_camera_receiver_main.cpp.o: CMakeFiles/rgb_camera_receiver_main.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/steffens/KITrain/build/rgb_camera/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/rgb_camera_receiver_main.dir/src/rgb_camera_receiver_main.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/rgb_camera_receiver_main.dir/src/rgb_camera_receiver_main.cpp.o -MF CMakeFiles/rgb_camera_receiver_main.dir/src/rgb_camera_receiver_main.cpp.o.d -o CMakeFiles/rgb_camera_receiver_main.dir/src/rgb_camera_receiver_main.cpp.o -c /home/steffens/KITrain/src/ki_train/sensors/rgb_camera/src/rgb_camera_receiver_main.cpp
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/rgb_camera_receiver_main.dir/src/rgb_camera_receiver_main.cpp.o -MF CMakeFiles/rgb_camera_receiver_main.dir/src/rgb_camera_receiver_main.cpp.o.d -o CMakeFiles/rgb_camera_receiver_main.dir/src/rgb_camera_receiver_main.cpp.o -c /home/steffens/KITrain/src/nodes/sensors/rgb_camera/src/rgb_camera_receiver_main.cpp
 
 CMakeFiles/rgb_camera_receiver_main.dir/src/rgb_camera_receiver_main.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/rgb_camera_receiver_main.dir/src/rgb_camera_receiver_main.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/steffens/KITrain/src/ki_train/sensors/rgb_camera/src/rgb_camera_receiver_main.cpp > CMakeFiles/rgb_camera_receiver_main.dir/src/rgb_camera_receiver_main.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/steffens/KITrain/src/nodes/sensors/rgb_camera/src/rgb_camera_receiver_main.cpp > CMakeFiles/rgb_camera_receiver_main.dir/src/rgb_camera_receiver_main.cpp.i
 
 CMakeFiles/rgb_camera_receiver_main.dir/src/rgb_camera_receiver_main.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/rgb_camera_receiver_main.dir/src/rgb_camera_receiver_main.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/steffens/KITrain/src/ki_train/sensors/rgb_camera/src/rgb_camera_receiver_main.cpp -o CMakeFiles/rgb_camera_receiver_main.dir/src/rgb_camera_receiver_main.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/steffens/KITrain/src/nodes/sensors/rgb_camera/src/rgb_camera_receiver_main.cpp -o CMakeFiles/rgb_camera_receiver_main.dir/src/rgb_camera_receiver_main.cpp.s
 
 # Object files for target rgb_camera_receiver_main
 rgb_camera_receiver_main_OBJECTS = \
@@ -240,6 +240,6 @@ CMakeFiles/rgb_camera_receiver_main.dir/clean:
 .PHONY : CMakeFiles/rgb_camera_receiver_main.dir/clean
 
 CMakeFiles/rgb_camera_receiver_main.dir/depend:
-	cd /home/steffens/KITrain/build/rgb_camera && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/steffens/KITrain/src/ki_train/sensors/rgb_camera /home/steffens/KITrain/src/ki_train/sensors/rgb_camera /home/steffens/KITrain/build/rgb_camera /home/steffens/KITrain/build/rgb_camera /home/steffens/KITrain/build/rgb_camera/CMakeFiles/rgb_camera_receiver_main.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/steffens/KITrain/build/rgb_camera && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/steffens/KITrain/src/nodes/sensors/rgb_camera /home/steffens/KITrain/src/nodes/sensors/rgb_camera /home/steffens/KITrain/build/rgb_camera /home/steffens/KITrain/build/rgb_camera /home/steffens/KITrain/build/rgb_camera/CMakeFiles/rgb_camera_receiver_main.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/rgb_camera_receiver_main.dir/depend
 

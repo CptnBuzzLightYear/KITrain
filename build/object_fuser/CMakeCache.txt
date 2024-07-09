@@ -323,7 +323,7 @@ object_fuser_BINARY_DIR:STATIC=/home/steffens/KITrain/build/object_fuser
 object_fuser_IS_TOP_LEVEL:STATIC=ON
 
 //Value Computed by CMake
-object_fuser_SOURCE_DIR:STATIC=/home/steffens/KITrain/src/ki_train/object_localizer/object_fuser
+object_fuser_SOURCE_DIR:STATIC=/home/steffens/KITrain/src/nodes/object_localizer/object_fuser
 
 //Path to a program.
 xmllint_BIN:FILEPATH=/usr/bin/xmllint
@@ -413,7 +413,7 @@ CMAKE_GENERATOR_PLATFORM:INTERNAL=
 CMAKE_GENERATOR_TOOLSET:INTERNAL=
 //Source directory with the top level CMakeLists.txt file for this
 // project
-CMAKE_HOME_DIRECTORY:INTERNAL=/home/steffens/KITrain/src/ki_train/object_localizer/object_fuser
+CMAKE_HOME_DIRECTORY:INTERNAL=/home/steffens/KITrain/src/nodes/object_localizer/object_fuser
 //Install .so files without execute permission.
 CMAKE_INSTALL_SO_NO_EXE:INTERNAL=1
 //ADVANCED property for variable: CMAKE_LINKER

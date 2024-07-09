@@ -53,7 +53,7 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/steffens/KITrain/src/ki_train/sensors/gnss
+CMAKE_SOURCE_DIR = /home/steffens/KITrain/src/nodes/sensors/gnss
 
 # The top-level build directory on which CMake was run.
 CMAKE_BINARY_DIR = /home/steffens/KITrain/build/gnss
@@ -82,6 +82,6 @@ CMakeFiles/gnss_uninstall.dir/clean:
 .PHONY : CMakeFiles/gnss_uninstall.dir/clean
 
 CMakeFiles/gnss_uninstall.dir/depend:
-	cd /home/steffens/KITrain/build/gnss && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/steffens/KITrain/src/ki_train/sensors/gnss /home/steffens/KITrain/src/ki_train/sensors/gnss /home/steffens/KITrain/build/gnss /home/steffens/KITrain/build/gnss /home/steffens/KITrain/build/gnss/CMakeFiles/gnss_uninstall.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/steffens/KITrain/build/gnss && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/steffens/KITrain/src/nodes/sensors/gnss /home/steffens/KITrain/src/nodes/sensors/gnss /home/steffens/KITrain/build/gnss /home/steffens/KITrain/build/gnss /home/steffens/KITrain/build/gnss/CMakeFiles/gnss_uninstall.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/gnss_uninstall.dir/depend
 

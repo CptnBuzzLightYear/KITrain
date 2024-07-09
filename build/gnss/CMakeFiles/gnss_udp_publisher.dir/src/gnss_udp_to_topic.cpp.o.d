@@ -1,5 +1,5 @@
 CMakeFiles/gnss_udp_publisher.dir/src/gnss_udp_to_topic.cpp.o: \
- /home/steffens/KITrain/src/ki_train/sensors/gnss/src/gnss_udp_to_topic.cpp \
+ /home/steffens/KITrain/src/nodes/sensors/gnss/src/gnss_udp_to_topic.cpp \
  /usr/include/stdc-predef.h \
  /opt/ros/humble/include/rclcpp/rclcpp/rclcpp.hpp \
  /usr/include/c++/11/csignal \

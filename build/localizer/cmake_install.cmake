@@ -1,4 +1,4 @@
-# Install script for directory: /home/steffens/KITrain/src/ki_train/positioner/localizer
+# Install script for directory: /home/steffens/KITrain/src/nodes/positioner/localizer
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -98,7 +98,7 @@ if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/localizer" TYPE FILE FILES "/home/steffens/KITrain/src/ki_train/positioner/localizer/package.xml")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/localizer" TYPE FILE FILES "/home/steffens/KITrain/src/nodes/positioner/localizer/package.xml")
 endif()
 
 if(CMAKE_INSTALL_COMPONENT)

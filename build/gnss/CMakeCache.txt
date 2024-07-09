@@ -353,7 +353,7 @@ gnss_BINARY_DIR:STATIC=/home/steffens/KITrain/build/gnss
 gnss_IS_TOP_LEVEL:STATIC=ON
 
 //Value Computed by CMake
-gnss_SOURCE_DIR:STATIC=/home/steffens/KITrain/src/ki_train/sensors/gnss
+gnss_SOURCE_DIR:STATIC=/home/steffens/KITrain/src/nodes/sensors/gnss
 
 //The directory containing a CMake configuration file for libstatistics_collector.
 libstatistics_collector_DIR:PATH=/opt/ros/humble/share/libstatistics_collector/cmake
@@ -564,7 +564,7 @@ CMAKE_HAVE_LIBC_PTHREAD:INTERNAL=1
 CMAKE_HAVE_PTHREAD_H:INTERNAL=1
 //Source directory with the top level CMakeLists.txt file for this
 // project
-CMAKE_HOME_DIRECTORY:INTERNAL=/home/steffens/KITrain/src/ki_train/sensors/gnss
+CMAKE_HOME_DIRECTORY:INTERNAL=/home/steffens/KITrain/src/nodes/sensors/gnss
 //Install .so files without execute permission.
 CMAKE_INSTALL_SO_NO_EXE:INTERNAL=1
 //ADVANCED property for variable: CMAKE_LINKER

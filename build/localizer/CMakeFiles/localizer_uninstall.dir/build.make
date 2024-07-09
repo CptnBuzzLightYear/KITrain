@@ -53,7 +53,7 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/steffens/KITrain/src/ki_train/positioner/localizer
+CMAKE_SOURCE_DIR = /home/steffens/KITrain/src/nodes/positioner/localizer
 
 # The top-level build directory on which CMake was run.
 CMAKE_BINARY_DIR = /home/steffens/KITrain/build/localizer
@@ -82,6 +82,6 @@ CMakeFiles/localizer_uninstall.dir/clean:
 .PHONY : CMakeFiles/localizer_uninstall.dir/clean
 
 CMakeFiles/localizer_uninstall.dir/depend:
-	cd /home/steffens/KITrain/build/localizer && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/steffens/KITrain/src/ki_train/positioner/localizer /home/steffens/KITrain/src/ki_train/positioner/localizer /home/steffens/KITrain/build/localizer /home/steffens/KITrain/build/localizer /home/steffens/KITrain/build/localizer/CMakeFiles/localizer_uninstall.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/steffens/KITrain/build/localizer && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/steffens/KITrain/src/nodes/positioner/localizer /home/steffens/KITrain/src/nodes/positioner/localizer /home/steffens/KITrain/build/localizer /home/steffens/KITrain/build/localizer /home/steffens/KITrain/build/localizer/CMakeFiles/localizer_uninstall.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/localizer_uninstall.dir/depend
 

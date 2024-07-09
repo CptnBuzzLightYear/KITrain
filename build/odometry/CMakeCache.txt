@@ -323,7 +323,7 @@ odometry_BINARY_DIR:STATIC=/home/steffens/KITrain/build/odometry
 odometry_IS_TOP_LEVEL:STATIC=ON
 
 //Value Computed by CMake
-odometry_SOURCE_DIR:STATIC=/home/steffens/KITrain/src/ki_train/sensors/odometry
+odometry_SOURCE_DIR:STATIC=/home/steffens/KITrain/src/nodes/sensors/odometry
 
 //Path to a program.
 xmllint_BIN:FILEPATH=/usr/bin/xmllint
@@ -413,7 +413,7 @@ CMAKE_GENERATOR_PLATFORM:INTERNAL=
 CMAKE_GENERATOR_TOOLSET:INTERNAL=
 //Source directory with the top level CMakeLists.txt file for this
 // project
-CMAKE_HOME_DIRECTORY:INTERNAL=/home/steffens/KITrain/src/ki_train/sensors/odometry
+CMAKE_HOME_DIRECTORY:INTERNAL=/home/steffens/KITrain/src/nodes/sensors/odometry
 //Install .so files without execute permission.
 CMAKE_INSTALL_SO_NO_EXE:INTERNAL=1
 //ADVANCED property for variable: CMAKE_LINKER

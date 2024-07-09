@@ -53,7 +53,7 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/steffens/KITrain/src/ki_train/driving_route_unlocker/signal_detection_verificator
+CMAKE_SOURCE_DIR = /home/steffens/KITrain/src/nodes/driving_route_unlocker/signal_detection_verificator
 
 # The top-level build directory on which CMake was run.
 CMAKE_BINARY_DIR = /home/steffens/KITrain/build/signal_detection_verificator
@@ -82,6 +82,6 @@ CMakeFiles/signal_detection_verificator_uninstall.dir/clean:
 .PHONY : CMakeFiles/signal_detection_verificator_uninstall.dir/clean
 
 CMakeFiles/signal_detection_verificator_uninstall.dir/depend:
-	cd /home/steffens/KITrain/build/signal_detection_verificator && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/steffens/KITrain/src/ki_train/driving_route_unlocker/signal_detection_verificator /home/steffens/KITrain/src/ki_train/driving_route_unlocker/signal_detection_verificator /home/steffens/KITrain/build/signal_detection_verificator /home/steffens/KITrain/build/signal_detection_verificator /home/steffens/KITrain/build/signal_detection_verificator/CMakeFiles/signal_detection_verificator_uninstall.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/steffens/KITrain/build/signal_detection_verificator && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/steffens/KITrain/src/nodes/driving_route_unlocker/signal_detection_verificator /home/steffens/KITrain/src/nodes/driving_route_unlocker/signal_detection_verificator /home/steffens/KITrain/build/signal_detection_verificator /home/steffens/KITrain/build/signal_detection_verificator /home/steffens/KITrain/build/signal_detection_verificator/CMakeFiles/signal_detection_verificator_uninstall.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/signal_detection_verificator_uninstall.dir/depend
 

@@ -476,7 +476,7 @@ track_detector_BINARY_DIR:STATIC=/home/steffens/KITrain/build/track_detector
 track_detector_IS_TOP_LEVEL:STATIC=ON
 
 //Value Computed by CMake
-track_detector_SOURCE_DIR:STATIC=/home/steffens/KITrain/src/ki_train/positioner/track_detector
+track_detector_SOURCE_DIR:STATIC=/home/steffens/KITrain/src/nodes/positioner/track_detector
 
 //The directory containing a CMake configuration file for yaml.
 yaml_DIR:PATH=/opt/ros/humble/cmake
@@ -570,7 +570,7 @@ CMAKE_HAVE_LIBC_PTHREAD:INTERNAL=1
 CMAKE_HAVE_PTHREAD_H:INTERNAL=1
 //Source directory with the top level CMakeLists.txt file for this
 // project
-CMAKE_HOME_DIRECTORY:INTERNAL=/home/steffens/KITrain/src/ki_train/positioner/track_detector
+CMAKE_HOME_DIRECTORY:INTERNAL=/home/steffens/KITrain/src/nodes/positioner/track_detector
 //Install .so files without execute permission.
 CMAKE_INSTALL_SO_NO_EXE:INTERNAL=1
 //ADVANCED property for variable: CMAKE_LINKER

@@ -96,7 +96,8 @@
         "cinttypes": "cpp",
         "typeindex": "cpp",
         "typeinfo": "cpp",
-        "variant": "cpp"
+        "variant": "cpp",
+        "valarray": "cpp"
     },
     "cmake.sourceDirectory": "/home/steffens/KITrain/build/lidar_msgs/lidar_msgs__py"
 }

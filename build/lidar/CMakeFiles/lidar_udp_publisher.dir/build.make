@@ -53,7 +53,7 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/steffens/KITrain/src/ki_train/sensors/lidar
+CMAKE_SOURCE_DIR = /home/steffens/KITrain/src/nodes/sensors/lidar
 
 # The top-level build directory on which CMake was run.
 CMAKE_BINARY_DIR = /home/steffens/KITrain/build/lidar
@@ -70,18 +70,18 @@ include CMakeFiles/lidar_udp_publisher.dir/progress.make
 include CMakeFiles/lidar_udp_publisher.dir/flags.make
 
 CMakeFiles/lidar_udp_publisher.dir/src/lidar_udp_to_topic.cpp.o: CMakeFiles/lidar_udp_publisher.dir/flags.make
-CMakeFiles/lidar_udp_publisher.dir/src/lidar_udp_to_topic.cpp.o: /home/steffens/KITrain/src/ki_train/sensors/lidar/src/lidar_udp_to_topic.cpp
+CMakeFiles/lidar_udp_publisher.dir/src/lidar_udp_to_topic.cpp.o: /home/steffens/KITrain/src/nodes/sensors/lidar/src/lidar_udp_to_topic.cpp
 CMakeFiles/lidar_udp_publisher.dir/src/lidar_udp_to_topic.cpp.o: CMakeFiles/lidar_udp_publisher.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/steffens/KITrain/build/lidar/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/lidar_udp_publisher.dir/src/lidar_udp_to_topic.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/lidar_udp_publisher.dir/src/lidar_udp_to_topic.cpp.o -MF CMakeFiles/lidar_udp_publisher.dir/src/lidar_udp_to_topic.cpp.o.d -o CMakeFiles/lidar_udp_publisher.dir/src/lidar_udp_to_topic.cpp.o -c /home/steffens/KITrain/src/ki_train/sensors/lidar/src/lidar_udp_to_topic.cpp
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/lidar_udp_publisher.dir/src/lidar_udp_to_topic.cpp.o -MF CMakeFiles/lidar_udp_publisher.dir/src/lidar_udp_to_topic.cpp.o.d -o CMakeFiles/lidar_udp_publisher.dir/src/lidar_udp_to_topic.cpp.o -c /home/steffens/KITrain/src/nodes/sensors/lidar/src/lidar_udp_to_topic.cpp
 
 CMakeFiles/lidar_udp_publisher.dir/src/lidar_udp_to_topic.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/lidar_udp_publisher.dir/src/lidar_udp_to_topic.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/steffens/KITrain/src/ki_train/sensors/lidar/src/lidar_udp_to_topic.cpp > CMakeFiles/lidar_udp_publisher.dir/src/lidar_udp_to_topic.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/steffens/KITrain/src/nodes/sensors/lidar/src/lidar_udp_to_topic.cpp > CMakeFiles/lidar_udp_publisher.dir/src/lidar_udp_to_topic.cpp.i
 
 CMakeFiles/lidar_udp_publisher.dir/src/lidar_udp_to_topic.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/lidar_udp_publisher.dir/src/lidar_udp_to_topic.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/steffens/KITrain/src/ki_train/sensors/lidar/src/lidar_udp_to_topic.cpp -o CMakeFiles/lidar_udp_publisher.dir/src/lidar_udp_to_topic.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/steffens/KITrain/src/nodes/sensors/lidar/src/lidar_udp_to_topic.cpp -o CMakeFiles/lidar_udp_publisher.dir/src/lidar_udp_to_topic.cpp.s
 
 # Object files for target lidar_udp_publisher
 lidar_udp_publisher_OBJECTS = \
@@ -230,6 +230,6 @@ CMakeFiles/lidar_udp_publisher.dir/clean:
 .PHONY : CMakeFiles/lidar_udp_publisher.dir/clean
 
 CMakeFiles/lidar_udp_publisher.dir/depend:
-	cd /home/steffens/KITrain/build/lidar && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/steffens/KITrain/src/ki_train/sensors/lidar /home/steffens/KITrain/src/ki_train/sensors/lidar /home/steffens/KITrain/build/lidar /home/steffens/KITrain/build/lidar /home/steffens/KITrain/build/lidar/CMakeFiles/lidar_udp_publisher.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/steffens/KITrain/build/lidar && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/steffens/KITrain/src/nodes/sensors/lidar /home/steffens/KITrain/src/nodes/sensors/lidar /home/steffens/KITrain/build/lidar /home/steffens/KITrain/build/lidar /home/steffens/KITrain/build/lidar/CMakeFiles/lidar_udp_publisher.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/lidar_udp_publisher.dir/depend
 

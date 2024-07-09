@@ -57,7 +57,7 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/steffens/KITrain/src/ki_train/object_localizer/lidar_detector
+CMAKE_SOURCE_DIR = /home/steffens/KITrain/src/nodes/object_localizer/lidar_detector
 
 # The top-level build directory on which CMake was run.
 CMAKE_BINARY_DIR = /home/steffens/KITrain/build/lidar_detector

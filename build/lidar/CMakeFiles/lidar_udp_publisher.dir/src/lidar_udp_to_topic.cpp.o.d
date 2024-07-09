@@ -1,5 +1,5 @@
 CMakeFiles/lidar_udp_publisher.dir/src/lidar_udp_to_topic.cpp.o: \
- /home/steffens/KITrain/src/ki_train/sensors/lidar/src/lidar_udp_to_topic.cpp \
+ /home/steffens/KITrain/src/nodes/sensors/lidar/src/lidar_udp_to_topic.cpp \
  /usr/include/stdc-predef.h \
  /opt/ros/humble/include/rclcpp/rclcpp/rclcpp.hpp \
  /usr/include/c++/11/csignal \

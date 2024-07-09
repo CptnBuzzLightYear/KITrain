@@ -53,7 +53,7 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/steffens/KITrain/src/ki_train/sensors/rgb_camera
+CMAKE_SOURCE_DIR = /home/steffens/KITrain/src/nodes/sensors/rgb_camera
 
 # The top-level build directory on which CMake was run.
 CMAKE_BINARY_DIR = /home/steffens/KITrain/build/rgb_camera
@@ -82,6 +82,6 @@ CMakeFiles/rgb_camera_uninstall.dir/clean:
 .PHONY : CMakeFiles/rgb_camera_uninstall.dir/clean
 
 CMakeFiles/rgb_camera_uninstall.dir/depend:
-	cd /home/steffens/KITrain/build/rgb_camera && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/steffens/KITrain/src/ki_train/sensors/rgb_camera /home/steffens/KITrain/src/ki_train/sensors/rgb_camera /home/steffens/KITrain/build/rgb_camera /home/steffens/KITrain/build/rgb_camera /home/steffens/KITrain/build/rgb_camera/CMakeFiles/rgb_camera_uninstall.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/steffens/KITrain/build/rgb_camera && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/steffens/KITrain/src/nodes/sensors/rgb_camera /home/steffens/KITrain/src/nodes/sensors/rgb_camera /home/steffens/KITrain/build/rgb_camera /home/steffens/KITrain/build/rgb_camera /home/steffens/KITrain/build/rgb_camera/CMakeFiles/rgb_camera_uninstall.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/rgb_camera_uninstall.dir/depend
 

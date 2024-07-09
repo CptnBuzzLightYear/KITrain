@@ -329,7 +329,7 @@ lidar_detector_BINARY_DIR:STATIC=/home/steffens/KITrain/build/lidar_detector
 lidar_detector_IS_TOP_LEVEL:STATIC=ON
 
 //Value Computed by CMake
-lidar_detector_SOURCE_DIR:STATIC=/home/steffens/KITrain/src/ki_train/object_localizer/lidar_detector
+lidar_detector_SOURCE_DIR:STATIC=/home/steffens/KITrain/src/nodes/object_localizer/lidar_detector
 
 //Path to a program.
 xmllint_BIN:FILEPATH=/usr/bin/xmllint
@@ -419,7 +419,7 @@ CMAKE_GENERATOR_PLATFORM:INTERNAL=
 CMAKE_GENERATOR_TOOLSET:INTERNAL=
 //Source directory with the top level CMakeLists.txt file for this
 // project
-CMAKE_HOME_DIRECTORY:INTERNAL=/home/steffens/KITrain/src/ki_train/object_localizer/lidar_detector
+CMAKE_HOME_DIRECTORY:INTERNAL=/home/steffens/KITrain/src/nodes/object_localizer/lidar_detector
 //Install .so files without execute permission.
 CMAKE_INSTALL_SO_NO_EXE:INTERNAL=1
 //ADVANCED property for variable: CMAKE_LINKER

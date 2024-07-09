@@ -53,7 +53,7 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/steffens/KITrain/src/ki_train/sensors/gnss
+CMAKE_SOURCE_DIR = /home/steffens/KITrain/src/nodes/sensors/gnss
 
 # The top-level build directory on which CMake was run.
 CMAKE_BINARY_DIR = /home/steffens/KITrain/build/gnss
@@ -70,18 +70,18 @@ include CMakeFiles/gnss_udp_publisher.dir/progress.make
 include CMakeFiles/gnss_udp_publisher.dir/flags.make
 
 CMakeFiles/gnss_udp_publisher.dir/src/gnss_udp_to_topic.cpp.o: CMakeFiles/gnss_udp_publisher.dir/flags.make
-CMakeFiles/gnss_udp_publisher.dir/src/gnss_udp_to_topic.cpp.o: /home/steffens/KITrain/src/ki_train/sensors/gnss/src/gnss_udp_to_topic.cpp
+CMakeFiles/gnss_udp_publisher.dir/src/gnss_udp_to_topic.cpp.o: /home/steffens/KITrain/src/nodes/sensors/gnss/src/gnss_udp_to_topic.cpp
 CMakeFiles/gnss_udp_publisher.dir/src/gnss_udp_to_topic.cpp.o: CMakeFiles/gnss_udp_publisher.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/steffens/KITrain/build/gnss/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/gnss_udp_publisher.dir/src/gnss_udp_to_topic.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/gnss_udp_publisher.dir/src/gnss_udp_to_topic.cpp.o -MF CMakeFiles/gnss_udp_publisher.dir/src/gnss_udp_to_topic.cpp.o.d -o CMakeFiles/gnss_udp_publisher.dir/src/gnss_udp_to_topic.cpp.o -c /home/steffens/KITrain/src/ki_train/sensors/gnss/src/gnss_udp_to_topic.cpp
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/gnss_udp_publisher.dir/src/gnss_udp_to_topic.cpp.o -MF CMakeFiles/gnss_udp_publisher.dir/src/gnss_udp_to_topic.cpp.o.d -o CMakeFiles/gnss_udp_publisher.dir/src/gnss_udp_to_topic.cpp.o -c /home/steffens/KITrain/src/nodes/sensors/gnss/src/gnss_udp_to_topic.cpp
 
 CMakeFiles/gnss_udp_publisher.dir/src/gnss_udp_to_topic.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/gnss_udp_publisher.dir/src/gnss_udp_to_topic.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/steffens/KITrain/src/ki_train/sensors/gnss/src/gnss_udp_to_topic.cpp > CMakeFiles/gnss_udp_publisher.dir/src/gnss_udp_to_topic.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/steffens/KITrain/src/nodes/sensors/gnss/src/gnss_udp_to_topic.cpp > CMakeFiles/gnss_udp_publisher.dir/src/gnss_udp_to_topic.cpp.i
 
 CMakeFiles/gnss_udp_publisher.dir/src/gnss_udp_to_topic.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/gnss_udp_publisher.dir/src/gnss_udp_to_topic.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/steffens/KITrain/src/ki_train/sensors/gnss/src/gnss_udp_to_topic.cpp -o CMakeFiles/gnss_udp_publisher.dir/src/gnss_udp_to_topic.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/steffens/KITrain/src/nodes/sensors/gnss/src/gnss_udp_to_topic.cpp -o CMakeFiles/gnss_udp_publisher.dir/src/gnss_udp_to_topic.cpp.s
 
 # Object files for target gnss_udp_publisher
 gnss_udp_publisher_OBJECTS = \
@@ -183,6 +183,6 @@ CMakeFiles/gnss_udp_publisher.dir/clean:
 .PHONY : CMakeFiles/gnss_udp_publisher.dir/clean
 
 CMakeFiles/gnss_udp_publisher.dir/depend:
-	cd /home/steffens/KITrain/build/gnss && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/steffens/KITrain/src/ki_train/sensors/gnss /home/steffens/KITrain/src/ki_train/sensors/gnss /home/steffens/KITrain/build/gnss /home/steffens/KITrain/build/gnss /home/steffens/KITrain/build/gnss/CMakeFiles/gnss_udp_publisher.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/steffens/KITrain/build/gnss && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/steffens/KITrain/src/nodes/sensors/gnss /home/steffens/KITrain/src/nodes/sensors/gnss /home/steffens/KITrain/build/gnss /home/steffens/KITrain/build/gnss /home/steffens/KITrain/build/gnss/CMakeFiles/gnss_udp_publisher.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/gnss_udp_publisher.dir/depend
 

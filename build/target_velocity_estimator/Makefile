@@ -57,7 +57,7 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/steffens/KITrain/src/ki_train/driving_decision_maker/target_velocity_estimator
+CMAKE_SOURCE_DIR = /home/steffens/KITrain/src/nodes/driving_decision_maker/target_velocity_estimator
 
 # The top-level build directory on which CMake was run.
 CMAKE_BINARY_DIR = /home/steffens/KITrain/build/target_velocity_estimator

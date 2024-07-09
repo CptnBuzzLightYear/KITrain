@@ -1,5 +1,5 @@
 # CMake generated Testfile for 
-# Source directory: /home/steffens/KITrain/src/ki_train/positioner/track_detector
+# Source directory: /home/steffens/KITrain/src/nodes/positioner/track_detector
 # Build directory: /home/steffens/KITrain/build/track_detector
 # 
 # This file includes the relevant testing commands required for 

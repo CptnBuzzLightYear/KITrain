@@ -323,7 +323,7 @@ clearance_profile_observer_BINARY_DIR:STATIC=/home/steffens/KITrain/build/cleara
 clearance_profile_observer_IS_TOP_LEVEL:STATIC=ON
 
 //Value Computed by CMake
-clearance_profile_observer_SOURCE_DIR:STATIC=/home/steffens/KITrain/src/ki_train/driving_decision_maker/clearance_profile_observer
+clearance_profile_observer_SOURCE_DIR:STATIC=/home/steffens/KITrain/src/nodes/driving_decision_maker/clearance_profile_observer
 
 //Path to a program.
 xmllint_BIN:FILEPATH=/usr/bin/xmllint
@@ -413,7 +413,7 @@ CMAKE_GENERATOR_PLATFORM:INTERNAL=
 CMAKE_GENERATOR_TOOLSET:INTERNAL=
 //Source directory with the top level CMakeLists.txt file for this
 // project
-CMAKE_HOME_DIRECTORY:INTERNAL=/home/steffens/KITrain/src/ki_train/driving_decision_maker/clearance_profile_observer
+CMAKE_HOME_DIRECTORY:INTERNAL=/home/steffens/KITrain/src/nodes/driving_decision_maker/clearance_profile_observer
 //Install .so files without execute permission.
 CMAKE_INSTALL_SO_NO_EXE:INTERNAL=1
 //ADVANCED property for variable: CMAKE_LINKER

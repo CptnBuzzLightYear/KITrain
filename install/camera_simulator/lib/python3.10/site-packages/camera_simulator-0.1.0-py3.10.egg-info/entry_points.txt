@@ -1,3 +1,0 @@
-[console_scripts]
-camera_simulator = camera_simulator.camera_simulator:main
-

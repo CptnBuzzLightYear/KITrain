@@ -53,7 +53,7 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/steffens/KITrain/src/ki_train/sensors/odometry
+CMAKE_SOURCE_DIR = /home/steffens/KITrain/src/nodes/sensors/odometry
 
 # The top-level build directory on which CMake was run.
 CMAKE_BINARY_DIR = /home/steffens/KITrain/build/odometry
@@ -82,6 +82,6 @@ CMakeFiles/odometry_uninstall.dir/clean:
 .PHONY : CMakeFiles/odometry_uninstall.dir/clean
 
 CMakeFiles/odometry_uninstall.dir/depend:
-	cd /home/steffens/KITrain/build/odometry && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/steffens/KITrain/src/ki_train/sensors/odometry /home/steffens/KITrain/src/ki_train/sensors/odometry /home/steffens/KITrain/build/odometry /home/steffens/KITrain/build/odometry /home/steffens/KITrain/build/odometry/CMakeFiles/odometry_uninstall.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/steffens/KITrain/build/odometry && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/steffens/KITrain/src/nodes/sensors/odometry /home/steffens/KITrain/src/nodes/sensors/odometry /home/steffens/KITrain/build/odometry /home/steffens/KITrain/build/odometry /home/steffens/KITrain/build/odometry/CMakeFiles/odometry_uninstall.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/odometry_uninstall.dir/depend
 

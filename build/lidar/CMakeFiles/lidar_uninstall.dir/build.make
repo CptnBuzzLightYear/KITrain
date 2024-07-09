@@ -53,7 +53,7 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/steffens/KITrain/src/ki_train/sensors/lidar
+CMAKE_SOURCE_DIR = /home/steffens/KITrain/src/nodes/sensors/lidar
 
 # The top-level build directory on which CMake was run.
 CMAKE_BINARY_DIR = /home/steffens/KITrain/build/lidar
@@ -82,6 +82,6 @@ CMakeFiles/lidar_uninstall.dir/clean:
 .PHONY : CMakeFiles/lidar_uninstall.dir/clean
 
 CMakeFiles/lidar_uninstall.dir/depend:
-	cd /home/steffens/KITrain/build/lidar && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/steffens/KITrain/src/ki_train/sensors/lidar /home/steffens/KITrain/src/ki_train/sensors/lidar /home/steffens/KITrain/build/lidar /home/steffens/KITrain/build/lidar /home/steffens/KITrain/build/lidar/CMakeFiles/lidar_uninstall.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/steffens/KITrain/build/lidar && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/steffens/KITrain/src/nodes/sensors/lidar /home/steffens/KITrain/src/nodes/sensors/lidar /home/steffens/KITrain/build/lidar /home/steffens/KITrain/build/lidar /home/steffens/KITrain/build/lidar/CMakeFiles/lidar_uninstall.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/lidar_uninstall.dir/depend
 

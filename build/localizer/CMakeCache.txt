@@ -359,7 +359,7 @@ localizer_BINARY_DIR:STATIC=/home/steffens/KITrain/build/localizer
 localizer_IS_TOP_LEVEL:STATIC=ON
 
 //Value Computed by CMake
-localizer_SOURCE_DIR:STATIC=/home/steffens/KITrain/src/ki_train/positioner/localizer
+localizer_SOURCE_DIR:STATIC=/home/steffens/KITrain/src/nodes/positioner/localizer
 
 //Path to a library.
 pkgcfg_lib__OPENSSL_crypto:FILEPATH=/usr/lib/x86_64-linux-gnu/libcrypto.so
@@ -564,7 +564,7 @@ CMAKE_HAVE_LIBC_PTHREAD:INTERNAL=1
 CMAKE_HAVE_PTHREAD_H:INTERNAL=1
 //Source directory with the top level CMakeLists.txt file for this
 // project
-CMAKE_HOME_DIRECTORY:INTERNAL=/home/steffens/KITrain/src/ki_train/positioner/localizer
+CMAKE_HOME_DIRECTORY:INTERNAL=/home/steffens/KITrain/src/nodes/positioner/localizer
 //Install .so files without execute permission.
 CMAKE_INSTALL_SO_NO_EXE:INTERNAL=1
 //ADVANCED property for variable: CMAKE_LINKER

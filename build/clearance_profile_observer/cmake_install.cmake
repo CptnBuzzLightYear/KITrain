@@ -1,4 +1,4 @@
-# Install script for directory: /home/steffens/KITrain/src/ki_train/driving_decision_maker/clearance_profile_observer
+# Install script for directory: /home/steffens/KITrain/src/nodes/driving_decision_maker/clearance_profile_observer
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -98,7 +98,7 @@ if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/clearance_profile_observer" TYPE FILE FILES "/home/steffens/KITrain/src/ki_train/driving_decision_maker/clearance_profile_observer/package.xml")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/clearance_profile_observer" TYPE FILE FILES "/home/steffens/KITrain/src/nodes/driving_decision_maker/clearance_profile_observer/package.xml")
 endif()
 
 if(CMAKE_INSTALL_COMPONENT)
