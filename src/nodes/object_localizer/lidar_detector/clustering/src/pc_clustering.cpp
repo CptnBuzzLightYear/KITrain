@@ -66,11 +66,15 @@ private:
         // Ground and Sky segmentation
         pass.setInputCloud(cloud_xyz); // Use the pass object
         pass.setFilterFieldName("z");
-        pass.setFilterLimits(-1.26, 3.0); // might ne to be an dynamic parameter
+        pass.setFilterLimits(-1.25, 5.0); // might need to be an dynamic parameter
         pass.filter(*cloud_xyz);
 
         // Clustering Algorithm
+<<<<<<< HEAD
         cloud_filtered_xyzrgb = clustering(cloud_xyz, 1, 50, 100000, 0.5); // 1000,
+=======
+        cloud_filtered_xyzrgb = clustering(cloud_xyz, 0.3, cloud_xyz->size()/1000, cloud_xyz->size()/5, 0.5); // 1000,
+>>>>>>> 58502d7 (parameters for clustering adjusted)
 
         // PCL Pointcloud to PCL Pointcloud2 Conversion
         pcl::toPCLPointCloud2(*cloud_filtered_xyzrgb, *cloud_filtered);
@@ -112,6 +116,8 @@ private:
         fast_euclidean_clustering.setQuality(quality);
         fast_euclidean_clustering.segment(clusters);
         clustersize = clusters.size();
+        RCLCPP_INFO(this->get_logger(), "Min_Clustersize: %d", min_cluster_size);
+        RCLCPP_INFO(this->get_logger(), "Max_Clustersize: %d", max_cluster_size);
         RCLCPP_INFO(this->get_logger(), "Clustersize: %d", clustersize);
 
         // Assigning Colors to the clusters, so that they can be visualized
@@ -240,42 +246,6 @@ private:
         return bbox;
     }
 
-    pcl::PointCloud<pcl::PointXYZI>::Ptr clustering_ec(pcl::PointCloud<pcl::PointXYZ>::Ptr &cloud, float tolerance, int min_cluster_size, int max_cluster_size, float quality)
-    {
-        // Declaring all necessary variables
-        pcl::PointCloud<pcl::PointXYZI>::Ptr cloud_with_i(new pcl::PointCloud<pcl::PointXYZI>);
-        pcl::PointCloud<pcl::PointXYZRGB>::Ptr cloud_clustered(new pcl::PointCloud<pcl::PointXYZRGB>);
-        FastEuclideanClustering<pcl::PointXYZI> fast_euclidean_clustering;
-        int clustersize = 0;
-        std::vector<pcl::PointIndices> clusters;
-
-        // adding Intensity to the pointcloud (aka zeros)
-        pcl::copyPointCloud(*cloud, *cloud_with_i);
-
-        // Clustering Parameters
-        fast_euclidean_clustering.setInputCloud(cloud_with_i);
-        fast_euclidean_clustering.setClusterTolerance(tolerance);
-        fast_euclidean_clustering.setMinClusterSize(min_cluster_size);
-        fast_euclidean_clustering.setMaxClusterSize(max_cluster_size);
-        fast_euclidean_clustering.setQuality(quality);
-        fast_euclidean_clustering.segment(clusters);
-        clustersize = clusters.size();
-        RCLCPP_INFO(this->get_logger(), "Clustersize: %d", clustersize);
-
-        // Assigning Colors to the clusters, so that they can be visualized
-        pcl::copyPointCloud(*cloud_with_i, *cloud_clustered);
-        auto label = 0;
-        for (const auto &cluster : clusters)
-        {
-            for (auto index : cluster.indices)
-            {
-                auto &point = cloud_with_i->at(index);
-                point.intensity = static_cast<float>(label);
-            }
-            label++;
-        }
-        return cloud_with_i;
-    }
 
 // test command
 
