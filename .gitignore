@@ -403,3 +403,6 @@ FodyWeavers.xsd
 log/
 build/
 install/
+
+# VS Code specific ignores
+.vscode/
