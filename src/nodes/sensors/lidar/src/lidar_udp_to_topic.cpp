@@ -109,13 +109,13 @@ class LidarUDPPublisher : public rclcpp::Node
             }
             //Append data to buffer
             for(size_t i = 4; i + 6 < tokens.size(); i +=7){
-                double x = std::stod(tokens[i]); 
+                double x = std::stod(tokens[i])/100; // divide by 100 - scale factor from cm (UE) to real world (m)
                 pointcloud_buffer_.push_back(x);
 
-                double y = - std::stod(tokens[i + 1]); //180° y mirroring, because of UE initial coordinate system x, -y, z.
+                double y = - std::stod(tokens[i + 1])/100; //180° y mirroring, because of UE initial coordinate system x, -y, z.
                 pointcloud_buffer_.push_back(y);
 
-                double z = std::stod(tokens[i + 2]);
+                double z = std::stod(tokens[i + 2])/100;
                 pointcloud_buffer_.push_back(z);
             }
             //update previous frame ID
@@ -265,7 +265,7 @@ class LidarUDPPublisher : public rclcpp::Node
         boundingbox.scale.y = groundTruth.width_y;
         boundingbox.scale.z = groundTruth.height_z;
         
-        if (groundTruth.tag == "Pedestrian") {   
+        if (groundTruth.tag == "Person") {   
         boundingbox.color.a = 1.0;  // Transparency
         boundingbox.color.r = 0.0;
         boundingbox.color.g = 0.9;
@@ -281,6 +281,12 @@ class LidarUDPPublisher : public rclcpp::Node
         boundingbox.color.a = 1.0;  // Transparency
         boundingbox.color.r = 0.8;
         boundingbox.color.g = 0.0;
+        boundingbox.color.b = 0.9;
+        }
+        else if (groundTruth.tag == "Plant") {   
+        boundingbox.color.a = 1.0;  // Transparency
+        boundingbox.color.r = 0.8;
+        boundingbox.color.g = 0.4;
         boundingbox.color.b = 0.9;
         }
 

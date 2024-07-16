@@ -18,21 +18,33 @@ def generate_launch_description():
             executable = 'gnss_udp_publisher', 
             name = 'screen5'),     
 
-        #Node(
-         #   package = 'camera_simulator',
-          #  executable = 'camera_simulator',
-           # name = 'camera'
-        #),
+        Node(
+            package = 'order_definer',
+            executable = 'order_definer_node',
+            name = 'order'
+        ),
+
+        Node(
+            package = 'yard_describer',
+            executable = 'map_node',
+            name = 'order'
+        ),
+
 
        Node(
             package = 'track_detector', 
             executable = 'track_detect_main', 
             name = 'screen3'), 
 
-     #   Node(
-       #     package = 'live_position', 
-        #    executable = 'live_position_main', 
-         #   name = 'screen3'),   
+        Node(
+            package = 'voxel_filter', 
+            executable = 'voxel_filter', 
+            name = 'screen3'),   
+
+              Node(
+            package = 'clustering', 
+            executable = 'clustering', 
+            name = 'screen3'),  
 
 
         Node(
