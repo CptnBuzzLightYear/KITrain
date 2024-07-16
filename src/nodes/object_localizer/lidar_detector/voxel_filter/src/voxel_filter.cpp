@@ -19,7 +19,7 @@ public:
       : Node("voxel_filter")
   {
     subscription_ = this->create_subscription<sensor_msgs::msg::PointCloud2>(
-        "/foursightm/points", 1, std::bind(&VoxelFilter::topic_callback, this, _1));
+        "/pointcloud", 1, std::bind(&VoxelFilter::topic_callback, this, _1));
     publisher_ = this->create_publisher<sensor_msgs::msg::PointCloud2>("VoxelFilterPub", 1);
   }
 

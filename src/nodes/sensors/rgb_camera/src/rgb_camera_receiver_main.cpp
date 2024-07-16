@@ -272,6 +272,8 @@ private:
         image_msg.step = width * channels;
         image_msg.data = std::move(image_buffer.data);
 
+        //open CV integration, light up picture
+        
         publisher_->publish(image_msg);
     }
 

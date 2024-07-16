@@ -4,6 +4,7 @@
 #include <arpa/inet.h>
 #include <unistd.h>
 #include <nlohmann/json.hpp>
+#include <std_msgs/msg/string.hpp>
 #include <string>
 #include <vector>
 #include <cstring>
@@ -37,6 +38,9 @@ public:
 
         RCLCPP_INFO(this->get_logger(), "UDP Receiver Node has started");
 
+        // Create publisher
+        publisher_ = this->create_publisher<std_msgs::msg::String>("order_info", 10);
+
         receive_thread_ = std::thread(&UDPOrderReceiverNode::receive_loop, this);
     }
 
@@ -52,7 +56,7 @@ public:
 private:
     void receive_loop()
     {
-        char buffer[2024];
+        char buffer[1024];
         sockaddr_in sender_addr;
         socklen_t sender_len = sizeof(sender_addr);
 
@@ -63,29 +67,27 @@ private:
             if (bytes_received > 0)
             {
                 buffer[bytes_received] = '\0';
-                 // Log the received UDP data
-            RCLCPP_INFO(this->get_logger(), "Received UDP data: %s", buffer);
-
-                
                 std::string jsonData(buffer, bytes_received);
 
-                
+                // Print raw UDP data to log
+                RCLCPP_INFO(this->get_logger(), "Received UDP data: %s", jsonData.c_str());
 
                 // Parse JSON data
                 try
                 {
                     auto jsonDataParsed = json::parse(jsonData);
 
-                   // std::string timestamp = jsonDataParsed["TimeStamp"];
-                    std::string currPos = jsonDataParsed["CurrentPosition"];
-                    std::string targetPos = jsonDataParsed["TargetPosition"];
+                    int currPos = jsonDataParsed["CurrentPosition"];
+                    int targetPos = jsonDataParsed["TargetPosition"];
                     int taskID = jsonDataParsed["TaskID"];
 
-                    RCLCPP_INFO(this->get_logger(), "Current Position: %s, Target Position: %s, TaskID: %d",
-                                currPos.c_str(), targetPos.c_str(), taskID);
-                    
-                    // RCLCPP_INFO(this->get_logger(), "TimeStamp: %s, Current Position: %s, Target Position: %s, TaskID: %d",
-                    //             timestamp.c_str(), currPos.c_str(), targetPos.c_str(), taskID);
+                    RCLCPP_INFO(this->get_logger(), "Current Position: %d, Target Position: %d, TaskID: %d",
+                                currPos, targetPos, taskID);
+
+                    // Create and publish message
+                    auto message = std_msgs::msg::String();
+                    message.data = "Current Position: " + std::to_string(currPos) + ", Target Position: " + std::to_string(targetPos) + ", TaskID: " + std::to_string(taskID);
+                    publisher_->publish(message);
                 }
                 catch (const std::exception &e)
                 {
@@ -97,6 +99,7 @@ private:
 
     int socket_fd_;
     std::thread receive_thread_;
+    rclcpp::Publisher<std_msgs::msg::String>::SharedPtr publisher_;
 };
 
 int main(int argc, char *argv[])
@@ -107,93 +110,3 @@ int main(int argc, char *argv[])
     rclcpp::shutdown();
     return 0;
 }
-
-
-// #include <rclcpp/rclcpp.hpp>
-// #include <netinet/in.h>
-// #include <sys/socket.h>
-// #include <unistd.h>
-// #include <cstring>
-// #include <jsoncpp/json/json.h>  // Assuming you use jsoncpp for JSON parsing
-
-// using namespace std::chrono_literals;
-
-// class UDPOrderReceiverNode : public rclcpp::Node {
-// public:
-//     UDPOrderReceiverNode() : Node("order_definer_node") {
-//         // Create UDP socket
-//         sockfd = socket(AF_INET, SOCK_DGRAM, 0);
-//         if (sockfd < 0) {
-//             RCLCPP_ERROR(get_logger(), "Failed to create socket");
-//             return;
-//         }
-
-//         // Bind socket to port
-//         struct sockaddr_in addr;
-//         std::memset(&addr, 0, sizeof(addr));
-//         addr.sin_family = AF_INET;
-//         addr.sin_addr.s_addr = htonl(INADDR_ANY);  // Accept any incoming interface
-//         addr.sin_port = htons(50128);  // Replace with your port number
-
-//         if (bind(sockfd, (struct sockaddr *)&addr, sizeof(addr)) < 0) {
-//             RCLCPP_ERROR(get_logger(), "Failed to bind socket");
-//             close(sockfd);
-//             return;
-//         }
-
-//         // Receive loop
-//         while (rclcpp::ok()) {
-//             struct sockaddr_in cliaddr;
-//             socklen_t len = sizeof(cliaddr);
-//             char buffer[1024];  // Adjust buffer size as needed
-
-//             ssize_t n = recvfrom(sockfd, buffer, sizeof(buffer), 0, (struct sockaddr *)&cliaddr, &len);
-//             if (n < 0) {
-//                 RCLCPP_ERROR(get_logger(), "Error in recvfrom");
-//                 continue;
-//             }
-
-//             // Convert received data to string
-//             std::string jsonData(buffer, n);
-
-//             // Parse JSON
-//             Json::Value root;
-//             Json::Reader reader;
-//             bool parsingSuccessful = reader.parse(jsonData, root);
-//             if (parsingSuccessful) {
-//                 // Extract fields
-//                 std::string currentPosition = root["CurrentPosition"].asString();
-//                 std::string targetPosition = root["TargetPosition"].asString();
-//                 int taskID = root["TaskID"].asInt();
-
-//                 // Process received data
-//                 processReceivedData(currentPosition, targetPosition, taskID);
-//             } else {
-//                 RCLCPP_ERROR(get_logger(), "Failed to parse JSON data");
-//             }
-
-//             // Sleep or do other work between receives
-//             std::this_thread::sleep_for(1s);
-//         }
-//     }
-
-// private:
-//     int sockfd;
-
-//     void processReceivedData(const std::string& currPos, const std::string& targetPos, int taskID) {
-//         // Implement processing logic here
-//         RCLCPP_INFO(get_logger(), "Received: Current Position = %s, Target Position = %s, Task ID = %d",
-//                     currPos.c_str(), targetPos.c_str(), taskID);
-        
-//         // Optionally, publish processed data as ROS 2 messages
-//         // Example: publishData(currPos, targetPos, taskID);
-//     }
-// };
-
-// int main(int argc, char** argv) {
-//     rclcpp::init(argc, argv);
-//     auto node = std::make_shared<UDPOrderReceiverNode>();
-//     rclcpp::spin(node);
-//     rclcpp::shutdown();
-//     return 0;
-// }
