@@ -395,6 +395,10 @@ FodyWeavers.xsd
 *.msp
 
 # JetBrains Rider
+
+log/
+build/
+install/
 *.sln.iml
 
 ../log/**
