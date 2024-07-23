@@ -27,8 +27,18 @@ def generate_launch_description():
         Node(
             package = 'yard_describer',
             executable = 'map_node',
-            name = 'order'
+            name = 'map'
         ),
+           Node(
+            package = 'projector',
+            executable = 'projector',
+            name = 'positioning'
+        ),
+          # Node(
+         #   package = 'position_corrector',
+          #  executable = 'positioner',
+          #  name = 'order'
+       # ),
 
 
        Node(

@@ -1,0 +1,23 @@
+Longitude	Latitude	Elevation	Distance	CostPerKm	ElevCost	TurnCost	NodeCost	InitialCost	WayTags	NodeTags	Time	Energy
+11471333;	48203180;	504	51	1000	0	0	0	0	reversedirection=yes railway=rail	railway=signal	4	2419
+11471383;	48203163;	504	4	1000	0	0	0	0	reversedirection=yes railway=rail	railway=switch	4	2605
+11472050;	48202883;	504	59	1000	0	0	0	0	reversedirection=yes railway=rail	railway=switch	9	5115
+11472856;	48202489;	502	74	1000	0	0	0	0	reversedirection=yes railway=rail	railway=switch	15	7553
+11473061;	48202400;	502	18	1000	0	0	0	0	railway=rail	railway=signal	16	8209
+11473201;	48202340;	502	12	1000	0	0	0	0	railway=rail	railway=signal	17	8658
+11473227;	48202329;	502	2	1000	0	0	0	0	railway=rail	railway=switch	17	8734
+11474939;	48201650;	501	148	1000	0	0	0	0	railway=rail	railway=signal	29	14378
+11480586;	48199718;	503	99	1000	0	0	0	0	railway=rail		37	18204
+11484567;	48198751;	504	687	1000	0	0	0	0	railway=rail	railway=signal	54	32942
+11485418;	48198629;	503	65	1000	0	0	0	0	railway=rail	railway=switch	60	35445
+11486063;	48198558;	502	48	1000	0	0	0	0	reversedirection=yes railway=rail	railway=switch	64	37145
+11486165;	48198541;	502	8	1000	0	0	0	0	reversedirection=yes railway=rail	railway=switch	64	37431
+11487113;	48198401;	502	72	1000	0	0	0	0	railway=rail	railway=switch	70	40076
+11487140;	48198395;	502	2	1000	0	0	0	0	reversedirection=yes railway=rail	railway=signal	70	40163
+11487258;	48198370;	503	9	1000	0	0	0	0	reversedirection=yes railway=rail	railway=switch	71	40593
+11488001;	48198226;	503	57	1000	0	0	0	0	reversedirection=yes railway=rail	railway=switch	75	43323
+11488042;	48198217;	503	3	1000	0	0	0	0	reversedirection=yes railway=rail	railway=signal	76	43459
+11488299;	48198158;	503	20	1000	0	0	0	0	reversedirection=yes railway=rail	railway=unknown	77	44324
+11488685;	48198076;	502	30	1000	0	0	0	0	reversedirection=yes railway=rail	railway=signal	80	45396
+11489093;	48198005;	501	31	1000	0	0	0	0	reversedirection=yes railway=rail	railway=switch	82	46397
+11489186;	48197984;	501	5	1000	0	0	0	0	railway=rail		82	46557

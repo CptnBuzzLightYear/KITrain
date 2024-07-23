@@ -229,8 +229,8 @@ private:
         //size_t data_length = len - data_offset;
 
         // Add logging to debug header values
-        RCLCPP_INFO(this->get_logger(), "Received packet: image_id=%d, segment_index=%d, num_segments=%d, total_size=%d, segment_size=%d",
-                    image_id, segment_index, num_segments, total_size, segment_size);
+       // RCLCPP_INFO(this->get_logger(), "Received packet: image_id=%d, segment_index=%d, num_segments=%d, total_size=%d, segment_size=%d",
+          //         image_id, segment_index, num_segments, total_size, segment_size);
 
                     
 
