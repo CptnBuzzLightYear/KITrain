@@ -26,7 +26,7 @@ def generate_launch_description():
 
         Node(
             package = 'yard_describer',
-            executable = 'map_node',
+            executable = 'yard_describer',
             name = 'map'
         ),
            Node(
