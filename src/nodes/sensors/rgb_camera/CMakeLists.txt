@@ -17,18 +17,19 @@ find_package(image_transport REQUIRED)
 # further dependencies manually.
 # find_package(<dependency> REQUIRED)
 
-include_directories(include ${OpenCV_INCLUDE_DIRS})
+include_directories(
+  ${OpenCV_INCLUDE_DIRS}
+)
+
 
 add_executable(rgb_camera_receiver_main src/rgb_camera_receiver_main.cpp)
 
 
 ament_target_dependencies(rgb_camera_receiver_main 
-rclcpp 
-sensor_msgs 
-std_msgs 
-OpenCV 
-image_transport 
-cv_bridge
+rclcpp
+  sensor_msgs
+  cv_bridge
+  OpenCV
 )
 
 install(TARGETS 

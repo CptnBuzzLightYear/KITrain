@@ -30,8 +30,8 @@ def generate_launch_description():
             name = 'map'
         ),
            Node(
-            package = 'projector',
-            executable = 'projector',
+            package = 'lateral_projector',
+            executable = 'lateral_projector',
             name = 'positioning'
         ),
           # Node(
