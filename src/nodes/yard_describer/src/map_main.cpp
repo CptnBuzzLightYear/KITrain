@@ -21,7 +21,7 @@ public:
     TrackProcessor() 
         : Node("track_processor") {
         // Initialize publisher for marker array
-        marker_pub_ = this->create_publisher<visualization_msgs::msg::MarkerArray>("yard_description_marker_array", 10);
+        marker_pub_ = this->create_publisher<visualization_msgs::msg::MarkerArray>("yard_topology", 10);
 
         // Load track data from CSV files
         readCSVFiles();

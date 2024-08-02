@@ -34,11 +34,11 @@ def generate_launch_description():
             executable = 'lateral_projector',
             name = 'positioning'
         ),
-          # Node(
-         #   package = 'position_corrector',
-          #  executable = 'positioner',
-          #  name = 'order'
-       # ),
+           Node(
+            package = 'clearance_profile_setter',
+            executable = 'clearance_profile_setter',
+            name = 'CPS'
+        ),
 
 
        Node(
