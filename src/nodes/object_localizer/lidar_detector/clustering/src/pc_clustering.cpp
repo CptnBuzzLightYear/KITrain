@@ -1,15 +1,5 @@
 #include <memory>
 
-/*
-To Use This Template:
-1. Change Class Name to the respective Pointcloud Processing Step
-2. Change the topic_callback function to the respective processing function
-3. Add the respective processing function
-4. Add all necessary includes
-5. add dependencies to CMakeLists.txt
-6. change file name to the respective processing step
-*/
-
 #include <rclcpp/rclcpp.hpp>
 #include <sensor_msgs/msg/point_cloud2.hpp>
 #include "std_msgs/msg/string.hpp"
@@ -24,6 +14,7 @@ To Use This Template:
 
 #include <lidar_msgs/msg/ground_truth.hpp>
 #include "lidar_msgs/msg/ground_truth_array.hpp"
+#include <std_msgs/msg/header.hpp> 
 #include "visualization_msgs/msg/marker.hpp"
 #include "visualization_msgs/msg/marker_array.hpp"
 
@@ -215,16 +206,23 @@ private:
             label++;
         }
 
-        //  HIER ÜBERÖEGEN WIE DAS GUT GEHT MIT DEM PUBLISHEN, muss nicht hier sein, kann auch mit der pcd gepublished werden
+        //  Set the header for GroundTruthArray
         array_msg.header.stamp = this->now();
-        array_msg.header.frame_id = "frameidLiDARLabel";
+        array_msg.header.frame_id = "lidar_frame"; // Set appropriate frame_id here
         array_msg.labels = bbox_arr;
 
         PublisherBbox_->publish(array_msg);
+
+        // Set the header for MarkerArray
+        for (auto &marker : BboxViz_arr.markers) {
+            marker.header.stamp = this->now();
+            marker.header.frame_id = "lidar_frame"; // Ensure this matches your coordinate frame
+        }
         PublisherBboxViz_->publish(BboxViz_arr);
+
         bbox_arr.clear();
-        BboxViz_arr = {};
-        // RCLCPP_INFO(this->get_logger(), "BBox published");
+        BboxViz_arr.markers.clear();
+        
         return cloud_clustered;
     }
 
@@ -234,44 +232,33 @@ private:
         float_t height_cut;
         z_values.reserve(cloud->points.size());
 
-        //std::ofstream file("/home/setter/Desktop/csv_histogram/" + filename);
-        //if (!file.is_open())
-        //{
-        //    RCLCPP_INFO(this->get_logger(), "Failed to open file for writing: %s", filename);
-        //    return height_cut;
-        //}
-
-        // Iterate through all points in the cloud
         for (const auto &point : cloud->points)
         {
             z_values.push_back(round(10*point.z)/10);
-         //   file << round(10*point.z)/10 << std::endl;
         }
         height_cut = findMostFrequent(z_values) + 0.1;
-        //file.close();
         return height_cut;
     }
 
     float_t findMostFrequent(const std::vector<float_t>& arr) {
-    std::unordered_map<float_t, int> countMap;
-    // Count each element's occurrences
-    for (const float_t& elem : arr) {
-        ++countMap[elem];
+        std::unordered_map<float_t, int> countMap;
+        // Count each element's occurrences
+        for (const float_t& elem : arr) {
+            ++countMap[elem];
+        }
+
+        // Find the element with the maximum occurrences
+        auto mostFrequent = std::max_element(countMap.begin(), countMap.end(),
+            [](const std::pair<float_t, int>& a, const std::pair<float_t, int>& b) {
+                return a.second < b.second;
+            });
+
+        // Return the most frequent element
+        return mostFrequent->first;
     }
-
-    // Find the element with the maximum occurrences
-    auto mostFrequent = std::max_element(countMap.begin(), countMap.end(),
-        [](const std::pair<float_t, int>& a, const std::pair<float_t, int>& b) {
-            return a.second < b.second;
-        });
-
-    // Return the most frequent element
-    return mostFrequent->first;
-}
 
     visualization_msgs::msg::Marker BboxViz_creation(float_t min_val[3], float_t max_val[3], uint8_t R, uint8_t G, uint8_t B, int label)
     {
-
         visualization_msgs::msg::Marker boundingbox;
         float_t bbox_dim[3] = {0, 0, 0}, center_coord[3] = {0, 0, 0};
         for (int i = 0; i < 3; i++)
@@ -315,15 +302,8 @@ private:
         bbox.height_z = bbox_dim[2];
         bbox.yaw = 0;
         bbox.tag = "";
-        // bbox.color.a = 1;
-        // bbox.color.r = R;
-        // bbox.color.g = G;
-        // bbox.color.b = B;
-
         return bbox;
     }
-
-    // test command
 
     rclcpp::Subscription<sensor_msgs::msg::PointCloud2>::SharedPtr subscription_;
     rclcpp::Publisher<sensor_msgs::msg::PointCloud2>::SharedPtr publisher_;

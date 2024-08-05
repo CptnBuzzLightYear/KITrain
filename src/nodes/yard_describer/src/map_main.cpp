@@ -21,7 +21,7 @@ public:
     TrackProcessor() 
         : Node("track_processor") {
         // Initialize publisher for marker array
-        marker_pub_ = this->create_publisher<visualization_msgs::msg::MarkerArray>("visualization_marker_array", 10);
+        marker_pub_ = this->create_publisher<visualization_msgs::msg::MarkerArray>("yard_topology", 10);
 
         // Load track data from CSV files
         readCSVFiles();
@@ -52,16 +52,20 @@ private:
                 std::string token;
                 Coordinate coord;
 
+                // Read longitude and divide by 10^6 to convert to degrees
                 std::getline(ss, token, ';');
-                coord.longitude = std::stod(token);
+                coord.longitude = std::stod(token) * 1e-6;
 
+                // Read latitude and divide by 10^6 to convert to degrees
                 std::getline(ss, token, ';');
-                coord.latitude = std::stod(token);
+                coord.latitude = std::stod(token) * 1e-6;
 
+                // Read elevation directly
                 std::getline(ss, token, ';');
                 coord.elevation = std::stod(token);
 
-                geometry_msgs::msg::Point point = transformToMetric(coord); // Transform coordinates to metric
+                // Transform coordinates to metric (UTM)
+                geometry_msgs::msg::Point point = transformToMetric(coord);
                 track_points.emplace_back(point);
             }
             file.close();
@@ -75,13 +79,17 @@ private:
         double x, y;
         int zone;
         bool northp;
-        GeographicLib::UTMUPS::Forward(coord.latitude * 1e-7, coord.longitude * 1e-7, zone, northp, x, y);
+
+        // Convert geographic coordinates to UTM
+        GeographicLib::UTMUPS::Forward(coord.latitude, coord.longitude, zone, northp, x, y);
+
         RCLCPP_INFO(this->get_logger(), "UTM coordinates: Zone %d, %s, X: %f, Y: %f",
                     zone, northp ? "North" : "South", x, y);
+
         geometry_msgs::msg::Point point;
         point.x = x;
         point.y = y;
-        point.z = 0; // Ignore elevation and set it to 0
+        point.z = 0; // coord.elevation; uncomment to include elevation in the point
         return point;
     }
 
@@ -99,16 +107,29 @@ private:
             line_strip.header.stamp = this->get_clock()->now();
             line_strip.header.frame_id = "map";
             line_strip.ns = "track_lines";
-            line_strip.id = static_cast<int>(i);
+            if (i<2){
+            line_strip.id = static_cast<int>(i) + 1+100; //i von 0-14, tracks von 101-118
+            }
+            if(i>=2 && i<8){
+            line_strip.id = static_cast<int>(i) + 1+2+100; // track 103 and 104 are missing
+            }
+            if(i>=8 && i<=9){
+            line_strip.id = static_cast<int>(i) + 1+2+1+100; // track 111 is missing
+            }
+            if(i>=10){
+            line_strip.id = static_cast<int>(i) + 1+2+1+1+100; // track 114 is missing
+            }
             line_strip.type = visualization_msgs::msg::Marker::LINE_STRIP;
             line_strip.action = visualization_msgs::msg::Marker::ADD;
 
             line_strip.scale.x = 0.2;  // Line width
 
-            line_strip.color.a = 1.0;
-            line_strip.color.r = 1.0;
-            line_strip.color.g = 0.0;
-            line_strip.color.b = 0.0;
+            // Color configuration, Set lines in grey
+                line_strip.color.r = 0.5;
+                line_strip.color.g = 0.5;
+                line_strip.color.b = 0.5;
+
+            line_strip.color.a = 1.0; // Fully opaque
 
             for (const auto& point : tracks_[i]) {
                 line_strip.points.push_back(point);

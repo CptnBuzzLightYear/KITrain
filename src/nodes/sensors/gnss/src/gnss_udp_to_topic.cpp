@@ -91,7 +91,7 @@ private:
         std::memcpy(&latitude, &data[4], sizeof(float));
         std::memcpy(&altitude, &data[8], sizeof(float));
 
-        RCLCPP_INFO(this->get_logger(), "Received GNSS Data - Longitude: %f, Latitude: %f, Altitude: %f",
+       RCLCPP_INFO(this->get_logger(), "Received GNSS Data - Longitude: %f, Latitude: %f, Altitude: %f",
                     longitude, latitude, altitude);
 
         sensor_msgs::msg::NavSatFix msg;

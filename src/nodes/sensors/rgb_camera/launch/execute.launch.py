@@ -29,16 +29,31 @@ def generate_launch_description():
             executable = 'yard_describer',
             name = 'map'
         ),
-           Node(
-            package = 'projector',
-            executable = 'projector',
+        Node(
+            package = 'lateral_projector',
+            executable = 'lateral_projector',
             name = 'positioning'
         ),
-          # Node(
-         #   package = 'position_corrector',
-          #  executable = 'positioner',
-          #  name = 'order'
-       # ),
+        Node(
+            package = 'clearance_profile_setter',
+            executable = 'clearance_profile_setter',
+            name = 'CPS'
+        ),
+        Node(
+            package = 'clearance_profile_observer',
+            executable = 'clearance_profile_observer',
+            name = 'observer'
+        ),
+
+        Node(
+            package='static_transform_broadcaster',
+            executable='static_transform_broadcaster',
+            name='tatic_transform_broadcaster'),
+
+        #  Node(
+        #     package='dynamic_transform_broadcaster',
+        #     executable='dynamic_transform_broadcaster',
+        #     name='dynamic_transform_broadcaster'),
 
 
        Node(

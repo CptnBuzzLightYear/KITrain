@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.8)
-project(clearance_profile_setter)
+project(longitudinal_position_corrector)
 
 if(CMAKE_COMPILER_IS_GNUCXX OR CMAKE_CXX_COMPILER_ID MATCHES "Clang")
   add_compile_options(-Wall -Wextra -Wpedantic)
@@ -10,23 +10,19 @@ find_package(ament_cmake REQUIRED)
 find_package(rclcpp REQUIRED)
 find_package(geometry_msgs REQUIRED)
 find_package(visualization_msgs REQUIRED)
-find_package(tf2 REQUIRED)
-find_package(tf2_geometry_msgs REQUIRED)
 
+add_executable(longitudinal_position_corrector src/longitudinal_positioner.cpp)
 
-# Create executable
-add_executable(clearance_profile_setter src/clearance_profile_setter.cpp)
-
-# Link libraries
-ament_target_dependencies(clearance_profile_setter
+ament_target_dependencies(
+  longitudinal_position_corrector
   rclcpp
   geometry_msgs
   visualization_msgs
-  tf2
-  tf2_geometry_msgs
 )
-  install(TARGETS clearance_profile_setter
-  DESTINATION lib/${PROJECT_NAME}
-)
+
+install(TARGETS
+  longitudinal_position_corrector
+  DESTINATION lib/${PROJECT_NAME})
+
 
 ament_package()
