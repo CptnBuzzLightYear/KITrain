@@ -29,16 +29,25 @@ def generate_launch_description():
             executable = 'yard_describer',
             name = 'map'
         ),
+<<<<<<< HEAD
         Node(
+=======
+           Node(
+>>>>>>> c7cf2acda0e92c215ccd2ebd0ed7f5e8446a5f86
             package = 'lateral_projector',
             executable = 'lateral_projector',
             name = 'positioning'
         ),
+<<<<<<< HEAD
         Node(
+=======
+           Node(
+>>>>>>> c7cf2acda0e92c215ccd2ebd0ed7f5e8446a5f86
             package = 'clearance_profile_setter',
             executable = 'clearance_profile_setter',
             name = 'CPS'
         ),
+<<<<<<< HEAD
         Node(
             package = 'clearance_profile_observer',
             executable = 'clearance_profile_observer',
@@ -54,6 +63,8 @@ def generate_launch_description():
         #     package='dynamic_transform_broadcaster',
         #     executable='dynamic_transform_broadcaster',
         #     name='dynamic_transform_broadcaster'),
+=======
+>>>>>>> c7cf2acda0e92c215ccd2ebd0ed7f5e8446a5f86
 
 
        Node(

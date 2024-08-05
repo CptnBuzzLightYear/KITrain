@@ -25,7 +25,12 @@ ament_target_dependencies(clearance_profile_setter
   tf2
   tf2_geometry_msgs
 )
+<<<<<<< HEAD
   install(TARGETS clearance_profile_setter
+=======
+
+install(TARGETS clearance_profile_setter
+>>>>>>> c7cf2acda0e92c215ccd2ebd0ed7f5e8446a5f86
   DESTINATION lib/${PROJECT_NAME}
 )
 
