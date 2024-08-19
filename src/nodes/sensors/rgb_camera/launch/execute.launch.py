@@ -21,7 +21,12 @@ def generate_launch_description():
         Node(
             package = 'order_definer',
             executable = 'order_definer_node',
-            name = 'order'
+            name = 'order',
+        ),
+         Node(
+            package = 'signal_detector',
+            executable = 'signal_detector_node',
+            name = 'order',
         ),
 
         Node(
@@ -29,25 +34,21 @@ def generate_launch_description():
             executable = 'yard_describer',
             name = 'map'
         ),
-<<<<<<< HEAD
         Node(
-=======
-           Node(
->>>>>>> c7cf2acda0e92c215ccd2ebd0ed7f5e8446a5f86
-            package = 'lateral_projector',
-            executable = 'lateral_projector',
+            package = 'track_setter',
+            executable = 'track_setter',
             name = 'positioning'
         ),
-<<<<<<< HEAD
         Node(
-=======
-           Node(
->>>>>>> c7cf2acda0e92c215ccd2ebd0ed7f5e8446a5f86
+            package = 'localizer',
+            executable = 'localizer',
+            name = 'positioning',
+        ),
+        Node(
             package = 'clearance_profile_setter',
             executable = 'clearance_profile_setter',
             name = 'CPS'
         ),
-<<<<<<< HEAD
         Node(
             package = 'clearance_profile_observer',
             executable = 'clearance_profile_observer',
@@ -59,12 +60,15 @@ def generate_launch_description():
             executable='static_transform_broadcaster',
             name='tatic_transform_broadcaster'),
 
-        #  Node(
-        #     package='dynamic_transform_broadcaster',
-        #     executable='dynamic_transform_broadcaster',
-        #     name='dynamic_transform_broadcaster'),
-=======
->>>>>>> c7cf2acda0e92c215ccd2ebd0ed7f5e8446a5f86
+         Node(
+            package='odometry',
+            executable='odometry_receiver',
+            name='odometry_receiver'),
+
+        # Node(
+        #     package='actor',
+        #     executable='actor',
+        #     name='actor'),
 
 
        Node(

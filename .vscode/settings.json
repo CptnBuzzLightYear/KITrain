@@ -98,7 +98,9 @@
         "typeinfo": "cpp",
         "variant": "cpp",
         "valarray": "cpp",
-        "regex": "cpp"
+        "regex": "cpp",
+        "core": "cpp",
+        "splines": "cpp"
     },
     "cmake.sourceDirectory": "/home/steffens/KITrain/build/lidar_msgs/lidar_msgs__py"
 }
