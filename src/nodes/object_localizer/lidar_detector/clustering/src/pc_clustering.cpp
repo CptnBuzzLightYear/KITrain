@@ -239,7 +239,7 @@ private:
         {
             z_values.push_back(round(10*point.z)/10);
         }
-        height_cut = findMostFrequent(z_values) + 0.4; //cut rails
+        height_cut = findMostFrequent(z_values) + 0.5; //cut rails
         return height_cut;
     }
 

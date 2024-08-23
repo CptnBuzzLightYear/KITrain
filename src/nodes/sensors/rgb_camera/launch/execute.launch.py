@@ -65,10 +65,10 @@ def generate_launch_description():
             executable='odometry_receiver',
             name='odometry_receiver'),
 
-        # Node(
-        #     package='actor',
-        #     executable='actor',
-        #     name='actor'),
+        Node(
+            package='actor',
+            executable='actor',
+            name='actor'),
 
 
        Node(
