@@ -68,6 +68,19 @@ public:
                 sendUDPMessage();  // Continuously send UDP messages
             }
         );
+
+          // Timer for checking if IDLE state has lasted 2 seconds
+        idle_timer_ = this->create_wall_timer(
+            std::chrono::seconds(2),
+            [this]() {
+                if (current_state_ == State::IDLE) {
+                    std_msgs::msg::String task_msg;
+                    task_msg.data = "Task Completed";
+                    task_completed_publisher_->publish(task_msg);
+                    RCLCPP_INFO(this->get_logger(), "Task Completed after staying in IDLE for 2 seconds.");
+                }
+            }
+        );
     }
 
     ~ActorNode() {
@@ -113,6 +126,7 @@ private:
     rclcpp::Publisher<std_msgs::msg::String>::SharedPtr task_completed_publisher_;
 
     rclcpp::TimerBase::SharedPtr udp_timer_;
+     rclcpp::TimerBase::SharedPtr idle_timer_;  // Timer for IDLE state
 
     uint8_t encodeVelocity(double velocity) {
         return static_cast<uint8_t>(std::min(std::max(velocity / 40.0 * 255.0, 0.0), 255.0));
@@ -193,9 +207,9 @@ private:
             case State::DECELERATING:
                 state_msg.data = "Decelerating";
                 break;
-            case State::STOPPED:
-                state_msg.data = "Stopped";
-                break;
+            // case State::STOPPED:
+            //     state_msg.data = "Stopped";
+            //     break;
             case State::ATTACHING:
                 state_msg.data = "Attaching";
                 break;
@@ -222,7 +236,7 @@ private:
         task_completed_publisher_->publish(empty_msg);
     }
 
-    void orderInfoCallback(const std_msgs::msg::String::SharedPtr msg) {
+void orderInfoCallback(const std_msgs::msg::String::SharedPtr msg) {
     try {
         // Extract TaskID
         std::string data = msg->data;
@@ -239,34 +253,39 @@ private:
 
         // Clear the "Task Completed" message if a new task is set
         if (task_id > 0) {
-            clearTaskCompletedMessage();  // Publish an empty message
+            clearTaskCompletedMessage();
             RCLCPP_INFO(this->get_logger(), "New task received, clearing 'Task Completed' state.");
         }
 
-        // Handle Emergency Stop
+        // Emergency Stop
         if (task_id == 0) {
             current_state_ = State::EMERGENCY_STOP;
-            target_velocity_ = 0;
-            target_distance_ = 0;
+            target_velocity_ = 0.0;
+            target_distance_ = 1.0;
             RCLCPP_INFO(this->get_logger(), "Switching to EMERGENCY_STOP state.");
-        } 
-        // Handle General Driving Task (Task ID > 0)
-        else if (task_id > 0 && current_state_ == State::IDLE) {
-            if (smoothed_distance_ > 40.0) {
-                current_state_ = State::ACCELERATING;
-                target_velocity_ = v_max_;
-                target_distance_ = 0;
-                RCLCPP_INFO(this->get_logger(), "Track free - switching to ACCELERATING state.");
-            } else if (smoothed_distance_ > 10.0 && smoothed_distance_ <= 40.0) {
-                current_state_ = State::CLOSINGGAP;
-                target_velocity_ = v_max_ / 2.0;
-                target_distance_ = smoothed_distance_ - 0.5;
-                RCLCPP_INFO(this->get_logger(), "Switching to CLOSINGGAP state to approach the target.");
-            } else if (smoothed_distance_ <= 10.0 && task_id == 1) {
-                current_state_ = State::ATTACHING;
-                target_velocity_ = 1.0;
-                target_distance_ = smoothed_distance_ - 0.5;
-                RCLCPP_INFO(this->get_logger(), "Switching to ATTACHING state.");
+        } else {
+            // Regular Task Handling
+            if (current_state_ == State::IDLE) {
+                if (smoothed_distance_ > 40.0) {
+                    current_state_ = State::ACCELERATING;
+                    target_velocity_ = v_max_;
+                    target_distance_ = 0.0;
+                    RCLCPP_INFO(this->get_logger(), "Track free - switching to ACCELERATING state.");
+                } else if (smoothed_distance_ > 10.0 && smoothed_distance_ < 40.0) {
+                    current_state_ = State::CLOSINGGAP;
+                    target_velocity_ = v_max_ / 2.0;
+                    target_distance_ = 0.0;
+                    RCLCPP_INFO(this->get_logger(), "Switching to CLOSINGGAP state.");
+                } else if (task_id == 1 && smoothed_distance_ > 3.5 && smoothed_distance_ <= 10.0) {
+                    current_state_ = State::ATTACHING;
+                    target_velocity_ = 1.0;
+                    target_distance_ = 0.0;
+                    RCLCPP_INFO(this->get_logger(), "Switching to ATTACHING state.");
+                }
+                else {
+                    current_state_ == State::IDLE;
+
+                }
             }
         }
 
@@ -288,36 +307,67 @@ void observerInfoCallback(const observer_msgs::msg::ObserverInfo::SharedPtr msg)
     smoothed_distance_msg.data = smoothed_distance;
     smoothed_distance_publisher_->publish(smoothed_distance_msg);
 
+    // Handle transitions based on real-time distance information
+
     // Transition from ACCELERATING to DECELERATING if an obstacle is detected within 40 meters
     if (current_state_ == State::ACCELERATING && smoothed_distance_ < 40.0) {
         current_state_ = State::DECELERATING;
         target_velocity_ = 0.0;
-        target_distance_ = smoothed_distance_ - 10.0;
-        RCLCPP_INFO(this->get_logger(), "Obstacle detected. Switching to DECELERATING state.");
+        target_distance_ = (smoothed_distance_ > 10.0) ? smoothed_distance_ - 10.0 : 0.0;
+        RCLCPP_INFO(this->get_logger(), "Obstacle detected within 40 meters. Switching to DECELERATING state.");
     }
 
-    // Transition from CLOSINGGAP to DECELERATING as it approaches the obstacle
-    if (current_state_ == State::CLOSINGGAP && smoothed_distance_ <= 10.0) {
-        current_state_ = State::DECELERATING;
-        target_velocity_ = 0.0;
-        target_distance_ = smoothed_distance_ - 0.5;
-        RCLCPP_INFO(this->get_logger(), "Approaching obstacle, switching to DECELERATING state.");
-    }
-
-    // Transition from ATTACHING to STOPPED if within 0.5 meters of the obstacle
-    if (current_state_ == State::ATTACHING && smoothed_distance_ <= 0.5) {
-        current_state_ = State::STOPPED;
-        target_velocity_ = 0;
-        target_distance_ = 0;
-        RCLCPP_INFO(this->get_logger(), "Close to the obstacle, switching to STOPPED state.");
-    }
-
-    // Transition from DECELERATING to ACCELERATING if the path clears (smoothed_distance > 40 meters)
+    // Transition from DECELERATING to ACCELERATING if the path clears
     if (current_state_ == State::DECELERATING && smoothed_distance_ > 40.0) {
         current_state_ = State::ACCELERATING;
         target_velocity_ = v_max_;
         target_distance_ = 0.0;
         RCLCPP_INFO(this->get_logger(), "Obstacle cleared, switching back to ACCELERATING.");
+    }
+
+      // Transition from DECELERATING to ACCELERATING if the path clears
+    if (current_state_ == State::ATTACHING && smoothed_distance_ > 40.0) {
+        current_state_ = State::ACCELERATING;
+        target_velocity_ = v_max_;
+        target_distance_ = 0.0;
+        RCLCPP_INFO(this->get_logger(), "Obstacle cleared, switching back to ACCELERATING.");
+    }
+
+
+    // Handle CLOSINGGAP state: target is to stop 10 meters in front of the obstacle
+    if (current_state_ == State::CLOSINGGAP) {
+        target_distance_ = (smoothed_distance_ > 10.0) ? smoothed_distance_ - 10.0 : 1.0;
+
+        // If Task ID = 1 and within 10 meters, transition to ATTACHING state
+        if (smoothed_distance_ > 3.0 && smoothed_distance <= 10.0 && current_task_id_ == 1) {
+            current_state_ = State::ATTACHING;
+            target_velocity_ = 1.0;  // Slow speed for fine approach
+            target_distance_ = (smoothed_distance_ > 3.0) ? smoothed_distance_ - 3.0 : 1.0;
+            RCLCPP_INFO(this->get_logger(), "Task ID = 1, transitioning to ATTACHING state.");
+        } else if (smoothed_distance_ <= 10.0 && current_task_id_ != 1) {
+            // If not Task ID = 1, transition to DECELERATING to stop 10 meters before the obstacle
+            current_state_ = State::DECELERATING;
+            target_velocity_ = 0.0;
+            target_distance_ = 1.0;
+            RCLCPP_INFO(this->get_logger(), "Approaching obstacle, switching to DECELERATING state to stop 10 meters before obstacle.");
+        }
+    }
+
+     // Handle transition to CLOSING GAP or ATTACHING after approaching
+    if (current_state_ == State::IDLE && current_task_id_ == 1) {
+        // within 10 meters, transition to ATTACHING state
+        if (smoothed_distance_ > 3.0 && smoothed_distance_ && smoothed_distance_ <= 10.0) {
+            current_state_ = State::ATTACHING;
+            target_velocity_ = 1.0;  // Slow speed for fine approach
+            target_distance_ = 0.0 ;
+            RCLCPP_INFO(this->get_logger(), "Task ID = 1, transitioning to ATTACHING state.");
+        } else if (smoothed_distance_ > 10.0 && smoothed_distance_ <= 20.0 ) {
+            // If not Task ID = 1, transition to DECELERATING to stop 10 meters before the obstacle
+            current_state_ = State::CLOSINGGAP;
+            target_velocity_ = v_max_ / 2.0;
+            target_distance_ = 0.0;
+            RCLCPP_INFO(this->get_logger(), "Approaching obstacle, switching to DECELERATING state to stop 10 meters before obstacle.");
+        }
     }
 
     publishTargetVelocityAndDistance();
@@ -339,48 +389,54 @@ void velocityCallback(const geometry_msgs::msg::Twist::SharedPtr msg) {
         return;
     }
 
-    // Handle dynamic updates while in DECELERATING state
+    // DECELERATING: Adjust target distance dynamically
     if (current_state_ == State::DECELERATING) {
-        target_distance_ = smoothed_distance_ - 0.5;  // Continuously update target distance
+        target_distance_ = smoothed_distance_ - 10.0;  // Continuously update target distance
         if (msg->linear.x == 0.0) {  // Vehicle has come to a stop
-            current_state_ = State::STOPPED;
+            current_state_ = State::IDLE;
             target_velocity_ = 0.0;
-            target_distance_ = 0.0;
+            target_distance_ = 1.0;
             RCLCPP_INFO(this->get_logger(), "Vehicle stopped. Switching to STOPPED state.");
-
-            rclcpp::sleep_for(std::chrono::seconds(2));  // Wait for 2 seconds
-            if (current_state_ == State::STOPPED) {
-                current_state_ = State::IDLE;
-                RCLCPP_INFO(this->get_logger(), "Task Completed after stopping for 2 seconds.");
-                std_msgs::msg::String task_msg;
-                task_msg.data = "Task Completed";
-                task_completed_publisher_->publish(task_msg);
-            }
         }
         publishTargetVelocityAndDistance();
         return;
     }
 
-    // Handle dynamic updates while in ATTACHING state
+    // ATTACHING: Stop the vehicle when within 2.5 meters
     if (current_state_ == State::ATTACHING) {
-        if (smoothed_distance_ <= 0.5) {
-            current_state_ = State::STOPPED;
+        if (smoothed_distance_ <= 4.5) {
             target_velocity_ = 0.0;
-            target_distance_ = 0.0;
+            target_distance_ = 1.0;
             RCLCPP_INFO(this->get_logger(), "Reached target for ATTACHING. Switching to STOPPED.");
         } else {
             target_distance_ = std::max(target_distance_ - distance_travelled, 0.0);
         }
         publishTargetVelocityAndDistance();
-        return;
+        
     }
 
-    // Handle transition from STOPPED to IDLE
-    if (current_state_ == State::STOPPED && msg->linear.x == 0.0) {
+    //STOPPED to IDLE after ATTACHING (only when completely stopped)
+    if (current_state_ == State::ATTACHING && msg->linear.x == 0.0 && smoothed_distance_ < 3.0) {
         current_state_ = State::IDLE;
-        RCLCPP_INFO(this->get_logger(), "Vehicle has stopped. Switching to IDLE state.");
+        RCLCPP_INFO(this->get_logger(), "Vehicle has stopped after ATTACHING. Switching to IDLE state.");
         publishCurrentState();
+       
     }
+      //STOPPED to IDLE after ATTACHING (only when completely stopped)
+    if (current_state_ == State::EMERGENCY_STOP && msg->linear.x == 0.0) {
+        current_state_ = State::IDLE;
+        RCLCPP_INFO(this->get_logger(), "Vehicle has stopped after ATTACHING. Switching to IDLE state.");
+        publishCurrentState();
+       
+    }
+
+    // STOPPED to IDLE after ensuring the vehicle has stopped
+    // if (current_state_ == State::STOPPED && msg->linear.x == 0.0) {
+    //     current_state_ = State::IDLE;
+    //     RCLCPP_INFO(this->get_logger(), "Vehicle has stopped. Switching to IDLE state.");
+    //     publishCurrentState();
+    //     return;
+    // }
 
     last_velocity_ = msg->linear.x;
     last_detection_time_ = this->now();
@@ -390,6 +446,195 @@ void velocityCallback(const geometry_msgs::msg::Twist::SharedPtr msg) {
 }
 
 
+
+
+//     void orderInfoCallback(const std_msgs::msg::String::SharedPtr msg) {
+//         try {
+//             // Extract TaskID
+//             std::string data = msg->data;
+//             std::size_t pos = data.find("TaskID: ");
+//             if (pos == std::string::npos) {
+//                 throw std::invalid_argument("TaskID not found in the message");
+//             }
+
+//             std::string task_id_str = data.substr(pos + 8);
+//             task_id_str = task_id_str.substr(0, task_id_str.find_first_of(", \n\r"));
+
+//             int task_id = std::stoi(task_id_str);
+//             current_task_id_ = task_id;
+
+//             // Clear the "Task Completed" message if a new task is set
+//             if (task_id > 0) {
+//                 clearTaskCompletedMessage();  // Publish an empty message
+//                 RCLCPP_INFO(this->get_logger(), "New task received, clearing 'Task Completed' state.");
+//             }
+//               // Handle transition && to ACCELERATING if TaskID > 0 and vehicle is in IDLE state
+//             if (current_state_ == State::IDLE && smoothed_distance_ > 40.0 && task_id > 0) {
+//                 current_state_ = State::ACCELERATING;
+//                 target_velocity_ = v_max_;      
+//                 target_distance_ = 0; // Set target distance to 0.5 meters before the obstacle
+//                 RCLCPP_INFO(this->get_logger(), "Track free - switching to ACCELERATING state.");
+//             }
+
+//               // Handle transition to CLOSING the GAP if TaskID > 0 and vehicle is in IDLE state
+//             if (current_state_ == State::IDLE && smoothed_distance_ > 10 && smoothed_distance_ <= 40.0 && task_id > 0) {
+//                 current_state_ = State::CLOSINGGAP;
+//                 target_velocity_ = v_max_ / 2.0;  // Moderate speed for approaching
+//                 target_distance_ = smoothed_distance_/2;
+//                 RCLCPP_INFO(this->get_logger(), "Switching to ACCELERATING state to approach the target to 0.5 meters.");
+//             }
+
+//             // Handle transition to ATTACHING if TaskID = 1 and vehicle is in IDLE state
+//             if (current_state_ == State::IDLE && smoothed_distance_ > 3.5 && smoothed_distance_ <= 10.0 && task_id == 1) {
+//                 current_state_ = State::ATTACHING;
+//                 target_velocity_ = 1.0;  // Moderate speed for approaching
+//                 target_distance_ = 0; //smoothed_distance_ - 0.5; // Set target distance to 0.5 meters before the obstacle (offset Lidar - )
+//                 RCLCPP_INFO(this->get_logger(), "Switching to ATTACING state.");
+//             }
+      
+
+//             // Handle transition to ATTACHING if TaskID = 1 and vehicle is in IDLE state
+//             if (task_id == 0) {
+//                 current_state_ = State::EMERGENCY_STOP;
+//                 target_velocity_ = 0;  // Stop 
+//                 target_distance_ = 0.0;  // as soon as possible
+//                 RCLCPP_INFO(this->get_logger(), "Switching to EM.STOP state.");
+//             }
+           
+
+//             publishTargetVelocityAndDistance();
+//             publishCurrentState();
+
+//         } catch (const std::invalid_argument& e) {
+//             RCLCPP_ERROR(this->get_logger(), "Invalid TaskID received: '%s'. Error: %s", msg->data.c_str(), e.what());
+//         } catch (const std::out_of_range& e) {
+//             RCLCPP_ERROR(this->get_logger(), "TaskID out of range: '%s'. Error: %s", msg->data.c_str(), e.what());
+//         }
+//     }
+// void observerInfoCallback(const observer_msgs::msg::ObserverInfo::SharedPtr msg) {
+//     double smoothed_distance = smoothDistance(msg->distance);
+//     smoothed_distance_ = smoothed_distance;
+
+//     std_msgs::msg::Float64 smoothed_distance_msg;
+//     smoothed_distance_msg.data = smoothed_distance;
+//     smoothed_distance_publisher_->publish(smoothed_distance_msg);
+
+//     // Handle transitions based on real-time distance information
+
+//     // Transition from ACCELERATING to DECELERATING if an obstacle is detected within 40 meters
+//     if (current_state_ == State::ACCELERATING && smoothed_distance_ < 40.0) {
+//         current_state_ = State::DECELERATING;
+//         target_velocity_ = 0.0;
+//         target_distance_ = smoothed_distance_ - 10.0;
+//         RCLCPP_INFO(this->get_logger(), "Obstacle detected. Switching to DECELERATING state.");
+//     }
+
+//        // Check if the vehicle is in STOPPED state and Task ID = 1, then switch to ATTACHING
+//     if (current_state_ == State::IDLE && current_task_id_ == 1 && smoothed_distance_ > 10 && smoothed_distance_ <= 15.0) {
+//         current_state_ = State::CLOSINGGAP;
+//         target_velocity_ = 1.0;
+//         target_distance_ = 10.0;
+//         RCLCPP_INFO(this->get_logger(), "Switching to CLOSINGGAP state.");
+//     }
+//     // Transition from CLOSINGGAP to DECELERATING as it approaches the obstacle
+//     if (current_state_ == State::CLOSINGGAP && smoothed_distance_ <= 10.0) {
+//         current_state_ = State::IDLE;
+//         target_velocity_ = 0.0;
+//         target_distance_ = 2.0;
+//         RCLCPP_INFO(this->get_logger(), "Approaching obstacle, switching to DECELERATING state.");
+//     }
+
+//     // Check if the vehicle is in STOPPED state and Task ID = 1, then switch to ATTACHING
+//     if (current_state_ == State::IDLE && current_task_id_ == 1 && smoothed_distance_ > 0.5 && smoothed_distance_ <= 10.0) {
+//         current_state_ = State::ATTACHING;
+//         target_velocity_ = 1.0;
+//         target_distance_ = 0.0;
+//         RCLCPP_INFO(this->get_logger(), "Switching to ATTACHING state.");
+//     }
+
+//     // Transition from ATTACHING to STOPPED when within 0.5 meters of the obstacle
+//     if (current_state_ == State::ATTACHING && smoothed_distance_ <= 3.5) {
+//         current_state_ = State::IDLE;
+//         target_velocity_ = 0.0;
+//         target_distance_ = 2.0;
+//         RCLCPP_INFO(this->get_logger(), "Reached target for ATTACHING. Switching to STOPPED.");
+        
+//           }
+//         rclcpp::sleep_for(std::chrono::seconds(2));  // Wait for 2 seconds
+//         current_state_ = State::IDLE;
+//         RCLCPP_INFO(this->get_logger(), "Task Completed after stopping at the obstacle.");
+//         std_msgs::msg::String task_msg;
+//         task_msg.data = "Task Completed";
+//         task_completed_publisher_->publish(task_msg);
+  
+
+//     // Transition from DECELERATING to ACCELERATING if the path clears
+//     if (current_state_ == State::DECELERATING && smoothed_distance_ > 40.0) {
+//         current_state_ = State::ACCELERATING;
+//         target_velocity_ = v_max_;
+//         target_distance_ = 0.0;
+//         RCLCPP_INFO(this->get_logger(), "Obstacle cleared, switching back to ACCELERATING.");
+//     }
+
+//     publishTargetVelocityAndDistance();
+//     publishCurrentState();
+// }
+
+// void velocityCallback(const geometry_msgs::msg::Twist::SharedPtr msg) {
+//     double time_elapsed = (this->now() - last_detection_time_).seconds();
+//     double distance_travelled = last_velocity_ * time_elapsed;
+
+//     // Publish "IDLE" only after the first velocity message is received
+//     if (!has_published_idle_) {
+//         if (msg->linear.x == 0.0) {
+//             current_state_ = State::IDLE;
+//             has_published_idle_ = true;
+//             RCLCPP_INFO(this->get_logger(), "Vehicle velocity is 0. Publishing IDLE state.");
+//             publishCurrentState();
+//         }
+//         return;
+//     }
+
+//     // Handle dynamic updates while in DECELERATING state
+//     if (current_state_ == State::DECELERATING) {
+//         target_distance_ = smoothed_distance_ - 10.0;  // Continuously update target distance
+//         if (msg->linear.x == 0.0) {  // Vehicle has come to a stop
+//             current_state_ = State::IDLE;
+//             target_velocity_ = 0.0;
+//             target_distance_ = 0.5;
+//             RCLCPP_INFO(this->get_logger(), "Vehicle stopped. Switching to STOPPED state.");
+//         }
+//         publishTargetVelocityAndDistance();
+//         return;
+//     }
+
+//     // Handle dynamic updates while in ATTACHING state
+//     if (current_state_ == State::ATTACHING) {
+//         if (smoothed_distance_ <= 0.5) {
+//             current_state_ = State::STOPPED;
+//             target_velocity_ = 0.0;
+//             target_distance_ = 0.0;
+//             RCLCPP_INFO(this->get_logger(), "Reached target for ATTACHING. Switching to STOPPED.");
+//         } else {
+//             target_distance_ = std::max(target_distance_ - distance_travelled, 0.0);
+//         }
+//         publishTargetVelocityAndDistance();
+//         return;
+//     }
+
+//     // Handle transition from STOPPED to IDLE
+//     if (current_state_ == State::STOPPED && msg->linear.x == 0.0) {
+//         current_state_ = State::IDLE;
+//         RCLCPP_INFO(this->get_logger(), "Vehicle has stopped. Switching to IDLE state.");
+//         publishCurrentState();
+//     }
+
+//     last_velocity_ = msg->linear.x;
+//     last_detection_time_ = this->now();
+
+//     publishTargetVelocityAndDistance();
+//     publishCurrentState();
+// }
 
 
     // void observerInfoCallback(const observer_msgs::msg::ObserverInfo::SharedPtr msg) {
