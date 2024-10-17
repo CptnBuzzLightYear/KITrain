@@ -59,7 +59,7 @@ public:
         // Setup the UDP server address structure
         server_address_.sin_family = AF_INET;
         server_address_.sin_port = htons(2869);  // Port number as provided
-        server_address_.sin_addr.s_addr = inet_addr("10.8.3.3");  //receiver port (Kinematics model)
+        server_address_.sin_addr.s_addr = inet_addr("10.8.3.2");  //receiver port (Kinematics model)
 
         RCLCPP_INFO(this->get_logger(), "Actor node initialized and UDP communication setup complete.");
 
