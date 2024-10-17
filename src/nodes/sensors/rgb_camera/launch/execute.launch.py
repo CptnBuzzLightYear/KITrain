@@ -72,8 +72,8 @@ def generate_launch_description():
 
 
        Node(
-            package = 'track_detector', 
-            executable = 'track_detect_main', 
+            package = 'offline_map', 
+            executable = 'offline_map', 
             name = 'screen3'), 
 
         Node(

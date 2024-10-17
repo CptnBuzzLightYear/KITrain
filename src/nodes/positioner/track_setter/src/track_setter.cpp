@@ -45,13 +45,13 @@ private:
                 }
 
                 selected_track_id_ = std::stoi(target_pos_str);
-                RCLCPP_INFO(this->get_logger(), "Selected Track ID set to: %d", selected_track_id_);
+                //RCLCPP_INFO(this->get_logger(), "Selected Track ID set to: %d", selected_track_id_);
                 publishTrackLine();
             } else {
                 RCLCPP_ERROR(this->get_logger(), "Target Position not found in the order message");
             }
         } catch (const std::exception &e) {
-            RCLCPP_ERROR(this->get_logger(), "Error processing order info: %s", e.what());
+           // RCLCPP_ERROR(this->get_logger(), "Error processing order info: %s", e.what());
         }
     }
 
@@ -81,10 +81,12 @@ private:
     }
 
     clearAllMarkers();
+     // Sleep for a short time to ensure the old markers are processed before publishing new ones
+    std::this_thread::sleep_for(100ms);
 
     visualization_msgs::msg::MarkerArray highlighted_marker_array;
     for (const auto& marker : markers_->markers) {
-        RCLCPP_INFO(this->get_logger(), "Checking Marker ID: %d, Points: %zu", marker.id, marker.points.size());
+       // RCLCPP_INFO(this->get_logger(), "Checking Marker ID: %d, Points: %zu", marker.id, marker.points.size());
 
         if (marker.id == selected_track_id_) {
             if (marker.points.empty()) {
@@ -97,7 +99,7 @@ private:
             highlighted_marker.color.b = 0.0;
             highlighted_marker.color.a = 1.0;
             highlighted_marker_array.markers.push_back(highlighted_marker);
-            RCLCPP_INFO(this->get_logger(), "Highlighting Marker ID: %d with %zu points", marker.id, marker.points.size());
+           // RCLCPP_INFO(this->get_logger(), "Highlighting Marker ID: %d with %zu points", marker.id, marker.points.size());
         }
     }
 

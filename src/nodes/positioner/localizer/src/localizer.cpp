@@ -43,7 +43,7 @@ public:
 private:
     void pathCallback(const visualization_msgs::msg::MarkerArray::SharedPtr msg) {
         highlighted_path_ = msg;
-        RCLCPP_INFO(this->get_logger(), "Received highlighted driving path.");
+     //   RCLCPP_INFO(this->get_logger(), "Received highlighted driving path.");
     }
 
     void gnssCallback(const sensor_msgs::msg::NavSatFix::SharedPtr msg) {
@@ -104,8 +104,8 @@ private:
 
         GeographicLib::UTMUPS::Forward(coord.latitude, coord.longitude, zone, northp, x, y);
 
-        RCLCPP_INFO(this->get_logger(), "UTM coordinates: Zone %d, %s, X: %f, Y: %f",
-                    zone, northp ? "North" : "South", x, y);
+        // RCLCPP_INFO(this->get_logger(), "UTM coordinates: Zone %d, %s, X: %f, Y: %f",
+        //             zone, northp ? "North" : "South", x, y);
 
         geometry_msgs::msg::Point point;
         point.x = x;

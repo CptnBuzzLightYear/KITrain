@@ -42,7 +42,7 @@ private:
     void topic_callback(const sensor_msgs::msg::PointCloud2::SharedPtr msg)
     {
         unsigned int num_points = msg->width;
-        RCLCPP_INFO(this->get_logger(), "INPUT: The number of points in the pointcloud is %i", num_points);
+      //  RCLCPP_INFO(this->get_logger(), "INPUT: The number of points in the pointcloud is %i", num_points);
 
         // Declaring the different pointcloud types
         sensor_msgs::msg::PointCloud2 cloud_out;
@@ -78,7 +78,7 @@ private:
         pcl_conversions::fromPCL(*cloud_filtered, cloud_out);
 
         unsigned int num_points_out = cloud_out.width;
-        RCLCPP_INFO(this->get_logger(), "OUTPUT: The number of points in the pointcloud is %i", num_points_out);
+       // RCLCPP_INFO(this->get_logger(), "OUTPUT: The number of points in the pointcloud is %i", num_points_out);
 
         cloud_out.header.frame_id = msg->header.frame_id;
         cloud_out.header.stamp = msg->header.stamp;
@@ -113,9 +113,9 @@ private:
         fast_euclidean_clustering.setQuality(quality);
         fast_euclidean_clustering.segment(clusters);
         clustersize = clusters.size();
-        RCLCPP_INFO(this->get_logger(), "Min_Clustersize: %d", min_cluster_size);
-        RCLCPP_INFO(this->get_logger(), "Max_Clustersize: %d", max_cluster_size);
-        RCLCPP_INFO(this->get_logger(), "Clustersize: %d", clustersize);
+        // RCLCPP_INFO(this->get_logger(), "Min_Clustersize: %d", min_cluster_size);
+        // RCLCPP_INFO(this->get_logger(), "Max_Clustersize: %d", max_cluster_size);
+        // RCLCPP_INFO(this->get_logger(), "Clustersize: %d", clustersize);
 
         // Assigning Colors to the clusters, so that they can be visualized
         pcl::copyPointCloud(*cloud_with_i, *cloud_clustered);
@@ -239,7 +239,7 @@ private:
         {
             z_values.push_back(round(10*point.z)/10);
         }
-        height_cut = findMostFrequent(z_values) + 0.5; //cut rails
+        height_cut = findMostFrequent(z_values) + 0.6; //cut rails
         return height_cut;
     }
 

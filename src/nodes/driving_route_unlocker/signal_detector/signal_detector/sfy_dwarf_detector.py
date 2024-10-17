@@ -9,7 +9,7 @@ import pandas as pd
 from std_msgs.msg import Bool, String
 
 # Load class names
-with open('/home/steffens/KITrain/src/nodes/driving_route_unlocker/signal_detector/signal_detector/class_names.txt', "r") as my_file:
+with open('/home/virtrack/KITrain/src/nodes/driving_route_unlocker/signal_detector/signal_detector/class_names.txt', "r") as my_file:
     data = my_file.read()
 class_list = data.split("\n")
 print(class_list)
@@ -30,7 +30,7 @@ class VideoSubscriber(Node):
         self.signal_setting_publisher = self.create_publisher(String, 'signal_setting', 10)
         
         self.bridge = CvBridge()
-        self.model = YOLO("/home/steffens/KITrain/src/nodes/driving_route_unlocker/signal_detector/signal_detector/best.pt")  # Ensure 'best.pt' is in the src directory
+        self.model = YOLO("/home/virtrack/KITrain/src/nodes/driving_route_unlocker/signal_detector/signal_detector/best.pt")  # Ensure 'best.pt' is in the src directory
         self.get_logger().info("Video subscriber node has been started.")
 
     def video_callback(self, ros_frame):

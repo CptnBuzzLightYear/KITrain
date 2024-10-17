@@ -101,7 +101,7 @@ private:
         if (tokens[0] == "0")
         {
             // process header data
-            RCLCPP_INFO(this->get_logger(), "Received HEADER");
+          //  RCLCPP_INFO(this->get_logger(), "Received HEADER");
         }
         else if (tokens[0] == "1")
         {

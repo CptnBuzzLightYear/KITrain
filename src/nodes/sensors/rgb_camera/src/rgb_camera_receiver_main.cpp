@@ -9,13 +9,11 @@
 #include <thread>
 #include <exception>
 
-using namespace std::chrono_literals;
-
 class UDPImageReceiver : public rclcpp::Node {
 public:
     UDPImageReceiver()
-        : Node("udp_image_receiver"), socket_fd(-1), buffer_size(4096) {
-        image_publisher_ = this->create_publisher<sensor_msgs::msg::Image>("received_image", 100);
+        : Node("udp_image_receiver"), socket_fd(-1), buffer_size(8950), retry_count(3) {  // Match Unreal's PACK_SIZE
+        image_publisher_ = this->create_publisher<sensor_msgs::msg::Image>("received_image", 10);
 
         socket_fd = socket(AF_INET, SOCK_DGRAM, 0);
         if (socket_fd < 0) {
@@ -33,8 +31,6 @@ public:
             close(socket_fd);
             return;
         }
-
-        RCLCPP_INFO(this->get_logger(), "UDPImageReceiver node has been started");
 
         receive_thread_ = std::thread(&UDPImageReceiver::receiveLoop, this);
     }
@@ -55,7 +51,7 @@ private:
                 receiveAndDecodeImage();
             } catch (const std::exception& e) {
                 RCLCPP_ERROR(this->get_logger(), "Exception in receiveLoop: %s", e.what());
-                std::this_thread::sleep_for(100ms); // Sleep for a short while before retrying
+                std::this_thread::sleep_for(std::chrono::milliseconds(100)); // Use explicit chrono syntax
             }
         }
     }
@@ -76,59 +72,62 @@ private:
         int total_packets = 0;
         memcpy(&total_packets, size_buffer, sizeof(int));
 
-        if (total_packets <= 0 || total_packets > 100000) { // Sanity check on total_packets
+        if (total_packets <= 0 || total_packets > 100000) {
             RCLCPP_WARN(this->get_logger(), "Invalid total_packets value: %d", total_packets);
             return;
         }
 
         std::vector<uchar> image_data;
-        try {
-            image_data.reserve(total_packets * buffer_size);
-        } catch (const std::exception& e) {
-            RCLCPP_ERROR(this->get_logger(), "Failed to reserve memory for image_data: %s", e.what());
-            return;
-        }
+        image_data.reserve(total_packets * buffer_size);
 
+        uint8_t expected_sequence = 0;
         for (int i = 0; i < total_packets; ++i) {
-            std::vector<uchar> packet_data(buffer_size);
-            received_bytes = recvfrom(socket_fd, packet_data.data(), buffer_size, 0, 
-                                      (struct sockaddr*)&sender_addr, &sender_addr_len);
-            if (received_bytes > 0) {
-                image_data.insert(image_data.end(), packet_data.begin(), packet_data.begin() + received_bytes);
+            std::vector<uchar> packet_data(buffer_size + 1); // +1 for the sequence number
+            int retry = retry_count;
+
+            do {
+                received_bytes = recvfrom(socket_fd, packet_data.data(), buffer_size + 1, 0, 
+                                          (struct sockaddr*)&sender_addr, &sender_addr_len);
+                retry--;
+            } while (retry > 0 && received_bytes <= 0);
+
+            if (received_bytes > 0 && packet_data[0] == expected_sequence++) {
+                int CurrentPackSize = (i == total_packets - 1) ? (received_bytes - 1) : buffer_size;
+                image_data.insert(image_data.end(), packet_data.begin() + 1, packet_data.begin() + 1 + CurrentPackSize);
             } else {
-                RCLCPP_WARN(this->get_logger(), "Failed to receive packet %d", i);
+                RCLCPP_WARN(this->get_logger(), "Packet loss detected for packet %d", i);
                 return;
             }
         }
 
         if (!image_data.empty()) {
-            try {
-                cv::Mat img = cv::imdecode(image_data, cv::IMREAD_UNCHANGED);
-                if (!img.empty()) {
-                    publishImage(img);
-                } else {
-                    RCLCPP_ERROR(this->get_logger(), "Failed to decode image");
-                    image_data.clear(); // Clear the buffer on error
-                }
-            } catch (const cv::Exception& e) {
-                RCLCPP_ERROR(this->get_logger(), "OpenCV exception: %s", e.what());
-                image_data.clear(); // Clear the buffer on error
+            cv::Mat img = cv::imdecode(image_data, cv::IMREAD_UNCHANGED);
+            if (!img.empty()) {
+                publishImage(img);
+                  image_data.clear();
+            } else {
+                RCLCPP_ERROR(this->get_logger(), "Failed to decode image");
+                image_data.clear();
             }
         }
     }
 
-    void publishImage(const cv::Mat& img) {
+    void publishImage(cv::Mat& img) {
+        cv::Mat brightened_img;
+        double alpha = 1.8;
+        img.convertTo(brightened_img, -1, alpha, 0);
+
         std_msgs::msg::Header header;
         header.stamp = this->now();
         header.frame_id = "camera_frame";
 
-        sensor_msgs::msg::Image::SharedPtr msg = cv_bridge::CvImage(header, "bgr8", img).toImageMsg();
+        sensor_msgs::msg::Image::SharedPtr msg = cv_bridge::CvImage(header, "bgr8", brightened_img).toImageMsg();
         image_publisher_->publish(*msg);
-        RCLCPP_INFO(this->get_logger(), "Image Published");
     }
 
     int socket_fd;
     const int buffer_size;
+    int retry_count;
     std::thread receive_thread_;
     rclcpp::Publisher<sensor_msgs::msg::Image>::SharedPtr image_publisher_;
 };
@@ -139,6 +138,294 @@ int main(int argc, char* argv[]) {
     rclcpp::shutdown();
     return 0;
 }
+// #include <rclcpp/rclcpp.hpp>
+// #include <sensor_msgs/msg/image.hpp>
+// #include <cv_bridge/cv_bridge.h>
+// #include <opencv2/opencv.hpp>
+// #include <sys/socket.h>
+// #include <netinet/in.h>
+// #include <arpa/inet.h>
+// #include <vector>
+// #include <thread>
+// #include <exception>
+
+// class UDPImageReceiver : public rclcpp::Node {
+// public:
+//     UDPImageReceiver()
+//         : Node("udp_image_receiver"), socket_fd(-1), buffer_size(4 * 4096), retry_count(3) {
+//         image_publisher_ = this->create_publisher<sensor_msgs::msg::Image>("received_image", 100);
+
+//         socket_fd = socket(AF_INET, SOCK_DGRAM, 0);
+//         if (socket_fd < 0) {
+//             RCLCPP_ERROR(this->get_logger(), "Failed to create socket");
+//             return;
+//         }
+
+//         struct sockaddr_in addr;
+//         addr.sin_family = AF_INET;
+//         addr.sin_port = htons(9091);
+//         addr.sin_addr.s_addr = htonl(INADDR_ANY);
+
+//         if (bind(socket_fd, (struct sockaddr*)&addr, sizeof(addr)) < 0) {
+//             RCLCPP_ERROR(this->get_logger(), "Failed to bind socket");
+//             close(socket_fd);
+//             return;
+//         }
+
+//         receive_thread_ = std::thread(&UDPImageReceiver::receiveLoop, this);
+//     }
+
+//     ~UDPImageReceiver() {
+//         if (socket_fd >= 0) {
+//             close(socket_fd);
+//         }
+//         if (receive_thread_.joinable()) {
+//             receive_thread_.join();
+//         }
+//     }
+
+// private:
+//     void receiveLoop() {
+//     while (rclcpp::ok()) {
+//         try {
+//             receiveAndDecodeImage();
+//         } catch (const std::exception& e) {
+//             RCLCPP_ERROR(this->get_logger(), "Exception in receiveLoop: %s", e.what());
+//             std::this_thread::sleep_for(std::chrono::milliseconds(100)); // Use explicit chrono syntax
+//         }
+//     }
+// }
+
+
+//     void receiveAndDecodeImage() {
+//         char size_buffer[sizeof(int)];
+//         struct sockaddr_in sender_addr;
+//         socklen_t sender_addr_len = sizeof(sender_addr);
+
+//         int received_bytes = recvfrom(socket_fd, size_buffer, sizeof(int), 0, 
+//                                       (struct sockaddr*)&sender_addr, &sender_addr_len);
+
+//         if (received_bytes != sizeof(int)) {
+//             RCLCPP_WARN(this->get_logger(), "Failed to receive image size");
+//             return;
+//         }
+
+//         int total_packets = 0;
+//         memcpy(&total_packets, size_buffer, sizeof(int));
+
+//         if (total_packets <= 0 || total_packets > 100000) {
+//             RCLCPP_WARN(this->get_logger(), "Invalid total_packets value: %d", total_packets);
+//             return;
+//         }
+
+//         std::vector<uchar> image_data;
+//         image_data.reserve(total_packets * buffer_size);
+
+//         uint8_t expected_sequence = 0;
+//         for (int i = 0; i < total_packets; ++i) {
+//             std::vector<uchar> packet_data(buffer_size + 1); // +1 for the sequence number
+//             int retry = retry_count;
+
+//             do {
+//                 received_bytes = recvfrom(socket_fd, packet_data.data(), buffer_size + 1, 0, 
+//                                           (struct sockaddr*)&sender_addr, &sender_addr_len);
+//                 retry--;
+//             } while (retry > 0 && received_bytes <= 0);
+
+//             if (received_bytes > 0 && packet_data[0] == expected_sequence++) {
+//                 image_data.insert(image_data.end(), packet_data.begin() + 1, packet_data.begin() + received_bytes);
+//             } else {
+//                 RCLCPP_WARN(this->get_logger(), "Packet loss detected for packet %d", i);
+//                 return;
+//             }
+//         }
+
+//         if (!image_data.empty()) {
+//             cv::Mat img = cv::imdecode(image_data, cv::IMREAD_UNCHANGED);
+//             if (!img.empty()) {
+//                 publishImage(img);
+//             } else {
+//                 RCLCPP_ERROR(this->get_logger(), "Failed to decode image");
+//                 image_data.clear();
+//             }
+//         }
+//     }
+
+//     void publishImage(cv::Mat& img) {
+//         cv::Mat brightened_img;
+//         double alpha = 1.8;
+//         img.convertTo(brightened_img, -1, alpha, 0);
+
+//         std_msgs::msg::Header header;
+//         header.stamp = this->now();
+//         header.frame_id = "camera_frame";
+
+//         sensor_msgs::msg::Image::SharedPtr msg = cv_bridge::CvImage(header, "bgr8", brightened_img).toImageMsg();
+//         image_publisher_->publish(*msg);
+//     }
+
+//     int socket_fd;
+//     const int buffer_size;
+//     int retry_count;
+//     std::thread receive_thread_;
+//     rclcpp::Publisher<sensor_msgs::msg::Image>::SharedPtr image_publisher_;
+// };
+
+// int main(int argc, char* argv[]) {
+//     rclcpp::init(argc, argv);
+//     rclcpp::spin(std::make_shared<UDPImageReceiver>());
+//     rclcpp::shutdown();
+//     return 0;
+// }
+
+
+// #include <rclcpp/rclcpp.hpp>
+// #include <sensor_msgs/msg/image.hpp>
+// #include <cv_bridge/cv_bridge.h>
+// #include <opencv2/opencv.hpp>
+// #include <sys/socket.h>
+// #include <netinet/in.h>
+// #include <arpa/inet.h>
+// #include <vector>
+// #include <thread>
+// #include <exception>
+
+// using namespace std::chrono_literals;
+
+// class UDPImageReceiver : public rclcpp::Node {
+// public:
+//     UDPImageReceiver()
+//         : Node("udp_image_receiver"), socket_fd(-1), buffer_size(4096) {
+//         image_publisher_ = this->create_publisher<sensor_msgs::msg::Image>("received_image", 100);
+
+//         socket_fd = socket(AF_INET, SOCK_DGRAM, 0);
+//         if (socket_fd < 0) {
+//             RCLCPP_ERROR(this->get_logger(), "Failed to create socket");
+//             return;
+//         }
+
+//         struct sockaddr_in addr;
+//         addr.sin_family = AF_INET;
+//         addr.sin_port = htons(9091);
+//         addr.sin_addr.s_addr = htonl(INADDR_ANY);
+
+//         if (bind(socket_fd, (struct sockaddr*)&addr, sizeof(addr)) < 0) {
+//             RCLCPP_ERROR(this->get_logger(), "Failed to bind socket");
+//             close(socket_fd);
+//             return;
+//         }
+
+//         RCLCPP_INFO(this->get_logger(), "UDPImageReceiver node has been started");
+
+//         receive_thread_ = std::thread(&UDPImageReceiver::receiveLoop, this);
+//     }
+
+//     ~UDPImageReceiver() {
+//         if (socket_fd >= 0) {
+//             close(socket_fd);
+//         }
+//         if (receive_thread_.joinable()) {
+//             receive_thread_.join();
+//         }
+//     }
+
+// private:
+//     void receiveLoop() {
+//         while (rclcpp::ok()) {
+//             try {
+//                 receiveAndDecodeImage();
+//             } catch (const std::exception& e) {
+//                 RCLCPP_ERROR(this->get_logger(), "Exception in receiveLoop: %s", e.what());
+//                 std::this_thread::sleep_for(100ms); // Sleep for a short while before retrying
+//             }
+//         }
+//     }
+
+//     void receiveAndDecodeImage() {
+//         char size_buffer[sizeof(int)];
+//         struct sockaddr_in sender_addr;
+//         socklen_t sender_addr_len = sizeof(sender_addr);
+
+//         int received_bytes = recvfrom(socket_fd, size_buffer, sizeof(int), 0, 
+//                                       (struct sockaddr*)&sender_addr, &sender_addr_len);
+
+//         if (received_bytes != sizeof(int)) {
+//             RCLCPP_WARN(this->get_logger(), "Failed to receive image size");
+//             return;
+//         }
+
+//         int total_packets = 0;
+//         memcpy(&total_packets, size_buffer, sizeof(int));
+
+//         if (total_packets <= 0 || total_packets > 100000) { // Sanity check on total_packets
+//             RCLCPP_WARN(this->get_logger(), "Invalid total_packets value: %d", total_packets);
+//             return;
+//         }
+
+//         std::vector<uchar> image_data;
+//         try {
+//             image_data.reserve(total_packets * buffer_size);
+//         } catch (const std::exception& e) {
+//             RCLCPP_ERROR(this->get_logger(), "Failed to reserve memory for image_data: %s", e.what());
+//             return;
+//         }
+
+//         for (int i = 0; i < total_packets; ++i) {
+//             std::vector<uchar> packet_data(buffer_size);
+//             received_bytes = recvfrom(socket_fd, packet_data.data(), buffer_size, 0, 
+//                                       (struct sockaddr*)&sender_addr, &sender_addr_len);
+//             if (received_bytes > 0) {
+//                 image_data.insert(image_data.end(), packet_data.begin(), packet_data.begin() + received_bytes);
+//             } else {
+//                 RCLCPP_WARN(this->get_logger(), "Failed to receive packet %d", i);
+//                 return;
+//             }
+//         }
+
+//         if (!image_data.empty()) {
+//             try {
+//                 cv::Mat img = cv::imdecode(image_data, cv::IMREAD_UNCHANGED);
+//                 if (!img.empty()) {
+//                     publishImage(img);
+//                 } else {
+//                     RCLCPP_ERROR(this->get_logger(), "Failed to decode image");
+//                     image_data.clear(); // Clear the buffer on error
+//                 }
+//             } catch (const cv::Exception& e) {
+//                 RCLCPP_ERROR(this->get_logger(), "OpenCV exception: %s", e.what());
+//                 image_data.clear(); // Clear the buffer on error
+//             }
+//         }
+//     }
+
+//     void publishImage(cv::Mat& img) {
+//     // Adjust the brightness
+//     cv::Mat brightened_img;
+//     double alpha = 1.8;  // Brightness factor (1.0 means no change, >1.0 increases brightness)
+//     img.convertTo(brightened_img, -1, alpha, 0);
+
+//     std_msgs::msg::Header header;
+//     header.stamp = this->now();
+//     header.frame_id = "camera_frame";
+
+//     sensor_msgs::msg::Image::SharedPtr msg = cv_bridge::CvImage(header, "bgr8", brightened_img).toImageMsg();
+//     image_publisher_->publish(*msg);
+//    //RCLCPP_INFO(this->get_logger(), "Brightened Image Published");
+// }
+
+
+//     int socket_fd;
+//     const int buffer_size;
+//     std::thread receive_thread_;
+//     rclcpp::Publisher<sensor_msgs::msg::Image>::SharedPtr image_publisher_;
+// };
+
+// int main(int argc, char* argv[]) {
+//     rclcpp::init(argc, argv);
+//     rclcpp::spin(std::make_shared<UDPImageReceiver>());
+//     rclcpp::shutdown();
+//     return 0;
+// }
 
 // ______________________________________________________________________________________________________-
 //running with rgb images from openCV modified camerasender
