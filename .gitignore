@@ -407,3 +407,6 @@ install/
 log/
 build/
 install/
+
+# VS Code specific ignores
+.vscode/
