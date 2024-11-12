@@ -1,26 +1,55 @@
-cmake_minimum_required(VERSION 3.8)
+cmake_minimum_required(VERSION 3.5)
 project(clearance_profile_observer)
 
-if(CMAKE_COMPILER_IS_GNUCXX OR CMAKE_CXX_COMPILER_ID MATCHES "Clang")
-  add_compile_options(-Wall -Wextra -Wpedantic)
-endif()
+# Use C++14
+set(CMAKE_CXX_STANDARD 14)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-# find dependencies
+# Find dependencies
 find_package(ament_cmake REQUIRED)
-# uncomment the following section in order to fill in
-# further dependencies manually.
-# find_package(<dependency> REQUIRED)
+find_package(rclcpp REQUIRED)
+find_package(geometry_msgs REQUIRED)
+find_package(sensor_msgs REQUIRED)
+find_package(tf2_ros REQUIRED)
+find_package(tf2_geometry_msgs REQUIRED)
+find_package(lidar_msgs REQUIRED)
+find_package(visualization_msgs REQUIRED)
+find_package(observer_msgs REQUIRED)
 
-if(BUILD_TESTING)
-  find_package(ament_lint_auto REQUIRED)
-  # the following line skips the linter which checks for copyrights
-  # comment the line when a copyright and license is added to all source files
-  set(ament_cmake_copyright_FOUND TRUE)
-  # the following line skips cpplint (only works in a git repo)
-  # comment the line when this package is in a git repo and when
-  # a copyright and license is added to all source files
-  set(ament_cmake_cpplint_FOUND TRUE)
-  ament_lint_auto_find_test_dependencies()
-endif()
+include_directories(
+  include
+  ${lidar_msgs_INCLUDE_DIRS}
+  )
 
+
+# Include directories
+include_directories(
+  include
+  ${tf2_ros_INCLUDE_DIRS}
+  ${tf2_geometry_msgs_INCLUDE_DIRS}
+  ${visualization_msgs_INCLUDE_DIRS}
+)
+
+# Define the executable
+add_executable(clearance_profile_observer src/clearance_profile_observer.cpp)
+
+# Link dependencies
+ament_target_dependencies(clearance_profile_observer
+  rclcpp
+  geometry_msgs
+  sensor_msgs
+  observer_msgs
+  tf2_ros
+  tf2_geometry_msgs
+  visualization_msgs
+  lidar_msgs
+)
+
+# Install target
+install(TARGETS
+  clearance_profile_observer
+  DESTINATION lib/${PROJECT_NAME}
+)
+
+# Register package
 ament_package()

@@ -56,7 +56,7 @@ private:
             // Receive UDP Data          
             sockaddr_in client_addr;
             socklen_t addr_len = sizeof(client_addr);
-            RCLCPP_INFO(this->get_logger(), "Waiting for data...");
+          //  RCLCPP_INFO(this->get_logger(), "Waiting for data...");
             
             ssize_t bytes_received = recvfrom(sockfd_, buffer, MAX_UDP_PACKET_SIZE, 0, (struct sockaddr *)&client_addr, &addr_len);
 
@@ -70,8 +70,8 @@ private:
                 continue;
             }
 
-            RCLCPP_INFO(this->get_logger(), "Received %zd bytes from %s:%d",
-                        bytes_received, inet_ntoa(client_addr.sin_addr), ntohs(client_addr.sin_port));
+            // RCLCPP_INFO(this->get_logger(), "Received %zd bytes from %s:%d",
+            //             bytes_received, inet_ntoa(client_addr.sin_addr), ntohs(client_addr.sin_port));
 
             if (!convertToNavSatFix(buffer, bytes_received)) {
                 RCLCPP_ERROR(this->get_logger(), "Error converting UDP data to NavSatFix message");
@@ -91,8 +91,8 @@ private:
         std::memcpy(&latitude, &data[4], sizeof(float));
         std::memcpy(&altitude, &data[8], sizeof(float));
 
-        RCLCPP_INFO(this->get_logger(), "Received GNSS Data - Longitude: %f, Latitude: %f, Altitude: %f",
-                    longitude, latitude, altitude);
+    //    RCLCPP_INFO(this->get_logger(), "Received GNSS Data - Longitude: %f, Latitude: %f, Altitude: %f",
+    //                 longitude, latitude, altitude);
 
         sensor_msgs::msg::NavSatFix msg;
         msg.header.stamp = this->now();

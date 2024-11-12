@@ -15,7 +15,7 @@ class VideoTrackDetector : public rclcpp::Node {
 public:
     VideoTrackDetector() : Node("track_detect_main") {
         sub_ = this->create_subscription<sensor_msgs::msg::Image>(
-            "image/image_raw", 10, std::bind(&VideoTrackDetector::processImageCallback, this, std::placeholders::_1));
+            "received_image", 10, std::bind(&VideoTrackDetector::processImageCallback, this, std::placeholders::_1));
 
         processed_image_publisher_ = this->create_publisher<sensor_msgs::msg::Image>("track_line", 10); //this->create_..
      // Timer to control publishing rate

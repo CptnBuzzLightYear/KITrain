@@ -1,0 +1,5 @@
+# CombinedData.msg
+lidar_msgs/GroundTruthArray lidar_bounding_boxes
+visualization_msgs/MarkerArray highlighted_path
+visualization_msgs/MarkerArray polygons
+visualization_msgs/MarkerArray tubes

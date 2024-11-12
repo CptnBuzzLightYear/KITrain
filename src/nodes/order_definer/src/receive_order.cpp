@@ -70,7 +70,7 @@ private:
                 std::string jsonData(buffer, bytes_received);
 
                 // Print raw UDP data to log
-                RCLCPP_INFO(this->get_logger(), "Received UDP data: %s", jsonData.c_str());
+               // RCLCPP_INFO(this->get_logger(), "Received UDP data: %s", jsonData.c_str());
 
                 // Parse JSON data
                 try
@@ -91,7 +91,7 @@ private:
                 }
                 catch (const std::exception &e)
                 {
-                    RCLCPP_ERROR(this->get_logger(), "Failed to parse JSON data: %s", e.what());
+                  //  RCLCPP_ERROR(this->get_logger(), "Failed to parse JSON data: %s", e.what());
                 }
             }
         }

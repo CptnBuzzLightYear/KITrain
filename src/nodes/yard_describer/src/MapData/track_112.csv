@@ -1,0 +1,23 @@
+Longitude	Latitude	Elevation	Distance	CostPerKm	ElevCost	TurnCost	NodeCost	InitialCost	WayTags	NodeTags	Time	Energy
+11470686;   48203393;   504
+11470929;   48203310;   504
+11471333;	48203180;	504	51	1000	0	0	0	0	reversedirection=yes railway=rail	railway=signal	4	2419
+11471383;	48203163;	504	4	1000	0	0	0	0	reversedirection=yes railway=rail	railway=switch	4	2605
+11472112;	48202967;	503	58	1000	0	0	0	0	reversedirection=yes railway=rail	railway=switch	9	4995
+11472590;	48202805;	502	40	1000	0	0	0	0	reversedirection=yes railway=rail	railway=signal	12	6236
+11473006;	48202661;	502	35	1000	0	0	0	0	reversedirection=yes railway=rail	railway=switch	15	7465
+11473827;	48202382;	502	68	1000	0	0	0	0	railway=rail	railway=signal	20	10090
+11480578;	48200069;	504	255	1000	0	0	0	0	railway=rail		40	21367
+11484834;	48199007;	504	647	1000	0	0	0	0	railway=rail	railway=signal	51	29302
+11485505;	48198855;	503	53	1000	0	0	0	0	railway=rail	railway=switch	56	31377
+11485789;	48198795;	503	22	1000	0	0	0	0	railway=rail	railway=signal	57	32228
+11485987;	48198747;	502	16	1000	0	0	0	0	railway=rail	railway=switch	59	32797
+11487126;	48198495;	502	89	1000	0	0	0	0	railway=rail	railway=switch	66	36123
+11487195;	48198479;	502	5	1000	0	0	0	0	railway=rail	railway=signal	66	36334
+11487302;	48198454;	502	8	1000	0	0	0	0	railway=rail	railway=switch	67	36689
+11487994;	48198272;	503	55	1000	0	0	0	0	reversedirection=yes railway=rail	railway=switch	71	39311
+11488057;	48198257;	503	5	1000	0	0	0	0	railway=rail	railway=signal	72	39544
+11488313;	48198198;	503	20	1000	0	0	0	0	railway=rail	railway=unknown	73	40431
+11488694;	48198114;	501	30	1000	0	0	0	0	railway=rail	railway=signal	76	41474
+11489093;	48198005;	501	32	1000	0	0	0	0	railway=rail	railway=switch	78	42483
+11489186;	48197984;	501	5	1000	0	0	0	0	railway=rail		78	42652

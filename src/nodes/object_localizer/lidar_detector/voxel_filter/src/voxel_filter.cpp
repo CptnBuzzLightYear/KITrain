@@ -20,14 +20,14 @@ public:
   {
     subscription_ = this->create_subscription<sensor_msgs::msg::PointCloud2>(
         "/pointcloud", 1, std::bind(&VoxelFilter::topic_callback, this, _1));
-    publisher_ = this->create_publisher<sensor_msgs::msg::PointCloud2>("VoxelFilterPub", 1);
+    publisher_ = this->create_publisher<sensor_msgs::msg:: PointCloud2>("VoxelFilterPub", 1);
   }
 
 private:
   void topic_callback(const sensor_msgs::msg::PointCloud2::SharedPtr msg) const
   {
-    unsigned int num_points = msg->width;
-    RCLCPP_INFO(this->get_logger(), "INPUT VOXELFILTER: The number of points in the pointcloud is %i", num_points);
+   // unsigned int num_points = msg->width;
+   // RCLCPP_INFO(this->get_logger(), "INPUT VOXELFILTER: The number of points in the pointcloud is %i", num_points);
 
     pcl::PCLPointCloud2::Ptr cloud(new pcl::PCLPointCloud2());
     pcl::PCLPointCloud2::Ptr cloud_filtered(new pcl::PCLPointCloud2());
@@ -50,8 +50,8 @@ private:
     sensor_msgs::msg::PointCloud2 cloud_out;
     pcl_conversions::fromPCL(*cloud_filtered, cloud_out);
 
-    unsigned int num_points_out = cloud_out.width;
-    RCLCPP_INFO(this->get_logger(), "OUTPUT VOXELFILTER: The number of points in the pointcloud is %i", num_points_out);
+   // unsigned int num_points_out = cloud_out.width;
+    //RCLCPP_INFO(this->get_logger(), "OUTPUT VOXELFILTER: The number of points in the pointcloud is %i", num_points_out);
 
     cloud_out.header.frame_id = msg->header.frame_id;
     cloud_out.header.stamp = msg->header.stamp;

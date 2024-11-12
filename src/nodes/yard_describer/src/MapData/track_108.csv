@@ -1,0 +1,25 @@
+Longitude	Latitude	Elevation	Distance	CostPerKm	ElevCost	TurnCost	NodeCost	InitialCost	WayTags	NodeTags	Time	Energy
+11470686;   48203393;   504
+11470929;   48203310;   504
+11471333;	48203180;	504	51	1000	0	0	0	0	reversedirection=yes railway=rail	railway=signal	4	2419
+11471383;	48203163;	504	4	1000	0	0	0	0	reversedirection=yes railway=rail	railway=switch	4	2605
+11472050;	48202883;	504	59	1000	0	0	0	0	reversedirection=yes railway=rail	railway=switch	9	5115
+11472321;	48202790;	503	23	1000	0	0	0	0	reversedirection=yes railway=rail	railway=signal	10	5925
+11473948;	48202179;	502	139	1000	0	0	0	0	reversedirection=yes railway=rail	railway=switch	22	11085
+11474633;	48201923;	502	58	1000	0	0	0	0	reversedirection=yes railway=rail	railway=switch	26	13420
+11475452;	48201619;	502	70	1000	0	0	0	0	reversedirection=yes railway=rail	railway=signal	32	16139
+11480525;	48199882;	503	92	1000	0	0	0	0	reversedirection=yes railway=rail		39	20104
+11484798;	48198830;	504	670	1000	0	0	0	0	reversedirection=yes railway=rail	railway=signal	53	31179
+11485489;	48198727;	503	53	1000	0	0	0	0	reversedirection=yes railway=rail	railway=switch	57	33170
+11486058;	48198636;	502	43	1000	0	0	0	0	reversedirection=yes railway=rail	railway=switch	61	34731
+11486079;	48198632;	502	2	1000	0	0	0	0	reversedirection=yes railway=rail	railway=signal	61	34803
+11486453;	48198548;	502	29	1000	0	0	0	0	reversedirection=yes railway=rail	railway=switch	63	35765
+11487113;	48198401;	502	52	1000	0	0	0	0	reversedirection=yes railway=rail	railway=switch	67	37944
+11487140;	48198395;	502	2	1000	0	0	0	0	reversedirection=yes railway=rail	railway=signal	68	38029
+11487258;	48198370;	503	9	1000	0	0	0	0	reversedirection=yes railway=rail	railway=switch	68	38449
+11488001;	48198226;	503	57	1000	0	0	0	0	reversedirection=yes railway=rail	railway=switch	73	41135
+11488042;	48198217;	503	3	1000	0	0	0	0	reversedirection=yes railway=rail	railway=signal	73	41269
+11488299;	48198158;	503	20	1000	0	0	0	0	reversedirection=yes railway=rail	railway=unknown	75	42123
+11488685;	48198076;	502	30	1000	0	0	0	0	reversedirection=yes railway=rail	railway=signal	77	43184
+11489093;	48198005;	501	31	1000	0	0	0	0	reversedirection=yes railway=rail	railway=switch	80	44175
+11489186;	48197984;	501	5	1000	0	0	0	0	railway=rail		80	44334

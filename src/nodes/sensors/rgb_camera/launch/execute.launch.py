@@ -21,19 +21,59 @@ def generate_launch_description():
         Node(
             package = 'order_definer',
             executable = 'order_definer_node',
-            name = 'order'
+            name = 'order',
+        ),
+         Node(
+            package = 'signal_detector',
+            executable = 'signal_detector_node',
+            name = 'order',
         ),
 
         Node(
             package = 'yard_describer',
-            executable = 'map_node',
-            name = 'order'
+            executable = 'yard_describer',
+            name = 'map'
         ),
+        Node(
+            package = 'track_setter',
+            executable = 'track_setter',
+            name = 'positioning'
+        ),
+        Node(
+            package = 'localizer',
+            executable = 'localizer',
+            name = 'positioning',
+        ),
+        Node(
+            package = 'clearance_profile_setter',
+            executable = 'clearance_profile_setter',
+            name = 'CPS'
+        ),
+        Node(
+            package = 'clearance_profile_observer',
+            executable = 'clearance_profile_observer',
+            name = 'observer'
+        ),
+
+        Node(
+            package='static_transform_broadcaster',
+            executable='static_transform_broadcaster',
+            name='tatic_transform_broadcaster'),
+
+         Node(
+            package='odometry',
+            executable='odometry_receiver',
+            name='odometry_receiver'),
+
+        Node(
+            package='actor',
+            executable='actor',
+            name='actor'),
 
 
        Node(
-            package = 'track_detector', 
-            executable = 'track_detect_main', 
+            package = 'offline_map', 
+            executable = 'offline_map', 
             name = 'screen3'), 
 
         Node(

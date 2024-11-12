@@ -1,99 +1,526 @@
+
+//____________________________________________________Node for track_xxx.csv processing
 #include <rclcpp/rclcpp.hpp>
-#include <nav_msgs/msg/path.hpp>
-#include <geometry_msgs/msg/pose_stamped.hpp>
+#include <GeographicLib/UTMUPS.hpp>
+#include <visualization_msgs/msg/marker_array.hpp>
 #include <fstream>
 #include <sstream>
-#include <string>
 #include <vector>
-#include <algorithm>
+#include <string>
 
-class MapFilePublisher : public rclcpp::Node
-{
+using namespace std::chrono_literals;
+
+// Structure to store coordinates
+struct Coordinate {
+    double longitude;
+    double latitude;
+    double elevation;
+};
+
+// Main processing class
+class TrackProcessor : public rclcpp::Node {
 public:
-    MapFilePublisher()
-        : Node("map_node")
-    {
-        publisher_ = this->create_publisher<nav_msgs::msg::Path>("driving_path", 10);
-        timer_ = this->create_wall_timer(
-            std::chrono::seconds(1), std::bind(&MapFilePublisher::publish_paths, this));
-        RCLCPP_INFO(this->get_logger(), "MapFilePublisher node has been started.");
+    TrackProcessor() 
+        : Node("track_processor") {
+        // Initialize publisher for marker array
+        marker_pub_ = this->create_publisher<visualization_msgs::msg::MarkerArray>("yard_topology", 10);
+
+        // Load track data from CSV files
+        readCSVFiles();
+
+        // Create a timer to call the publishTrackLines function after 10 seconds
+        marker_timer_ = this->create_wall_timer(
+            10s, std::bind(&TrackProcessor::publishTrackLines, this));
     }
 
 private:
-    void publish_paths()
-    {
-        nav_msgs::msg::Path path;
-        path.header.stamp = this->get_clock()->now();
-        path.header.frame_id = "map";
-
-        for (int i = 101; i <= 118; ++i)
-        {
+    // Function to read CSV files
+    void readCSVFiles() {
+        for (int i = 101; i <= 118; ++i) {
             std::string filename = "src/nodes/yard_describer/src/MapData/track_" + std::to_string(i) + ".csv";
             std::ifstream file(filename);
-            if (!file.is_open())
-            {
-                RCLCPP_ERROR(this->get_logger(), "Failed to open the CSV file: %s", filename.c_str());
+
+            if (!file.is_open()) {
+                RCLCPP_ERROR(this->get_logger(), "Failed to open file: %s", filename.c_str());
                 continue;
             }
 
             std::string line;
-            bool header = true;
+            std::getline(file, line);  // Skip the header line
 
-            while (std::getline(file, line))
-            {
-                if (header)
-                {
-                    header = false;
-                    continue;
-                }
-
+            std::vector<geometry_msgs::msg::Point> track_points;
+            while (std::getline(file, line)) {
                 std::stringstream ss(line);
-                std::string cell;
-                std::vector<std::string> row;
+                std::string token;
+                Coordinate coord;
 
-                while (std::getline(ss, cell, ';')) // Changed delimiter to semicolon
-                {
-                    row.push_back(cell);
-                }
+                // Read longitude and divide by 10^6 to convert to degrees
+                std::getline(ss, token, ';');
+                coord.longitude = std::stod(token) * 1e-6;
 
-                if (row.size() < 6)
-                {
-                    continue;
-                }
+                // Read latitude and divide by 10^6 to convert to degrees
+                std::getline(ss, token, ';');
+                coord.latitude = std::stod(token) * 1e-6;
 
-                geometry_msgs::msg::PoseStamped pose;
-                pose.header.stamp = this->get_clock()->now();
-                pose.header.frame_id = "map";
+                // Read elevation directly
+                std::getline(ss, token, ';');
+                coord.elevation = std::stod(token);
 
-                // Replace commas with dots in the strings if the CSV uses commas as decimal separators
-                std::string x_str = row[4];
-                std::replace(x_str.begin(), x_str.end(), ',', '.');
-
-                std::string y_str = row[5];
-                std::replace(y_str.begin(), y_str.end(), ',', '.');
-
-                std::string z_str = row[3];
-                std::replace(z_str.begin(), z_str.end(), ',', '.');
-
-                pose.pose.position.x = std::stod(x_str); // E column (lateral coordinate)
-                pose.pose.position.y = std::stod(y_str); // F column (longitudinal coordinate)
-                pose.pose.position.z = std::stod(z_str)-500; // D column (altitude)
-                path.poses.push_back(pose);
+                // Transform coordinates to metric (UTM)
+                geometry_msgs::msg::Point point = transformToMetric(coord);
+                track_points.emplace_back(point);
             }
-        }
+            file.close();
 
-        publisher_->publish(path);
-        RCLCPP_INFO(this->get_logger(), "Publishing aggregated path of all tracks");
+            tracks_.emplace_back(track_points);
+        }
     }
 
-    rclcpp::Publisher<nav_msgs::msg::Path>::SharedPtr publisher_;
-    rclcpp::TimerBase::SharedPtr timer_;
+    // Transform geographic coordinates to UTM and return as geometry_msgs::msg::Point
+    geometry_msgs::msg::Point transformToMetric(const Coordinate& coord) {
+        double x, y;
+        int zone;
+        bool northp;
+
+        // Convert geographic coordinates to UTM
+        GeographicLib::UTMUPS::Forward(coord.latitude, coord.longitude, zone, northp, x, y);
+
+        // RCLCPP_INFO(this->get_logger(), "UTM coordinates: Zone %d, %s, X: %f, Y: %f",
+        //             zone, northp ? "North" : "South", x, y);
+
+        geometry_msgs::msg::Point point;
+        point.x = x;
+        point.y = y;
+        point.z = 0; // coord.elevation; uncomment to include elevation in the point
+        return point;
+    }
+
+    // Publish the track lines as markers
+    void publishTrackLines() {
+        if (tracks_.empty()) {
+            RCLCPP_WARN(this->get_logger(), "No track points to publish.");
+            return;
+        }
+
+        visualization_msgs::msg::MarkerArray marker_array;
+
+        for (size_t i = 0; i < tracks_.size(); ++i) {
+            visualization_msgs::msg::Marker line_strip;
+            line_strip.header.stamp = this->get_clock()->now();
+            line_strip.header.frame_id = "map";
+            line_strip.ns = "track_lines";
+            if (i<2){
+            line_strip.id = static_cast<int>(i) + 1+100; //i von 0-14, tracks von 101-118
+            }
+            if(i>=2 && i<8){
+            line_strip.id = static_cast<int>(i) + 1+2+100; // track 103 and 104 are missing
+            }
+            if(i>=8 && i<=9){
+            line_strip.id = static_cast<int>(i) + 1+2+1+100; // track 111 is missing
+            }
+            if(i>=10){
+            line_strip.id = static_cast<int>(i) + 1+2+1+1+100; // track 114 is missing
+            }
+            line_strip.type = visualization_msgs::msg::Marker::LINE_STRIP;
+            line_strip.action = visualization_msgs::msg::Marker::ADD;
+
+            line_strip.scale.x = 0.2;  // Line width
+
+            // Color configuration, Set lines in grey
+                line_strip.color.r = 0.5;
+                line_strip.color.g = 0.5;
+                line_strip.color.b = 0.5;
+
+            line_strip.color.a = 0.5; // Fully opaque
+
+            for (const auto& point : tracks_[i]) {
+                line_strip.points.push_back(point);
+            }
+
+            marker_array.markers.push_back(line_strip);
+        }
+
+        marker_pub_->publish(marker_array);
+
+      //  RCLCPP_INFO(this->get_logger(), "Published %ld track lines as markers.", tracks_.size());
+    }
+
+    rclcpp::Publisher<visualization_msgs::msg::MarkerArray>::SharedPtr marker_pub_;
+    rclcpp::TimerBase::SharedPtr marker_timer_;
+    std::vector<std::vector<geometry_msgs::msg::Point>> tracks_;
 };
 
-int main(int argc, char *argv[])
-{
+int main(int argc, char* argv[]) {
     rclcpp::init(argc, argv);
-    rclcpp::spin(std::make_shared<MapFilePublisher>());
+    rclcpp::spin(std::make_shared<TrackProcessor>());
     rclcpp::shutdown();
     return 0;
 }
+
+
+// //_________________________________________________Node for processing FS_xxx.csv (exact data from UE-MUC YARD)
+// #include <rclcpp/rclcpp.hpp>
+// #include <visualization_msgs/msg/marker_array.hpp>
+// #include <geometry_msgs/msg/point.hpp>
+// #include <fstream>
+// #include <sstream>
+// #include <vector>
+// #include <string>
+
+// using namespace std::chrono_literals;
+
+// // Structure to store coordinates with tangents
+// struct Coordinate {
+//     double x, y, z;  // Position
+//     double x_in_tangent, y_in_tangent, z_in_tangent;  // Incoming tangent
+//     double x_out_tangent, y_out_tangent, z_out_tangent;  // Outgoing tangent
+// };
+
+// // Main processing class
+// class TrackProcessor : public rclcpp::Node {
+// public:
+//     TrackProcessor() 
+//         : Node("track_processor") {
+//         // Initialize publisher for marker array
+//         marker_pub_ = this->create_publisher<visualization_msgs::msg::MarkerArray>("yard_topology", 10);
+
+//         // Load track data from CSV files
+//         readCSVFiles();
+
+//         // Create a timer to call the publishTrackLines function every 10 seconds
+//         marker_timer_ = this->create_wall_timer(
+//             10s, std::bind(&TrackProcessor::publishTrackLines, this));
+//     }
+
+// private:
+//     // Function to read CSV files
+//     void readCSVFiles() {
+//         for (int i = 101; i <= 118; ++i) {
+//             std::string filename = "src/nodes/yard_describer/src/MapData/FS_" + std::to_string(i) + ".csv";
+//             std::ifstream file(filename);
+
+//             if (!file.is_open()) {
+//                 RCLCPP_ERROR(this->get_logger(), "Failed to open file: %s", filename.c_str());
+//                 continue;
+//             }
+
+//             std::string line;
+//             std::getline(file, line);  // Skip the header line
+
+//             std::vector<Coordinate> track_points;
+//             while (std::getline(file, line)) {
+//                 std::stringstream ss(line);
+//                 std::string token;
+//                 Coordinate coord;
+
+//                 // Parse position data
+//                 std::getline(ss, token, ',');
+//                 coord.x = std::stod(token);
+//                 std::getline(ss, token, ',');
+//                 coord.y = std::stod(token);
+//                 std::getline(ss, token, ',');
+//                 coord.z = std::stod(token);
+
+//                 // Parse incoming tangent data
+//                 std::getline(ss, token, ',');
+//                 coord.x_in_tangent = std::stod(token);
+//                 std::getline(ss, token, ',');
+//                 coord.y_in_tangent = std::stod(token);
+//                 std::getline(ss, token, ',');
+//                 coord.z_in_tangent = std::stod(token);
+
+//                 // Parse outgoing tangent data
+//                 std::getline(ss, token, ',');
+//                 coord.x_out_tangent = std::stod(token);
+//                 std::getline(ss, token, ',');
+//                 coord.y_out_tangent = std::stod(token);
+//                 std::getline(ss, token, ',');
+//                 coord.z_out_tangent = std::stod(token);
+
+//                 track_points.emplace_back(coord);
+//             }
+//             file.close();
+
+//             tracks_.emplace_back(track_points);
+//         }
+//     }
+
+//     // Function to interpolate between points using Hermite spline
+//     std::vector<geometry_msgs::msg::Point> interpolatePoints(const Coordinate& p0, const Coordinate& p1, int num_points = 10) {
+//         std::vector<geometry_msgs::msg::Point> interpolated_points;
+
+//         for (int i = 0; i <= num_points; ++i) {
+//             double t = static_cast<double>(i) / num_points;
+
+//             double h00 = 2 * t * t * t - 3 * t * t + 1;
+//             double h10 = t * t * t - 2 * t * t + t;
+//             double h01 = -2 * t * t * t + 3 * t * t;
+//             double h11 = t * t * t - t * t;
+
+//             geometry_msgs::msg::Point point;
+//             point.x = h00 * p0.x + h10 * p0.x_out_tangent + h01 * p1.x + h11 * p1.x_in_tangent;
+//             point.y = h00 * p0.y + h10 * p0.y_out_tangent + h01 * p1.y + h11 * p1.y_in_tangent;
+//             point.z = h00 * p0.z + h10 * p0.z_out_tangent + h01 * p1.z + h11 * p1.z_in_tangent;
+
+//             interpolated_points.push_back(point);
+//         }
+
+//         return interpolated_points;
+//     }
+
+//     // Publish the track lines as markers
+//     void publishTrackLines() {
+//         if (tracks_.empty()) {
+//             RCLCPP_WARN(this->get_logger(), "No track points to publish.");
+//             return;
+//         }
+
+//         visualization_msgs::msg::MarkerArray marker_array;
+
+//         for (size_t i = 0; i < tracks_.size(); ++i) {
+//             visualization_msgs::msg::Marker line_strip;
+//             line_strip.header.stamp = this->get_clock()->now();
+//             line_strip.header.frame_id = "map";
+//             line_strip.ns = "track_lines";
+//             line_strip.id = static_cast<int>(i) + 101;  // Adjust this as needed
+//             line_strip.type = visualization_msgs::msg::Marker::LINE_STRIP;
+//             line_strip.action = visualization_msgs::msg::Marker::ADD;
+
+//             line_strip.scale.x = 0.2;  // Line width
+
+//             // Color configuration
+//             line_strip.color.r = 0.5;
+//             line_strip.color.g = 0.5;
+//             line_strip.color.b = 0.5;
+//             line_strip.color.a = 0.5;  // Semi-transparent
+
+//             for (size_t j = 0; j < tracks_[i].size() - 1; ++j) {
+//                 auto interpolated_points = interpolatePoints(tracks_[i][j], tracks_[i][j + 1]);
+//                 for (const auto& point : interpolated_points) {
+//                     line_strip.points.push_back(point);
+//                 }
+//             }
+
+//             marker_array.markers.push_back(line_strip);
+//         }
+
+//         marker_pub_->publish(marker_array);
+//         RCLCPP_INFO(this->get_logger(), "Published %ld track lines as markers.", tracks_.size());
+//     }
+
+//     rclcpp::Publisher<visualization_msgs::msg::MarkerArray>::SharedPtr marker_pub_;
+//     rclcpp::TimerBase::SharedPtr marker_timer_;
+//     std::vector<std::vector<Coordinate>> tracks_;
+// };
+
+// int main(int argc, char* argv[]) {
+//     rclcpp::init(argc, argv);
+//     rclcpp::spin(std::make_shared<TrackProcessor>());
+//     rclcpp::shutdown();
+//     return 0;
+// }
+
+
+
+
+// #include <rclcpp/rclcpp.hpp>
+// #include <GeographicLib/UTMUPS.hpp>
+// #include <visualization_msgs/msg/marker_array.hpp>
+// #include <geometry_msgs/msg/point.hpp>
+// #include <fstream>
+// #include <sstream>
+// #include <vector>
+// #include <string>
+// #include <cmath>
+// #include <algorithm>
+
+// using namespace std::chrono_literals;
+
+// // Structure to store coordinates
+// struct Coordinate {
+//     double longitude;
+//     double latitude;
+//     double elevation;
+// };
+
+// // Main processing class
+// class TrackProcessor : public rclcpp::Node {
+// public:
+//     TrackProcessor() 
+//         : Node("track_processor") {
+//         // Initialize publisher for marker array
+//         marker_pub_ = this->create_publisher<visualization_msgs::msg::MarkerArray>("yard_topology", 10);
+
+//         // Load track data from CSV files
+//         readCSVFiles();
+
+//         // Create a timer to call the publishTrackLines function after 10 seconds
+//         marker_timer_ = this->create_wall_timer(
+//             10s, std::bind(&TrackProcessor::publishTrackLines, this));
+//     }
+
+// private:
+//     // Function to read CSV files
+//     void readCSVFiles() {
+//         for (int i = 101; i <= 118; ++i) {
+//             std::string filename = "src/nodes/yard_describer/src/MapData/track_" + std::to_string(i) + ".csv";
+//             std::ifstream file(filename);
+
+//             if (!file.is_open()) {
+//                 RCLCPP_ERROR(this->get_logger(), "Failed to open file: %s", filename.c_str());
+//                 continue;
+//             }
+
+//             std::string line;
+//             std::getline(file, line);  // Skip the header line
+
+//             std::vector<geometry_msgs::msg::Point> track_points;
+//             while (std::getline(file, line)) {
+//                 std::stringstream ss(line);
+//                 std::string token;
+//                 Coordinate coord;
+
+//                 // Read longitude and divide by 10^6 to convert to degrees
+//                 std::getline(ss, token, ';');
+//                 coord.longitude = std::stod(token) * 1e-6;
+
+//                 // Read latitude and divide by 10^6 to convert to degrees
+//                 std::getline(ss, token, ';');
+//                 coord.latitude = std::stod(token) * 1e-6;
+
+//                 // Read elevation directly
+//                 std::getline(ss, token, ';');
+//                 coord.elevation = std::stod(token);
+
+//                 // Transform coordinates to metric (UTM)
+//                 geometry_msgs::msg::Point point = transformToMetric(coord);
+//                 track_points.emplace_back(point);
+//             }
+//             file.close();
+
+//             tracks_.emplace_back(segmentTrack(smoothPath(track_points), 2.0));
+//         }
+//     }
+
+//     // Transform geographic coordinates to UTM and return as geometry_msgs::msg::Point
+//     geometry_msgs::msg::Point transformToMetric(const Coordinate& coord) {
+//         double x, y;
+//         int zone;
+//         bool northp;
+
+//         // Convert geographic coordinates to UTM
+//         GeographicLib::UTMUPS::Forward(coord.latitude, coord.longitude, zone, northp, x, y);
+
+//         RCLCPP_INFO(this->get_logger(), "UTM coordinates: Zone %d, %s, X: %f, Y: %f",
+//                     zone, northp ? "North" : "South", x, y);
+
+//         geometry_msgs::msg::Point point;
+//         point.x = x;
+//         point.y = y;
+//         point.z = 0; // coord.elevation; uncomment to include elevation in the point
+//         return point;
+//     }
+
+//     // Smooth the path using a simple moving average
+//     std::vector<geometry_msgs::msg::Point> smoothPath(const std::vector<geometry_msgs::msg::Point>& points) {
+//         std::vector<geometry_msgs::msg::Point> smoothed_points = points;
+//         int window_size = 5;
+//         for (size_t i = 1; i < points.size() - 1; ++i) {
+//             geometry_msgs::msg::Point smoothed_point;
+//             int count = 0;
+//             for (int j = std::max(0, static_cast<int>(i) - window_size); j <= std::min(static_cast<int>(points.size() - 1), static_cast<int>(i) + window_size); ++j) {
+//                 smoothed_point.x += points[j].x;
+//                 smoothed_point.y += points[j].y;
+//                 ++count;
+//             }
+//             smoothed_point.x /= count;
+//             smoothed_point.y /= count;
+//             smoothed_points[i] = smoothed_point;
+//         }
+//         return smoothed_points;
+//     }
+
+//     // Segment the track to have points every given distance
+//     std::vector<geometry_msgs::msg::Point> segmentTrack(const std::vector<geometry_msgs::msg::Point>& points, double segment_length) {
+//         std::vector<geometry_msgs::msg::Point> segmented_points;
+//         if (points.empty()) return segmented_points;
+
+//         segmented_points.push_back(points.front());
+//         double accumulated_distance = 0.0;
+
+//         for (size_t i = 1; i < points.size(); ++i) {
+//             double dx = points[i].x - points[i - 1].x;
+//             double dy = points[i].y - points[i - 1].y;
+//             double distance = std::sqrt(dx * dx + dy * dy);
+//             accumulated_distance += distance;
+
+//             if (accumulated_distance >= segment_length) {
+//                 geometry_msgs::msg::Point new_point;
+//                 new_point.x = points[i - 1].x + (dx / distance) * (segment_length - (accumulated_distance - distance));
+//                 new_point.y = points[i - 1].y + (dy / distance) * (segment_length - (accumulated_distance - distance));
+//                 segmented_points.push_back(new_point);
+//                 accumulated_distance = 0.0;
+//             }
+//         }
+
+//         return segmented_points;
+//     }
+
+//     // Publish the track lines as markers
+//     void publishTrackLines() {
+//         if (tracks_.empty()) {
+//             RCLCPP_WARN(this->get_logger(), "No track points to publish.");
+//             return;
+//         }
+
+//         visualization_msgs::msg::MarkerArray marker_array;
+
+//         for (size_t i = 0; i < tracks_.size(); ++i) {
+//             visualization_msgs::msg::Marker line_strip;
+//             line_strip.header.stamp = this->get_clock()->now();
+//             line_strip.header.frame_id = "map";
+//             line_strip.ns = "track_lines";
+            
+//             if (i < 2) {
+//                 line_strip.id = static_cast<int>(i) + 1 + 100; //i from 0-1, tracks from 101-102
+//             } else if (i >= 2 && i < 8) {
+//                 line_strip.id = static_cast<int>(i) + 1 + 2 + 100; // track 103 and 104 are missing
+//             } else if (i >= 8 && i <= 9) {
+//                 line_strip.id = static_cast<int>(i) + 1 + 2 + 1 + 100; // track 111 is missing
+//             } else if (i >= 10) {
+//                 line_strip.id = static_cast<int>(i) + 1 + 2 + 1 + 1 + 100; // track 114 is missing
+//             }
+
+//             line_strip.type = visualization_msgs::msg::Marker::LINE_STRIP;
+//             line_strip.action = visualization_msgs::msg::Marker::ADD;
+//             line_strip.scale.x = 0.2;  // Line width
+
+//             // Color configuration, Set lines in grey
+//             line_strip.color.r = 0.5;
+//             line_strip.color.g = 0.5;
+//             line_strip.color.b = 0.5;
+//             line_strip.color.a = 0.5; // Semi-transparent
+
+//             for (const auto& point : tracks_[i]) {
+//                 line_strip.points.push_back(point);
+//             }
+
+//             marker_array.markers.push_back(line_strip);
+//         }
+
+//         marker_pub_->publish(marker_array);
+
+//         RCLCPP_INFO(this->get_logger(), "Published %ld track lines as markers.", tracks_.size());
+//     }
+
+//     rclcpp::Publisher<visualization_msgs::msg::MarkerArray>::SharedPtr marker_pub_;
+//     rclcpp::TimerBase::SharedPtr marker_timer_;
+//     std::vector<std::vector<geometry_msgs::msg::Point>> tracks_;
+// };
+
+// int main(int argc, char* argv[]) {
+//     rclcpp::init(argc, argv);
+//     rclcpp::spin(std::make_shared<TrackProcessor>());
+//     rclcpp::shutdown();
+//     return 0;
+// }
