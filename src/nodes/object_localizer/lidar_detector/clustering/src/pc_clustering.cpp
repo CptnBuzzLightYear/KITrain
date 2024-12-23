@@ -195,9 +195,14 @@ private:
             }
             else
             {
+                // Adjust the x values of the points in clustered_cloud so the can be viewed easier
+            for (auto& point : clustered_cloud->points)
+            {
+                point.x -= dist_x;
+            }
                 clustered_cloud->height = 1;
                 clustered_cloud->is_dense = true;
-                savestring = "/home/setter/Desktop/Clouds/clustered_cloud_" + std::to_string(dist_x) + ".pcd";
+                savestring = "/home/setter/Desktop/Clouds/clustered_cloud_" + std::to_string(dist_x) + "_" + std::to_string(clustered_cloud->points.size()) + ".pcd";
                 saveDetectedObject(clustered_cloud, savestring);
             }
             
