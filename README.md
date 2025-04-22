@@ -1,12 +1,14 @@
 # KI_Train
 
+## Install required dependencies to build with colcon build
+sudo apt-get install nlohmann-json3-dev
+sudo apt-get install libgeographic-dev
+sudo apt install ros-$ROS_DISTRO-foxglove-bridge
+
+## Launch
+ros2 launch rgb_camera execute.launch.py
 
 
-## Getting started
-
-To make it easy for you to get started with GitLab, here's a list of recommended next steps.
-
-Already a pro? Just edit this README.md and make it your own. Want to make it easy? [Use the template at the bottom](#editing-this-readme)!
 
 ## Add your files
 
