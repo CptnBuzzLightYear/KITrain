@@ -140,26 +140,3 @@ int main(int argc, char** argv) {
     return 0;
 }
 
-  // wrong: cv_ptr->image.copyTo(rails_edges);
-         
-
-           //overlay edges on original image
-          // cv::Mat result;
-         //  cv_ptr->image.copyTo(result);
-          // result.setTo(cv::Scalar(119,0,73), edges);
-
-           //convert OpenCV back to ROS image message
-
-        // convert to grayscale
-           /*cv::Mat gray;
-           cv::cvtColor(input_image, gray, cv::COLOR_BGR2GRAY);
-
-           //Isolate Rails based on color
-           cv::Mat rails_mask;
-           cv::threshold(gray, rails_mask, 100,255, cv::THRESH_BINARY); */
-                //cv::Canny(gray, edges, 40, 140);
-
-              //overlay edges on original image
-               //2combine color-based mask and edge detection
-         // cv::Mat rails_edges;
-          //cv::bitwise_and(edges, rails_mask, rails_edges);
