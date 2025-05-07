@@ -1,6 +1,6 @@
 # KI_Train
 
-KITraiin is an experimental ROS2 Humble Automated Driving Stack (high-level) for shunting locomotives. 
+KITrain is an experimental ROS2 Humble Automated Driving Stack (high-level) for shunting locomotives. 
 
 
 
